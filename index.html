@@ -63,6 +63,23 @@
       </button>
     </nav>
 
+    <!-- Mobile Menu Trigger Button (Visible on mobile <= 768px) -->
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Mở menu chọn chế độ" aria-expanded="false" aria-controls="mobile-mode-sheet">
+      <div class="mobile-menu-btn-content">
+        <span class="mobile-menu-btn-icon" id="mobile-current-icon">📝</span>
+        <div class="mobile-menu-btn-labels">
+          <span class="mobile-menu-btn-sub">Chế độ đang chọn</span>
+          <span class="mobile-menu-btn-title" id="mobile-current-title">Thi Thử (30 Câu)</span>
+        </div>
+      </div>
+      <div class="mobile-menu-btn-action">
+        <span class="mobile-menu-btn-pill">Đổi</span>
+        <svg class="mobile-menu-btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+      </div>
+    </button>
+
     <!-- Header Actions -->
     <div class="header-actions">
       <button id="theme-toggle-btn" class="theme-toggle-btn" title="Chuyển đổi Giao diện Sáng / Tối" aria-label="Toggle Theme">
@@ -93,6 +110,109 @@
       <button id="close-lightbox-btn" class="btn-nav btn-primary" style="margin-top: 1rem;">
         ✕ Đóng Xem Lại
       </button>
+    </div>
+  </div>
+
+  <!-- Mobile Mode Selection Bottom Sheet -->
+  <div id="mobile-mode-sheet" class="mobile-sheet-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="mobile-sheet-title">
+    <div class="mobile-sheet-container">
+      <div class="mobile-sheet-handle-bar">
+        <span class="mobile-sheet-handle"></span>
+      </div>
+      <div class="mobile-sheet-header">
+        <div class="mobile-sheet-title-box">
+          <h2 id="mobile-sheet-title" class="mobile-sheet-title">Chọn Chế Độ Học & Thi</h2>
+          <p class="mobile-sheet-subtitle">Chạm để chuyển nhanh chế độ luyện thi</p>
+        </div>
+        <button id="close-mobile-sheet-btn" class="mobile-sheet-close-btn" aria-label="Đóng bảng chọn">✕</button>
+      </div>
+      <div class="mobile-sheet-content">
+        <div class="mobile-mode-list" role="list">
+          <!-- 1. Thi Thử -->
+          <button class="mobile-mode-card active" data-mode="exam" role="listitem">
+            <div class="mode-card-icon mode-exam">📝</div>
+            <div class="mode-card-info">
+              <div class="mode-card-name">Thi Thử Chuẩn (30 Câu)</div>
+              <div class="mode-card-desc">Cấu trúc đề chuẩn Cục CSGT, bấm giờ 20 phút</div>
+            </div>
+            <div class="mode-card-status">
+              <span class="mode-active-indicator">✓</span>
+            </div>
+          </button>
+
+          <!-- 2. Thi Nhanh -->
+          <button class="mobile-mode-card" data-mode="quick-exam" role="listitem">
+            <div class="mode-card-icon mode-quick">⚡</div>
+            <div class="mode-card-info">
+              <div class="mode-card-name">Thi Nhanh Cấp Tốc (20 Câu)</div>
+              <div class="mode-card-desc">Rút gọn 10 phút, kiểm tra nhanh kiến thức</div>
+            </div>
+            <div class="mode-card-status">
+              <span class="mode-active-indicator">✓</span>
+            </div>
+          </button>
+
+          <!-- 3. Điểm Liệt -->
+          <button class="mobile-mode-card" data-mode="critical" role="listitem">
+            <div class="mode-card-icon mode-critical">⚠️</div>
+            <div class="mode-card-info">
+              <div class="mode-card-name">60 Câu Điểm Liệt</div>
+              <div class="mode-card-desc">Bắt buộc đúng 100%, sai 1 câu là không đạt</div>
+            </div>
+            <div class="mode-card-status">
+              <span class="mode-active-indicator">✓</span>
+            </div>
+          </button>
+
+          <!-- 4. Ôn Theo Chương -->
+          <button class="mobile-mode-card" data-mode="chapter" role="listitem">
+            <div class="mode-card-icon mode-chapter">📚</div>
+            <div class="mode-card-info">
+              <div class="mode-card-name">Ôn Tập Theo Chương</div>
+              <div class="mode-card-desc">Luyện kỹ theo 6 chương giáo trình lý thuyết</div>
+            </div>
+            <div class="mode-card-status">
+              <span class="mode-active-indicator">✓</span>
+            </div>
+          </button>
+
+          <!-- 5. Tra Cứu 600 Câu -->
+          <button class="mobile-mode-card" data-mode="all" role="listitem">
+            <div class="mode-card-icon mode-all">🔍</div>
+            <div class="mode-card-info">
+              <div class="mode-card-name">Tra Cứu 600 Câu Hỏi</div>
+              <div class="mode-card-desc">Tìm kiếm từ khóa, xem toàn bộ đề và lời giải</div>
+            </div>
+            <div class="mode-card-status">
+              <span class="mode-active-indicator">✓</span>
+            </div>
+          </button>
+
+          <!-- 6. Câu Sai -->
+          <button class="mobile-mode-card" data-mode="mistakes" role="listitem">
+            <div class="mode-card-icon mode-mistakes">❌</div>
+            <div class="mode-card-info">
+              <div class="mode-card-name">Danh Sách Câu Hay Sai</div>
+              <div class="mode-card-desc">Gom các câu đã từng làm sai để làm lại cho nhớ</div>
+            </div>
+            <div class="mode-card-status">
+              <span class="mode-active-indicator">✓</span>
+            </div>
+          </button>
+
+          <!-- 7. Đã Lưu -->
+          <button class="mobile-mode-card" data-mode="bookmarks" role="listitem">
+            <div class="mode-card-icon mode-bookmarks">⭐</div>
+            <div class="mode-card-info">
+              <div class="mode-card-name">Câu Hỏi Đã Đánh Dấu</div>
+              <div class="mode-card-desc">Danh sách câu hỏi quan trọng bạn tự lưu</div>
+            </div>
+            <div class="mode-card-status">
+              <span class="mode-active-indicator">✓</span>
+            </div>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 
