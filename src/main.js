@@ -78,7 +78,7 @@ function initApp() {
       8000
     );
     $('#btn-toast-download-pwa')?.addEventListener('click', () => {
-      offlineModal.open();
+      offlineModal.startDownloadWorkflow();
     });
   });
 

@@ -11,6 +11,7 @@ export class OfflineModal {
     this.modalEl = null;
     this.status = null;
     this._isOpen = false;
+    this._isDownloadWorkflowActive = false;
   }
 
   init() {
@@ -39,6 +40,12 @@ export class OfflineModal {
   _listenToBus() {
     eventBus.on('network:status-changed', () => {
       if (this._isOpen) this.refresh();
+    });
+
+    eventBus.on('offline:download-start', () => {
+      if (this._isOpen) {
+        this._setDownloadingUI(true);
+      }
     });
 
     eventBus.on('offline:download-progress', (data) => {
@@ -77,6 +84,66 @@ export class OfflineModal {
     this._render();
   }
 
+  /**
+   * Start downloading and display downloading interface immediately
+   */
+  async startDownloadWorkflow() {
+    this._isOpen = true;
+    this._isDownloadWorkflowActive = true;
+    if (this.modalEl) {
+      this.modalEl.classList.add('show');
+      this.modalEl.setAttribute('aria-hidden', 'false');
+    }
+
+    this.status = await offlineService.getStatus();
+    this._render();
+
+    try {
+      await offlineService.downloadAllImages((prog) => {
+        this._updateProgress(prog);
+      });
+    } catch (err) {
+      if (err.name !== 'AbortError' && err.message !== 'Quá trình tải đã bị hủy.') {
+        console.warn('[OfflineModal] Download workflow error:', err);
+      }
+    } finally {
+      this._isDownloadWorkflowActive = false;
+      await this.refresh();
+    }
+  }
+
+  _setDownloadingUI(isDownloading) {
+    if (!this.modalEl) return;
+
+    const progContainer = $('#offline-progress-container', this.modalEl);
+    const startBtn = $('#btn-start-download', this.modalEl);
+    const readinessBanner = $('.offline-readiness-banner', this.modalEl);
+
+    if (progContainer) {
+      progContainer.style.display = isDownloading ? 'block' : 'none';
+    }
+
+    if (startBtn) {
+      if (isDownloading) {
+        startBtn.setAttribute('disabled', 'true');
+        startBtn.textContent = '⏳ Đang tải dữ liệu...';
+      } else {
+        startBtn.removeAttribute('disabled');
+      }
+    }
+
+    if (readinessBanner && isDownloading) {
+      readinessBanner.className = 'offline-readiness-banner downloading';
+      readinessBanner.innerHTML = `
+        <span class="banner-icon">⏳</span>
+        <div class="banner-text">
+          <strong>Đang tự động tải dữ liệu Offline...</strong><br/>
+          Vui lòng đợi giây lát để tải toàn bộ 318 hình ảnh sa hình & biển báo.
+        </div>
+      `;
+    }
+  }
+
   _render() {
     if (!this.modalEl || !this.status) return;
 
@@ -89,7 +156,7 @@ export class OfflineModal {
       usageBytes
     } = this.status;
 
-    const isDownloading = offlineService.isDownloading;
+    const isDownloading = offlineService.isDownloading || this._isDownloadWorkflowActive;
 
     this.modalEl.innerHTML = `
       <div class="modal-content offline-modal-content">
@@ -120,8 +187,14 @@ export class OfflineModal {
             <span class="status-val">${offlineService.formatBytes(usageBytes)}</span>
           </div>
 
-          <div class="offline-readiness-banner ${isComplete ? 'ready' : 'not-ready'}">
-            ${isComplete ? `
+          <div class="offline-readiness-banner ${isDownloading ? 'downloading' : (isComplete ? 'ready' : 'not-ready')}">
+            ${isDownloading ? `
+              <span class="banner-icon">⏳</span>
+              <div class="banner-text">
+                <strong>Đang tự động tải dữ liệu Offline...</strong><br/>
+                Vui lòng đợi giây lát để tải toàn bộ 318 hình ảnh sa hình & biển báo.
+              </div>
+            ` : (isComplete ? `
               <span class="banner-icon">✅</span>
               <div class="banner-text">
                 <strong>Đã sẵn sàng 100% Offline!</strong><br/>
@@ -133,7 +206,7 @@ export class OfflineModal {
                 <strong>Chưa lưu đủ hình ảnh.</strong><br/>
                 Tải toàn bộ ảnh để không bị lỗi ảnh sa hình & biển báo khi mất mạng.
               </div>
-            `}
+            `)}
           </div>
         </div>
 
@@ -156,7 +229,7 @@ export class OfflineModal {
             </button>
           ` : `
             <button id="btn-start-download" class="btn-nav btn-offline-action" ${(!isOnline || isDownloading) ? 'disabled' : ''}>
-              🔄 Kiểm Tra & Tải Lại Toàn Bộ Ảnh
+              ${isDownloading ? '⏳ Đang tải dữ liệu...' : '🔄 Kiểm Tra & Tải Lại Toàn Bộ Ảnh'}
             </button>
           `}
 
@@ -177,22 +250,8 @@ export class OfflineModal {
     const clearBtn = $('#btn-clear-cache', this.modalEl);
     const cancelBtn = $('#btn-cancel-offline-download', this.modalEl);
 
-    startBtn?.addEventListener('click', async () => {
-      try {
-        const progContainer = $('#offline-progress-container', this.modalEl);
-        if (progContainer) progContainer.style.display = 'block';
-        if (startBtn) startBtn.setAttribute('disabled', 'true');
-
-        await offlineService.downloadAllImages((prog) => {
-          this._updateProgress(prog);
-        });
-      } catch (err) {
-        if (err.message !== 'Quá trình tải đã bị hủy.') {
-          alert('Lỗi khi tải dữ liệu: ' + err.message);
-        }
-      } finally {
-        await this.refresh();
-      }
+    startBtn?.addEventListener('click', () => {
+      this.startDownloadWorkflow();
     });
 
     cancelBtn?.addEventListener('click', () => {
@@ -210,6 +269,10 @@ export class OfflineModal {
   }
 
   _updateProgress({ current, total, percent }) {
+    if (!this.modalEl) return;
+
+    this._setDownloadingUI(true);
+
     const fill = $('#offline-progress-fill', this.modalEl);
     const text = $('#offline-progress-text', this.modalEl);
     if (fill) fill.style.width = `${percent}%`;
@@ -218,4 +281,3 @@ export class OfflineModal {
 }
 
 export const offlineModal = new OfflineModal();
-

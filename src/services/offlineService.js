@@ -144,8 +144,8 @@ class OfflineService {
    * @returns {Promise<Object>} Final status
    */
   async downloadAllImages(onProgress) {
-    if (this.isDownloading) {
-      throw new Error('Đang trong quá trình tải dữ liệu offline.');
+    if (this.isDownloading && this._activeDownloadPromise) {
+      return this._activeDownloadPromise;
     }
 
     if (!this.isOnline) {
@@ -162,74 +162,88 @@ class OfflineService {
 
     const allUrls = this.getImageUrls();
     const total = allUrls.length;
-    let completed = 0;
 
-    try {
-      const cache = await caches.open(IMAGE_CACHE_NAME);
-      const existingKeys = await cache.keys();
-      const cachedPathSet = new Set(existingKeys.map(req => new URL(req.url).pathname));
+    eventBus.emit('offline:download-start', { total });
 
-      // Separate URLs that still need downloading
-      const toDownload = allUrls.filter(url => !cachedPathSet.has(url));
-      completed = allUrls.length - toDownload.length;
+    this._activeDownloadPromise = (async () => {
+      let completed = 0;
 
-      if (onProgress) {
-        onProgress({
+      try {
+        const cache = await caches.open(IMAGE_CACHE_NAME);
+        const existingKeys = await cache.keys();
+        const cachedPathSet = new Set(existingKeys.map(req => new URL(req.url).pathname));
+
+        // Separate URLs that still need downloading
+        const toDownload = allUrls.filter(url => !cachedPathSet.has(url));
+        completed = allUrls.length - toDownload.length;
+
+        if (onProgress) {
+          onProgress({
+            current: completed,
+            total,
+            percent: Math.round((completed / total) * 100),
+            isDone: completed === total
+          });
+        }
+        eventBus.emit('offline:download-progress', {
           current: completed,
           total,
-          percent: Math.round((completed / total) * 100),
-          isDone: completed === total
+          percent: Math.round((completed / total) * 100)
         });
-      }
 
-      // Download in batches of 6 concurrent requests to optimize bandwidth
-      const BATCH_SIZE = 6;
-      for (let i = 0; i < toDownload.length; i += BATCH_SIZE) {
-        if (signal.aborted) {
-          throw new Error('Quá trình tải đã bị hủy.');
+        // Download in batches of 6 concurrent requests to optimize bandwidth
+        const BATCH_SIZE = 6;
+        for (let i = 0; i < toDownload.length; i += BATCH_SIZE) {
+          if (signal.aborted) {
+            throw new Error('Quá trình tải đã bị hủy.');
+          }
+
+          const batch = toDownload.slice(i, i + BATCH_SIZE);
+          await Promise.all(
+            batch.map(async (url) => {
+              try {
+                const res = await fetch(url, { signal, cache: 'default' });
+                if (res && res.status === 200) {
+                  await cache.put(url, res);
+                }
+              } catch (fetchErr) {
+                if (signal.aborted) throw fetchErr;
+                console.warn(`[OfflineService] Could not cache image ${url}:`, fetchErr);
+              } finally {
+                completed++;
+                const percent = Math.round((completed / total) * 100);
+                if (onProgress) {
+                  onProgress({
+                    current: completed,
+                    total,
+                    percent,
+                    isDone: completed === total
+                  });
+                }
+                eventBus.emit('offline:download-progress', { current: completed, total, percent });
+              }
+            })
+          );
         }
 
-        const batch = toDownload.slice(i, i + BATCH_SIZE);
-        await Promise.all(
-          batch.map(async (url) => {
-            try {
-              const res = await fetch(url, { signal, cache: 'default' });
-              if (res && res.status === 200) {
-                await cache.put(url, res);
-              }
-            } catch (fetchErr) {
-              if (signal.aborted) throw fetchErr;
-              console.warn(`[OfflineService] Could not cache image ${url}:`, fetchErr);
-            } finally {
-              completed++;
-              const percent = Math.round((completed / total) * 100);
-              if (onProgress) {
-                onProgress({
-                  current: completed,
-                  total,
-                  percent,
-                  isDone: completed === total
-                });
-              }
-              eventBus.emit('offline:download-progress', { current: completed, total, percent });
-            }
-          })
-        );
+        this.isDownloading = false;
+        this._activeDownloadPromise = null;
+        const finalStatus = await this.getStatus();
+        eventBus.emit('offline:download-complete', finalStatus);
+        return finalStatus;
+      } catch (err) {
+        this.isDownloading = false;
+        this._activeDownloadPromise = null;
+        if (err.name === 'AbortError' || signal.aborted) {
+          console.log('[OfflineService] Download cancelled by user');
+        } else {
+          console.error('[OfflineService] Download failed:', err);
+        }
+        throw err;
       }
+    })();
 
-      this.isDownloading = false;
-      const finalStatus = await this.getStatus();
-      eventBus.emit('offline:download-complete', finalStatus);
-      return finalStatus;
-    } catch (err) {
-      this.isDownloading = false;
-      if (err.name === 'AbortError' || signal.aborted) {
-        console.log('[OfflineService] Download cancelled by user');
-      } else {
-        console.error('[OfflineService] Download failed:', err);
-      }
-      throw err;
-    }
+    return this._activeDownloadPromise;
   }
 
   /**

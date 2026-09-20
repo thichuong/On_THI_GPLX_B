@@ -77,17 +77,24 @@ class PWAService {
    * Trigger automatic offline package download when app is installed
    */
   async _onAppInstalled() {
+    if (this._isHandlingInstall) return;
+    this._isHandlingInstall = true;
+
     setTimeout(async () => {
       try {
-        await offlineModal.open();
         const status = await offlineService.getStatus();
-        if (!status.isComplete && offlineService.isOnline && !offlineService.isDownloading) {
-          await offlineService.downloadAllImages();
+        if (!status.isComplete && offlineService.isOnline) {
+          // Immediately display the downloading interface and start downloading!
+          await offlineModal.startDownloadWorkflow();
+        } else {
+          await offlineModal.open();
         }
       } catch (err) {
         console.warn('[PWA] Auto-download on install error:', err);
+      } finally {
+        this._isHandlingInstall = false;
       }
-    }, 600);
+    }, 400);
   }
 
   /**
