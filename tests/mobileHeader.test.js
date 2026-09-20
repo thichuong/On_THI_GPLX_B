@@ -169,3 +169,55 @@ test('Header - Mobile Bottom Sheet toggle and selection workflow', () => {
   assert.equal(mobileCurrentIcon.textContent, '⚡');
   assert.equal(mobileCurrentTitle.textContent, 'Thi Nhanh (20 Câu)');
 });
+
+test('Header - Mobile Settings Sheet workflow', () => {
+  const mobileSettingsBtn = new MockElement('button');
+  const mobileSettingsSheet = new MockElement('div');
+  const closeMobileSettingsBtn = new MockElement('button');
+  const themeBtn = new MockElement('button');
+  const themeIcon = new MockElement('span');
+  const themeTitle = new MockElement('div');
+  const themePill = new MockElement('span');
+  const offlineBtn = new MockElement('button');
+  const installBtn = new MockElement('button');
+
+  mockDoc.elements = {
+    ...mockDoc.elements,
+    '#mobile-settings-btn': mobileSettingsBtn,
+    '#mobile-settings-sheet': mobileSettingsSheet,
+    '#close-mobile-settings-btn': closeMobileSettingsBtn,
+    '#mobile-sheet-theme-btn': themeBtn,
+    '#mobile-sheet-theme-icon': themeIcon,
+    '#mobile-sheet-theme-title': themeTitle,
+    '#mobile-sheet-theme-pill': themePill,
+    '#mobile-sheet-offline-btn': offlineBtn,
+    '#mobile-sheet-install-btn': installBtn
+  };
+
+  const headerInstance = new Header();
+  headerInstance.init();
+
+  // 1. Initial State: Settings sheet is closed
+  assert.equal(headerInstance.isMobileSettingsOpen(), false);
+
+  // 2. Click mobileSettingsBtn opens settings sheet
+  mobileSettingsBtn.click();
+  assert.equal(headerInstance.isMobileSettingsOpen(), true);
+  assert.equal(mobileSettingsSheet.classList.contains('show'), true);
+  assert.equal(mockDoc.body.style.overflow, 'hidden');
+
+  // 3. Click close button closes settings sheet
+  closeMobileSettingsBtn.click();
+  assert.equal(headerInstance.isMobileSettingsOpen(), false);
+  assert.equal(mobileSettingsSheet.classList.contains('show'), false);
+  assert.equal(mockDoc.body.style.overflow, '');
+
+  // 4. Click mobileSettingsBtn, then click theme toggle
+  mobileSettingsBtn.click();
+  assert.equal(headerInstance.isMobileSettingsOpen(), true);
+
+  const initialTheme = globalThis.localStorage.getItem('gplx_theme') || 'dark';
+  themeBtn.click();
+  const toggledTheme = globalThis.localStorage.getItem('gplx_theme');
+  assert.notEqual(initialTheme, toggledTheme, 'Theme must toggle when clicking theme button in settings sheet');
+});

@@ -93,6 +93,11 @@
       <button id="theme-toggle-btn" class="theme-toggle-btn" title="Chuyển đổi Giao diện Sáng / Tối" aria-label="Toggle Theme">
         <span id="theme-icon">☀️</span>
       </button>
+
+      <!-- Mobile Settings Button (Gom tất cả nút vào 1 trên Mobile) -->
+      <button id="mobile-settings-btn" class="mobile-settings-btn" aria-label="Cài đặt & Tiện ích" title="Cài đặt & Tiện ích">
+        <span class="mobile-settings-icon">⚙️</span>
+      </button>
     </div>
   </header>
 
@@ -225,6 +230,61 @@
             </div>
             <div class="mode-card-status">
               <span class="mode-active-indicator">✓</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Settings Bottom Sheet (Gom Sáng/Tối, Offline, Cài đặt App) -->
+  <div id="mobile-settings-sheet" class="mobile-sheet-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="mobile-settings-title">
+    <div class="mobile-sheet-container">
+      <div class="mobile-sheet-handle-bar">
+        <span class="mobile-sheet-handle"></span>
+      </div>
+      <div class="mobile-sheet-header">
+        <div class="mobile-sheet-title-box">
+          <h2 id="mobile-settings-title" class="mobile-sheet-title">⚙️ Cài Đặt & Tiện Ích</h2>
+          <p class="mobile-sheet-subtitle">Tùy chỉnh giao diện, offline và cài đặt ứng dụng</p>
+        </div>
+        <button id="close-mobile-settings-btn" class="mobile-sheet-close-btn" aria-label="Đóng bảng cài đặt">✕</button>
+      </div>
+      <div class="mobile-sheet-content">
+        <div class="mobile-settings-list" role="list">
+          <!-- 1. Giao diện Sáng / Tối -->
+          <button id="mobile-sheet-theme-btn" class="mobile-setting-card" role="listitem">
+            <div class="mode-card-icon" id="mobile-sheet-theme-icon">☀️</div>
+            <div class="mode-card-info">
+              <div class="mode-card-name" id="mobile-sheet-theme-title">Giao diện: Tối</div>
+              <div class="mode-card-desc">Chạm để chuyển đổi Sáng / Tối</div>
+            </div>
+            <div class="mobile-setting-action">
+              <span class="mobile-setting-pill" id="mobile-sheet-theme-pill">Đổi</span>
+            </div>
+          </button>
+
+          <!-- 2. Dữ liệu Offline -->
+          <button id="mobile-sheet-offline-btn" class="mobile-setting-card" role="listitem">
+            <div class="mode-card-icon" id="mobile-sheet-offline-icon">💾</div>
+            <div class="mode-card-info">
+              <div class="mode-card-name">Dữ Liệu Học Offline</div>
+              <div class="mode-card-desc" id="mobile-sheet-offline-desc">Tải trọn gói 318 hình ảnh để học không cần mạng</div>
+            </div>
+            <div class="mobile-setting-action">
+              <span class="mobile-setting-pill" id="mobile-sheet-offline-pill">Quản lý</span>
+            </div>
+          </button>
+
+          <!-- 3. Cài đặt App (PWA) -->
+          <button id="mobile-sheet-install-btn" class="mobile-setting-card" role="listitem">
+            <div class="mode-card-icon">📲</div>
+            <div class="mode-card-info">
+              <div class="mode-card-name" id="mobile-sheet-install-title">Cài Đặt App Vào Máy</div>
+              <div class="mode-card-desc" id="mobile-sheet-install-desc">Dùng mượt mà như app gốc, mở từ màn hình chính</div>
+            </div>
+            <div class="mobile-setting-action">
+              <span class="mobile-setting-pill" id="mobile-sheet-install-pill">Cài đặt</span>
             </div>
           </button>
         </div>

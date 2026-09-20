@@ -14,3 +14,4 @@ test('PWAService - promptInstall handles dismissed or unpromptable state gracefu
   const result = await pwaService.promptInstall();
   assert.strictEqual(result.outcome, 'dismissed');
 });
+

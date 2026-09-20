@@ -76,6 +76,7 @@ export class Header {
     this.offlineBtn = $('#offline-btn');
     this.offlineIcon = $('#offline-icon');
     this.offlineLabel = $('#offline-label');
+    this.mobileSettingsBtn = $('#mobile-settings-btn');
     this.navTabs = $$('.tab-btn');
     this.mobileMenuBtn = $('#mobile-menu-btn');
     this.mobileCurrentIcon = $('#mobile-current-icon');
@@ -83,6 +84,22 @@ export class Header {
     this.mobileModeSheet = $('#mobile-mode-sheet');
     this.closeMobileSheetBtn = $('#close-mobile-sheet-btn');
     this.mobileModeCards = $$('.mobile-mode-card');
+
+    // Mobile Settings Bottom Sheet elements
+    this.mobileSettingsSheet = $('#mobile-settings-sheet');
+    this.closeMobileSettingsBtn = $('#close-mobile-settings-btn');
+    this.mobileSheetThemeBtn = $('#mobile-sheet-theme-btn');
+    this.mobileSheetThemeIcon = $('#mobile-sheet-theme-icon');
+    this.mobileSheetThemeTitle = $('#mobile-sheet-theme-title');
+    this.mobileSheetThemePill = $('#mobile-sheet-theme-pill');
+    this.mobileSheetOfflineBtn = $('#mobile-sheet-offline-btn');
+    this.mobileSheetOfflineIcon = $('#mobile-sheet-offline-icon');
+    this.mobileSheetOfflineDesc = $('#mobile-sheet-offline-desc');
+    this.mobileSheetOfflinePill = $('#mobile-sheet-offline-pill');
+    this.mobileSheetInstallBtn = $('#mobile-sheet-install-btn');
+    this.mobileSheetInstallTitle = $('#mobile-sheet-install-title');
+    this.mobileSheetInstallDesc = $('#mobile-sheet-install-desc');
+    this.mobileSheetInstallPill = $('#mobile-sheet-install-pill');
   }
 
   init({ onModeChange } = {}) {
@@ -157,6 +174,25 @@ export class Header {
         if (this.offlineLabel) this.offlineLabel.textContent = status.cachedCount > 0 ? `${status.percent}%` : 'Tải Offline';
       }
     }
+
+    // Sync with Mobile Settings Bottom Sheet
+    if (this.mobileSheetOfflineIcon) {
+      this.mobileSheetOfflineIcon.textContent = status.isComplete ? '✅' : '💾';
+    }
+    if (this.mobileSheetOfflineDesc) {
+      this.mobileSheetOfflineDesc.textContent = status.isComplete
+        ? `Đã lưu 100% hình ảnh (${status.cachedCount}/${status.totalImages})`
+        : `Đã lưu ${status.cachedCount}/${status.totalImages} ảnh (${status.percent}%)`;
+    }
+    if (this.mobileSheetOfflinePill) {
+      this.mobileSheetOfflinePill.textContent = status.isComplete ? '100% Offline' : 'Quản lý';
+    }
+
+    if (pwaService.isStandalone) {
+      if (this.mobileSheetInstallTitle) this.mobileSheetInstallTitle.textContent = 'Ứng Dụng Đã Cài Đặt';
+      if (this.mobileSheetInstallDesc) this.mobileSheetInstallDesc.textContent = 'Bạn đang sử dụng phiên bản cài đặt PWA';
+      if (this.mobileSheetInstallPill) this.mobileSheetInstallPill.textContent = 'Đã cài';
+    }
   }
 
   _initTheme() {
@@ -227,6 +263,41 @@ export class Header {
         }
       });
     });
+
+    // --- Mobile Settings Bottom Sheet ---
+    this.mobileSettingsBtn?.addEventListener('click', () => {
+      this.toggleMobileSettings();
+    });
+
+    this.closeMobileSettingsBtn?.addEventListener('click', () => {
+      this.closeMobileSettings();
+    });
+
+    this.mobileSettingsSheet?.addEventListener('click', (e) => {
+      if (e.target === this.mobileSettingsSheet) {
+        this.closeMobileSettings();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.isMobileSettingsOpen()) {
+        this.closeMobileSettings();
+      }
+    });
+
+    this.mobileSheetThemeBtn?.addEventListener('click', () => {
+      this.toggleTheme();
+    });
+
+    this.mobileSheetOfflineBtn?.addEventListener('click', () => {
+      this.closeMobileSettings();
+      offlineModal.open();
+    });
+
+    this.mobileSheetInstallBtn?.addEventListener('click', () => {
+      this.closeMobileSettings();
+      pwaService.promptInstall();
+    });
   }
 
   toggleMobileSheet() {
@@ -243,6 +314,7 @@ export class Header {
 
   openMobileSheet() {
     if (!this.mobileModeSheet) return;
+    if (this.isMobileSettingsOpen()) this.closeMobileSettings();
     this.mobileModeSheet.classList.add('show');
     this.mobileModeSheet.setAttribute('aria-hidden', 'false');
     this.mobileMenuBtn?.setAttribute('aria-expanded', 'true');
@@ -257,6 +329,35 @@ export class Header {
     document.body.style.overflow = '';
   }
 
+  // --- Mobile Settings Methods ---
+
+  toggleMobileSettings() {
+    if (this.isMobileSettingsOpen()) {
+      this.closeMobileSettings();
+    } else {
+      this.openMobileSettings();
+    }
+  }
+
+  isMobileSettingsOpen() {
+    return this.mobileSettingsSheet?.classList.contains('show') || false;
+  }
+
+  openMobileSettings() {
+    if (!this.mobileSettingsSheet) return;
+    if (this.isMobileSheetOpen()) this.closeMobileSheet();
+    this.mobileSettingsSheet.classList.add('show');
+    this.mobileSettingsSheet.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeMobileSettings() {
+    if (!this.mobileSettingsSheet) return;
+    this.mobileSettingsSheet.classList.remove('show');
+    this.mobileSettingsSheet.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
   toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -268,6 +369,16 @@ export class Header {
   updateThemeIcon(theme) {
     if (this.themeIcon) {
       this.themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+
+    if (this.mobileSheetThemeIcon) {
+      this.mobileSheetThemeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+    }
+    if (this.mobileSheetThemeTitle) {
+      this.mobileSheetThemeTitle.textContent = theme === 'dark' ? 'Giao diện: Tối' : 'Giao diện: Sáng';
+    }
+    if (this.mobileSheetThemePill) {
+      this.mobileSheetThemePill.textContent = theme === 'dark' ? 'Đổi Sáng ☀️' : 'Đổi Tối 🌙';
     }
   }
 
