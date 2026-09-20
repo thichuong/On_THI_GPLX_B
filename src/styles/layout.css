@@ -136,6 +136,45 @@
   border-color: var(--border-focus);
 }
 
+.install-pwa-btn {
+  height: 40px;
+  padding: 0 0.85rem;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--accent-primary), #4338ca);
+  border: 1px solid var(--accent-glow);
+  box-shadow: 0 0 14px var(--accent-glow);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  animation: pulseInstall 3s infinite;
+}
+
+.install-pwa-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
+}
+
+@keyframes pulseInstall {
+  0%, 100% { box-shadow: 0 0 10px var(--accent-glow); }
+  50% { box-shadow: 0 0 22px rgba(99, 102, 241, 0.7); }
+}
+
+@media (max-width: 640px) {
+  .install-pwa-btn .install-label {
+    display: none;
+  }
+  .install-pwa-btn {
+    width: 40px;
+    padding: 0;
+    justify-content: center;
+  }
+}
+
 .offline-btn {
   height: 40px;
   padding: 0 0.75rem;

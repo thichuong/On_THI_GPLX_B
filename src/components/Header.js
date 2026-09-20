@@ -5,6 +5,7 @@
 import { StorageService } from '../services/storageService.js';
 import { offlineModal } from './OfflineModal.js';
 import { offlineService } from '../services/offlineService.js';
+import { pwaService } from '../services/pwaService.js';
 import { eventBus } from '../core/eventBus.js';
 import { $, $$ } from '../utils/dom.js';
 
@@ -71,6 +72,7 @@ export class Header {
     this.headerEl = document.querySelector('.app-header');
     this.themeToggleBtn = $('#theme-toggle-btn');
     this.themeIcon = $('#theme-icon');
+    this.installPwaBtn = $('#install-pwa-btn');
     this.offlineBtn = $('#offline-btn');
     this.offlineIcon = $('#offline-icon');
     this.offlineLabel = $('#offline-label');
@@ -96,6 +98,30 @@ export class Header {
 
   _initOfflineListeners() {
     this.updateOfflineStatus();
+
+    // PWA Install state
+    if (this.installPwaBtn && pwaService.isInstallable) {
+      this.installPwaBtn.style.display = 'inline-flex';
+    }
+
+    eventBus.on('pwa:installable', ({ isInstallable }) => {
+      if (this.installPwaBtn) {
+        this.installPwaBtn.style.display = isInstallable ? 'inline-flex' : 'none';
+      }
+    });
+
+    eventBus.on('pwa:installed', () => {
+      if (this.installPwaBtn) {
+        this.installPwaBtn.style.display = 'none';
+      }
+    });
+
+    eventBus.on('pwa:install-accepted', () => {
+      if (this.installPwaBtn) {
+        this.installPwaBtn.style.display = 'none';
+      }
+    });
+
     eventBus.on('network:status-changed', ({ isOnline }) => {
       this.updateOfflineStatus(isOnline);
     });
@@ -143,6 +169,11 @@ export class Header {
     // Theme toggle
     this.themeToggleBtn?.addEventListener('click', () => {
       this.toggleTheme();
+    });
+
+    // PWA install trigger
+    this.installPwaBtn?.addEventListener('click', () => {
+      pwaService.promptInstall();
     });
 
     // Offline manager modal trigger

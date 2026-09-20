@@ -8,6 +8,7 @@ import { router } from './core/router.js';
 import { keyboardManager } from './utils/keyboard.js';
 import { StorageService } from './services/storageService.js';
 import { offlineModal } from './components/OfflineModal.js';
+import { pwaService } from './services/pwaService.js';
 import { eventBus } from './core/eventBus.js';
 // Initialize lightbox listener
 import './components/LightboxModal.js';
@@ -57,6 +58,9 @@ function initApp() {
   // Start with default mode (Standard Mock Exam)
   router.navigate('exam');
 
+  // Initialize PWA service
+  pwaService.init();
+
   // Network status toast notifications
   eventBus.on('network:status-changed', ({ isOnline }) => {
     if (!isOnline) {
@@ -64,6 +68,18 @@ function initApp() {
     } else {
       showToast('🟢 Đã kết nối lại Internet.', 'online', 3500);
     }
+  });
+
+  // Standalone mode missing cache notification
+  eventBus.on('pwa:standalone-missing-cache', () => {
+    showToast(
+      `<span>📲 Đang dùng App cài đặt. Bạn có muốn tải trọn gói 318 hình ảnh để học Offline không?</span> <button id="btn-toast-download-pwa" style="margin-left: 0.5rem; padding: 0.25rem 0.6rem; background: var(--accent-primary); border: none; border-radius: 4px; color: #fff; font-weight: 600; cursor: pointer;">Tải ngay</button>`,
+      'online',
+      8000
+    );
+    $('#btn-toast-download-pwa')?.addEventListener('click', () => {
+      offlineModal.open();
+    });
   });
 
   // Register PWA Service Worker for offline support & update handling
