@@ -102,6 +102,22 @@
   box-shadow: 0 4px 14px var(--accent-glow);
 }
 
+.question-image.img-load-failed {
+  display: none;
+}
+
+.img-offline-notice {
+  padding: 1.25rem 1rem;
+  background: var(--warning-bg);
+  border: 1px dashed var(--warning-border);
+  border-radius: var(--radius-md);
+  color: var(--warning);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: center;
+  width: 100%;
+}
+
 /* Options List */
 .options-list {
   display: flex;

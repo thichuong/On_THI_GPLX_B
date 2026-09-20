@@ -3,6 +3,9 @@
  * and Mobile bottom menu sheet controller.
  */
 import { StorageService } from '../services/storageService.js';
+import { offlineModal } from './OfflineModal.js';
+import { offlineService } from '../services/offlineService.js';
+import { eventBus } from '../core/eventBus.js';
 import { $, $$ } from '../utils/dom.js';
 
 export const MODE_CONFIGS = {
@@ -68,6 +71,9 @@ export class Header {
     this.headerEl = document.querySelector('.app-header');
     this.themeToggleBtn = $('#theme-toggle-btn');
     this.themeIcon = $('#theme-icon');
+    this.offlineBtn = $('#offline-btn');
+    this.offlineIcon = $('#offline-icon');
+    this.offlineLabel = $('#offline-label');
     this.navTabs = $$('.tab-btn');
     this.mobileMenuBtn = $('#mobile-menu-btn');
     this.mobileCurrentIcon = $('#mobile-current-icon');
@@ -85,6 +91,46 @@ export class Header {
     this._initTheme();
     this._bindEvents();
     this._bindMobileEvents();
+    this._initOfflineListeners();
+  }
+
+  _initOfflineListeners() {
+    this.updateOfflineStatus();
+    eventBus.on('network:status-changed', ({ isOnline }) => {
+      this.updateOfflineStatus(isOnline);
+    });
+    eventBus.on('offline:download-complete', () => {
+      this.updateOfflineStatus();
+    });
+    eventBus.on('offline:cache-cleared', () => {
+      this.updateOfflineStatus();
+    });
+  }
+
+  async updateOfflineStatus(isOnline = null) {
+    const online = isOnline !== null ? isOnline : offlineService.isOnline;
+    const status = await offlineService.getStatus();
+
+    if (this.offlineBtn) {
+      if (!online) {
+        this.offlineBtn.classList.add('is-offline');
+        this.offlineBtn.title = 'Đang ở chế độ Offline (Không có mạng) - Bấm để quản lý bộ nhớ';
+        if (this.offlineIcon) this.offlineIcon.textContent = '📶';
+        if (this.offlineLabel) this.offlineLabel.textContent = 'Offline';
+      } else if (status.isComplete) {
+        this.offlineBtn.classList.remove('is-offline');
+        this.offlineBtn.classList.add('is-ready');
+        this.offlineBtn.title = `Đã lưu 100% hình ảnh (${status.cachedCount}/${status.totalImages}) - Sẵn sàng Offline`;
+        if (this.offlineIcon) this.offlineIcon.textContent = '✅';
+        if (this.offlineLabel) this.offlineLabel.textContent = '100% Offline';
+      } else {
+        this.offlineBtn.classList.remove('is-offline');
+        this.offlineBtn.classList.remove('is-ready');
+        this.offlineBtn.title = `Đã lưu ${status.cachedCount}/${status.totalImages} ảnh (${status.percent}%) - Bấm để tải trọn gói`;
+        if (this.offlineIcon) this.offlineIcon.textContent = '💾';
+        if (this.offlineLabel) this.offlineLabel.textContent = status.cachedCount > 0 ? `${status.percent}%` : 'Tải Offline';
+      }
+    }
   }
 
   _initTheme() {
@@ -97,6 +143,11 @@ export class Header {
     // Theme toggle
     this.themeToggleBtn?.addEventListener('click', () => {
       this.toggleTheme();
+    });
+
+    // Offline manager modal trigger
+    this.offlineBtn?.addEventListener('click', () => {
+      offlineModal.open();
     });
 
     // Nav tabs for desktop

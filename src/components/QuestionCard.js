@@ -108,7 +108,7 @@ export class QuestionCard {
 
         ${question.image ? `
           <div class="question-image-container" id="question-img-wrap" title="Bấm để phóng to hình ảnh">
-            <img src="${question.image}" alt="Hình minh họa câu ${question.id}" class="question-image" />
+            <img src="${question.image}" alt="Hình minh họa câu ${question.id}" class="question-image" onerror="this.onerror=null; this.classList.add('img-load-failed'); this.insertAdjacentHTML('afterend', '<div class=\\'img-offline-notice\\'><span>⚠️ Ảnh câu hỏi chưa được tải offline. Bạn có thể mở mạng hoặc tải trọn gói Offline để xem đầy đủ.</span></div>');" />
             <div class="zoom-hint">🔍</div>
           </div>
         ` : ''}

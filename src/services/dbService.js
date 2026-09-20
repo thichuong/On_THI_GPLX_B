@@ -402,6 +402,16 @@ class DBService {
       }
     });
   }
+
+  // --- Offline Pack Status ---
+
+  async getOfflineStatus() {
+    return this.getMeta('offline_pack_status');
+  }
+
+  async setOfflineStatus(statusData = {}) {
+    return this.setMeta('offline_pack_status', statusData);
+  }
 }
 
 export const dbService = new DBService();

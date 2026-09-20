@@ -82,6 +82,10 @@
 
     <!-- Header Actions -->
     <div class="header-actions">
+      <button id="offline-btn" class="offline-btn" title="Quản lý dữ liệu & Chế độ Offline" aria-label="Offline Mode & Data">
+        <span id="offline-icon">💾</span>
+        <span id="offline-label" class="offline-label">Tải Offline</span>
+      </button>
       <button id="theme-toggle-btn" class="theme-toggle-btn" title="Chuyển đổi Giao diện Sáng / Tối" aria-label="Toggle Theme">
         <span id="theme-icon">☀️</span>
       </button>
@@ -112,6 +116,14 @@
       </button>
     </div>
   </div>
+
+  <!-- Offline Manager Modal -->
+  <div id="offline-modal" class="modal-backdrop" aria-hidden="true" role="dialog">
+    <!-- Content injected by OfflineModal.js -->
+  </div>
+
+  <!-- App Toast Notification -->
+  <div id="app-toast" class="app-toast" aria-live="polite"></div>
 
   <!-- Mobile Mode Selection Bottom Sheet -->
   <div id="mobile-mode-sheet" class="mobile-sheet-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="mobile-sheet-title">

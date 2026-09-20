@@ -1,0 +1,34 @@
+# Cloudflare Pages / Workers Headers Configuration
+# Optimizes edge caching, eliminates redundant requests, and guarantees prompt app updates
+
+# Hashed immutable assets (Vite bundled JS & CSS)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+# Question images (Traffic signs and road scenario diagrams)
+/images/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+  Access-Control-Allow-Origin: *
+
+# PWA icons, logos & web manifest
+/icon-*.png
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/apple-touch-icon.png
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/logo*.svg
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/manifest.webmanifest
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+  Content-Type: application/manifest+json; charset=utf-8
+
+# App Shell navigation - Always revalidate so deployments are instantly detected
+/
+  Cache-Control: public, max-age=0, must-revalidate
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Service Worker - Must never be cached to ensure fast client update discovery
+/sw.js
+  Cache-Control: public, max-age=0, no-cache, no-store, must-revalidate
+

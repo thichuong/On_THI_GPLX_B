@@ -136,6 +136,51 @@
   border-color: var(--border-focus);
 }
 
+.offline-btn {
+  height: 40px;
+  padding: 0 0.75rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.offline-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-card-hover);
+  border-color: var(--accent-primary);
+}
+
+.offline-btn.is-ready {
+  border-color: var(--success-border);
+  color: var(--success);
+  background: var(--success-bg);
+}
+
+.offline-btn.is-offline {
+  border-color: var(--warning-border);
+  color: var(--warning);
+  background: var(--warning-bg);
+}
+
+@media (max-width: 640px) {
+  .offline-btn .offline-label {
+    display: none;
+  }
+  .offline-btn {
+    width: 40px;
+    padding: 0;
+    justify-content: center;
+  }
+}
+
 /* App Main Container */
 .app-container {
   flex: 1;
