@@ -16,12 +16,12 @@ export const EXAM_PRESETS = {
     minCritical: 1,
     maxCritical: 2,
     chapterQuotas: {
-      1: 8,  // Quy định chung & quy tắc
-      2: 1,  // Văn hóa & đạo đức
-      3: 2,  // Kỹ thuật lái xe
-      4: 1,  // Cấu tạo & sửa chữa
-      5: 10, // Biển báo
-      6: 8   // Sa hình
+      1: 9,  // Quy định chung & quy tắc (180 * 30/600 = 9)
+      2: 1,  // Văn hóa & đạo đức (25 * 30/600 = 1.25 -> 1)
+      3: 3,  // Kỹ thuật lái xe (58 * 30/600 = 2.9 -> 3)
+      4: 2,  // Cấu tạo & sửa chữa (37 * 30/600 = 1.85 -> 2)
+      5: 9,  // Biển báo (185 * 30/600 = 9.25 -> 9)
+      6: 6   // Sa hình (115 * 30/600 = 5.75 -> 6)
     }
   },
   quick: {
@@ -35,12 +35,12 @@ export const EXAM_PRESETS = {
     minCritical: 1,
     maxCritical: 1,
     chapterQuotas: {
-      1: 5,  // Quy định chung & quy tắc
-      2: 1,  // Văn hóa & đạo đức
-      3: 2,  // Kỹ thuật lái xe
-      4: 1,  // Cấu tạo & sửa chữa
-      5: 6,  // Biển báo
-      6: 4   // Sa hình
+      1: 6,  // Quy định chung & quy tắc (180 * 20/600 = 6)
+      2: 1,  // Văn hóa & đạo đức (25 * 20/600 = 0.83 -> 1)
+      3: 2,  // Kỹ thuật lái xe (58 * 20/600 = 1.93 -> 2)
+      4: 1,  // Cấu tạo & sửa chữa (37 * 20/600 = 1.23 -> 1)
+      5: 6,  // Biển báo (185 * 20/600 = 6.17 -> 6)
+      6: 4   // Sa hình (115 * 20/600 = 3.83 -> 4)
     }
   }
 };

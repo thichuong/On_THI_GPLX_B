@@ -12,6 +12,10 @@ test('ExamEngine - Standard Exam Generation (30 questions)', () => {
 
   const ids = new Set(questions.map(q => q.id));
   assert.equal(ids.size, 30, 'All 30 questions in an exam must be unique');
+
+  const chCounts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
+  questions.forEach(q => chCounts[q.chapter]++);
+  assert.deepEqual(chCounts, { 1: 9, 2: 1, 3: 3, 4: 2, 5: 9, 6: 6 }, 'Standard exam must follow 30/600 chapter quota {1:9, 2:1, 3:3, 4:2, 5:9, 6:6}');
 });
 
 test('ExamEngine - Quick Exam Generation (20 questions)', () => {
@@ -23,6 +27,10 @@ test('ExamEngine - Quick Exam Generation (20 questions)', () => {
 
   const ids = new Set(questions.map(q => q.id));
   assert.equal(ids.size, 20, 'All 20 questions must be unique');
+
+  const chCounts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
+  questions.forEach(q => chCounts[q.chapter]++);
+  assert.deepEqual(chCounts, { 1: 6, 2: 1, 3: 2, 4: 1, 5: 6, 6: 4 }, 'Quick exam must follow 20/600 chapter quota {1:6, 2:1, 3:2, 4:1, 5:6, 6:4}');
 });
 
 test('ExamEngine - Unseen Questions Cycle for Standard Exam (Auto-Reset on Exhaustion)', () => {
