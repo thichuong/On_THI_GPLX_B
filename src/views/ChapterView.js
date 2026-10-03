@@ -379,6 +379,24 @@ export class ChapterView extends BaseView {
     }
   }
 
+  prevRowQuestion() {
+    const state = store.getState();
+    const curIndex = Math.min(state.currentPracticeIndex, this.questions.length - 1);
+    const cols = QuestionPalette.getGridColumns(this.container);
+    if (curIndex - cols >= 0) {
+      this.renderQuestionCard(curIndex - cols);
+    }
+  }
+
+  nextRowQuestion() {
+    const state = store.getState();
+    const curIndex = Math.min(state.currentPracticeIndex, this.questions.length - 1);
+    const cols = QuestionPalette.getGridColumns(this.container);
+    if (curIndex + cols < this.questions.length) {
+      this.renderQuestionCard(curIndex + cols);
+    }
+  }
+
   toggleBookmark(questionId) {
     const isBm = StorageService.toggleBookmark(questionId);
     const state = store.getState();
@@ -402,9 +420,17 @@ export class ChapterView extends BaseView {
     }
 
     if (key === 'ArrowLeft' || key.toLowerCase() === 'a') {
+      if (event) event.preventDefault();
       this.prevQuestion();
     } else if (key === 'ArrowRight' || key.toLowerCase() === 'd') {
+      if (event) event.preventDefault();
       this.nextQuestion();
+    } else if (key === 'ArrowUp' || key.toLowerCase() === 'w') {
+      if (event) event.preventDefault();
+      this.prevRowQuestion();
+    } else if (key === 'ArrowDown' || key.toLowerCase() === 's') {
+      if (event) event.preventDefault();
+      this.nextRowQuestion();
     }
 
     if (key.toLowerCase() === 'b' && currentQ) {

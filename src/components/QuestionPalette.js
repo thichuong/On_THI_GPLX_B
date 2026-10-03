@@ -267,5 +267,23 @@ export class QuestionPalette {
       `;
     }
   }
+
+  /**
+   * Get number of columns in question grid
+   * @param {HTMLElement} [container]
+   * @returns {number}
+   */
+  static getGridColumns(container) {
+    if (typeof window === 'undefined') return 5;
+    const grid = (container || document).querySelector('.palette-grid');
+    if (grid) {
+      const computed = window.getComputedStyle(grid).gridTemplateColumns;
+      if (computed) {
+        const count = computed.trim().split(/\s+/).length;
+        if (count > 0) return count;
+      }
+    }
+    return 5;
+  }
 }
 

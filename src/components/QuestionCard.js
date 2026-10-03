@@ -141,14 +141,14 @@ export class QuestionCard {
               ` : `
                 <span>Phím <span class="kbd">1-4</span>: Chọn đáp án</span>
                 <span>|</span>
-                <span>Phím <span class="kbd">←</span> <span class="kbd">→</span>: Chuyển câu</span>
+                <span>Phím <span class="kbd">←</span> <span class="kbd">→</span> <span class="kbd">↑</span> <span class="kbd">↓</span>: Chuyển câu</span>
               `}
             </div>
           ` : `
             <div class="keyboard-hints question-controls-center">
               <span>Phím <span class="kbd">1-4</span>: Chọn đáp án</span>
               <span>|</span>
-              <span>Phím <span class="kbd">←</span> <span class="kbd">→</span>: Chuyển câu</span>
+              <span>Phím <span class="kbd">←</span> <span class="kbd">→</span> <span class="kbd">↑</span> <span class="kbd">↓</span>: Chuyển câu</span>
             </div>
           `)}
 

@@ -391,7 +391,7 @@ export class ExamView extends BaseView {
                 <li>Làm sai bất kỳ <strong>câu hỏi điểm liệt</strong> nào, bài thi sẽ bị tính là <strong>Không Đạt</strong> ngay lập tức.</li>
                 <li>Hệ thống <strong>ưu tiên trộn các câu chưa làm</strong> cho tới khi không đủ 30 câu mới reset chu kỳ.</li>
               `)}
-              <li>Phím <kbd class="kbd">1</kbd> - <kbd class="kbd">4</kbd> để chọn đáp án, phím <kbd class="kbd">Enter ↵</kbd> hoặc <kbd class="kbd">←</kbd> <kbd class="kbd">→</kbd> để chuyển câu hỏi.</li>
+              <li>Phím <kbd class="kbd">1</kbd> - <kbd class="kbd">4</kbd> để chọn đáp án, phím <kbd class="kbd">Enter ↵</kbd> hoặc <kbd class="kbd">←</kbd> <kbd class="kbd">→</kbd> <kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> để chuyển câu hỏi.</li>
             </ul>
           </div>
 
@@ -687,6 +687,23 @@ export class ExamView extends BaseView {
     }
   }
 
+  prevRowQuestion() {
+    const state = store.getState();
+    const cols = QuestionPalette.getGridColumns(this.container);
+    if (state.currentExamIndex - cols >= 0) {
+      this.renderQuestionCard(state.currentExamIndex - cols);
+    }
+  }
+
+  nextRowQuestion() {
+    const state = store.getState();
+    const cols = QuestionPalette.getGridColumns(this.container);
+    const total = state.examQuestions.length;
+    if (state.currentExamIndex + cols < total) {
+      this.renderQuestionCard(state.currentExamIndex + cols);
+    }
+  }
+
   toggleBookmark(questionId) {
     const isBm = StorageService.toggleBookmark(questionId);
     QuestionCard.updateBookmark(this.container, isBm);
@@ -808,9 +825,17 @@ export class ExamView extends BaseView {
 
     // Arrows
     if (key === 'ArrowLeft' || key.toLowerCase() === 'a') {
+      if (event) event.preventDefault();
       this.prevQuestion();
     } else if (key === 'ArrowRight' || key.toLowerCase() === 'd') {
+      if (event) event.preventDefault();
       this.nextQuestion();
+    } else if (key === 'ArrowUp' || key.toLowerCase() === 'w') {
+      if (event) event.preventDefault();
+      this.prevRowQuestion();
+    } else if (key === 'ArrowDown' || key.toLowerCase() === 's') {
+      if (event) event.preventDefault();
+      this.nextRowQuestion();
     }
 
     // Bookmark with B
