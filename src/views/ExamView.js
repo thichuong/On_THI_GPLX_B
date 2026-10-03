@@ -134,7 +134,7 @@ export class ExamView extends BaseView {
     timerElem.className = `timer-display ${status !== 'normal' ? status : ''}`;
   }
 
-  render() {
+  render(preserveScroll = false) {
     if (!this.container) return;
     const state = store.getState();
 
@@ -145,6 +145,7 @@ export class ExamView extends BaseView {
 
     if (state.examQuestions.length === 0) return;
 
+    const savedWindowScrollY = preserveScroll ? (window.pageYOffset || document.documentElement.scrollTop) : null;
     const savedScrollTop = QuestionPalette.preserveScroll('.exam-sidebar .palette-grid');
 
     const q = state.examQuestions[state.currentExamIndex];
@@ -196,7 +197,7 @@ export class ExamView extends BaseView {
       title: paletteTitle
     });
 
-    const timeStr = TimerService.formatTime(this.timer.getRemaining());
+    const timeStr = this.timer.getFormattedProgress();
     const answeredCount = Object.keys(state.userAnswers).length;
     const isAllAnswered = answeredCount === totalQuestions;
 
@@ -244,6 +245,9 @@ export class ExamView extends BaseView {
     `;
 
     this.bindActiveExamEvents(q, savedScrollTop);
+    if (savedWindowScrollY !== null) {
+      window.scrollTo({ top: savedWindowScrollY, behavior: 'instant' });
+    }
   }
 
   renderStartScreen() {
@@ -383,7 +387,7 @@ export class ExamView extends BaseView {
                 <li><strong>Chốt đáp án:</strong> Mỗi câu đã chọn sẽ được khóa lại để đảm bảo tính khách quan của bài thi.</li>
                 <li><strong>Ưu tiên câu chưa làm:</strong> Đề thi luôn lấy các câu bạn chưa từng làm trong chu kỳ hiện tại.</li>
               ` : `
-                <li>Đồng hồ đếm ngược sẽ <strong>bắt đầu tính thời gian</strong> ngay khi bạn bấm nút "Bắt Đầu Làm Bài".</li>
+                <li>Đồng hồ tính giờ sẽ <strong>bắt đầu tính thời gian</strong> ngay khi bạn bấm nút "Bắt Đầu Làm Bài".</li>
                 <li>Làm sai bất kỳ <strong>câu hỏi điểm liệt</strong> nào, bài thi sẽ bị tính là <strong>Không Đạt</strong> ngay lập tức.</li>
                 <li>Hệ thống <strong>ưu tiên trộn các câu chưa làm</strong> cho tới khi không đủ 30 câu mới reset chu kỳ.</li>
               `)}
@@ -506,7 +510,50 @@ export class ExamView extends BaseView {
     }
 
     store.setState({ userAnswers: newUserAnswers });
+
+    const isInstantFeedback = this.examType === 'quick';
+    if (!isInstantFeedback) {
+      // In non-instant feedback mode (standard exam), update option selection
+      // and palette in-place without re-rendering to prevent any auto-scroll
+      this.updateSelectedOptionUI(optionIndex, newUserAnswers);
+      return;
+    }
+
     this.render();
+  }
+
+  updateSelectedOptionUI(optionIndex, newUserAnswers) {
+    const state = store.getState();
+    const currentQ = state.examQuestions[state.currentExamIndex];
+    if (!currentQ) return;
+
+    // 1. Update option buttons styling in-place
+    const optionsList = $('.options-list', this.container);
+    if (optionsList) {
+      const optionButtons = optionsList.querySelectorAll('.option-item[data-option-num]');
+      optionButtons.forEach(btn => {
+        const optNum = Number(btn.dataset.optionNum);
+        if (optNum === Number(optionIndex)) {
+          btn.classList.add('selected');
+        } else {
+          btn.classList.remove('selected');
+        }
+      });
+    }
+
+    // 2. Update palette button for current question
+    const paletteBtn = $(`.palette-btn[data-palette-index="${state.currentExamIndex}"]`, this.container);
+    if (paletteBtn) {
+      paletteBtn.classList.add('answered');
+    }
+
+    // 3. Update answered count in palette header
+    const paletteStats = $('.palette-stats', this.container);
+    const total = state.examQuestions.length;
+    const answeredCount = Object.keys(newUserAnswers).length;
+    if (paletteStats) {
+      paletteStats.textContent = `Đã làm: ${answeredCount}/${total}`;
+    }
   }
 
   prevQuestion() {
@@ -542,7 +589,7 @@ export class ExamView extends BaseView {
 
   toggleBookmark(questionId) {
     StorageService.toggleBookmark(questionId);
-    this.render();
+    this.render(true);
   }
 
   submitExam() {
