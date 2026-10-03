@@ -41,54 +41,9 @@ export class QuestionCard {
     const isAnswered = userAnswer !== undefined && userAnswer !== null;
     const isRevealed = isSubmitted || (isPractice && (showInstantAnswer || isAnswered)) || (isInstantFeedback && isAnswered);
 
-    // Feedback banner for practice mode and instant feedback exam mode
-    let feedbackHtml = '';
-    if ((isPractice || isInstantFeedback) && isAnswered) {
-      if (Number(userAnswer) === Number(question.correct_option)) {
-        if (isWrongRedo) {
-          feedbackHtml = `
-            <div class="practice-feedback correct" style="border-color: #10b981; background: rgba(16, 185, 129, 0.15);">
-              <span class="feedback-icon">🎉</span>
-              <div class="feedback-text">
-                <strong>Chính xác tuyệt vời!</strong> Bạn đã trả lời đúng đáp án <strong>#${question.correct_option}</strong>.<br/>
-                <span style="color: #10b981; font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.25rem;">
-                  ✨ Đã xóa câu này khỏi danh sách câu sai!
-                </span>
-              </div>
-            </div>
-          `;
-        } else {
-          feedbackHtml = `
-            <div class="practice-feedback correct">
-              <span class="feedback-icon">🎉</span>
-              <div class="feedback-text">
-                <strong>Chính xác!</strong> Bạn đã chọn đúng đáp án <strong>#${question.correct_option}</strong>.
-              </div>
-            </div>
-          `;
-        }
-      } else {
-        const isCriticalFail = question.is_critical;
-        feedbackHtml = `
-          <div class="practice-feedback incorrect ${isCriticalFail ? 'critical-warning-box' : ''}">
-            <span class="feedback-icon">${isCriticalFail ? '🚨' : '❌'}</span>
-            <div class="feedback-text">
-              <strong>Chưa chính xác!</strong> Bạn đã chọn ý <strong>#${userAnswer}</strong>, đáp án đúng là ý <strong>#${question.correct_option}</strong>.
-              ${isCriticalFail ? `
-                <div style="margin-top: 0.35rem; color: #ef4444; font-weight: 700;">
-                  ⚠️ ĐÂY LÀ CÂU HỎI ĐIỂM LIỆT! Làm sai câu này đồng nghĩa bài thi sẽ BỊ TRƯỢT (Không Đạt).
-                </div>
-              ` : ''}
-              ${isWrongRedo ? `
-                <div style="margin-top: 0.35rem; color: #f59e0b; font-size: 0.85rem; font-weight: 600;">
-                  📌 Câu này vẫn được giữ lại trong danh sách câu sai để bạn ôn tiếp.
-                </div>
-              ` : ''}
-            </div>
-          </div>
-        `;
-      }
-    }
+    const feedbackHtml = (isPractice || isInstantFeedback) && isAnswered
+      ? QuestionCard.renderFeedbackHtml({ question, userAnswer, isWrongRedo })
+      : '';
 
     return `
       <div class="question-card">
@@ -147,20 +102,12 @@ export class QuestionCard {
           }).join('')}
         </div>
 
-        ${isRevealed ? `
-          <div class="explanation-box">
-            ${feedbackHtml}
-            <div class="explanation-title">
-              <span>💡 ${isPractice ? 'Đáp án chuẩn & Lời khuyên chi tiết' : (isInstantFeedback ? 'Kết quả & Giải thích chi tiết' : 'Giải thích chi tiết & Đáp án đúng')}</span>
-            </div>
-            <div class="explanation-content">
-              <div class="explanation-correct-answer">
-                <strong>Đáp án đúng: Ý số ${question.correct_option}.</strong>
-              </div>
-              <div class="explanation-text">${escapeHtml((question.explanation || (question.is_critical ? 'Đây là câu hỏi mất an toàn giao thông nghiêm trọng (câu điểm liệt), người lái xe bắt buộc phải nắm rõ và chấp hành nghiêm túc.' : 'Căn cứ theo Luật Trật tự, an toàn giao thông đường bộ và Quy chuẩn Báo hiệu đường bộ 2025.')).trim())}</div>
-            </div>
-          </div>
-        ` : ((isPractice || isInstantFeedback) ? `
+        ${isRevealed ? QuestionCard.renderExplanationHtml({
+          question,
+          feedbackHtml,
+          isPractice,
+          isInstantFeedback
+        }) : ((isPractice || isInstantFeedback) ? `
           <div class="practice-hint-placeholder">
             <span>👉 Bấm chọn một đáp án ở trên để kiểm tra kết quả ngay lập tức</span>
           </div>
@@ -279,6 +226,254 @@ export class QuestionCard {
         onToggleInstantAnswer(e.target.checked);
       }
     });
+  }
+
+  /**
+   * Render feedback banner HTML
+   */
+  static renderFeedbackHtml({ question, userAnswer, isWrongRedo = false }) {
+    if (!question || userAnswer === undefined || userAnswer === null) return '';
+
+    const isCorrect = Number(userAnswer) === Number(question.correct_option);
+
+    if (isCorrect) {
+      if (isWrongRedo) {
+        return `
+          <div class="practice-feedback correct" style="border-color: #10b981; background: rgba(16, 185, 129, 0.15);">
+            <span class="feedback-icon">🎉</span>
+            <div class="feedback-text">
+              <strong>Chính xác tuyệt vời!</strong> Bạn đã trả lời đúng đáp án <strong>#${question.correct_option}</strong>.<br/>
+              <span style="color: #10b981; font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.25rem;">
+                ✨ Đã xóa câu này khỏi danh sách câu sai!
+              </span>
+            </div>
+          </div>
+        `;
+      }
+      return `
+        <div class="practice-feedback correct">
+          <span class="feedback-icon">🎉</span>
+          <div class="feedback-text">
+            <strong>Chính xác!</strong> Bạn đã chọn đúng đáp án <strong>#${question.correct_option}</strong>.
+          </div>
+        </div>
+      `;
+    }
+
+    const isCriticalFail = question.is_critical;
+    return `
+      <div class="practice-feedback incorrect ${isCriticalFail ? 'critical-warning-box' : ''}">
+        <span class="feedback-icon">${isCriticalFail ? '🚨' : '❌'}</span>
+        <div class="feedback-text">
+          <strong>Chưa chính xác!</strong> Bạn đã chọn ý <strong>#${userAnswer}</strong>, đáp án đúng là ý <strong>#${question.correct_option}</strong>.
+          ${isCriticalFail ? `
+            <div style="margin-top: 0.35rem; color: #ef4444; font-weight: 700;">
+              ⚠️ ĐÂY LÀ CÂU HỎI ĐIỂM LIỆT! Làm sai câu này đồng nghĩa bài thi sẽ BỊ TRƯỢT (Không Đạt).
+            </div>
+          ` : ''}
+          ${isWrongRedo ? `
+            <div style="margin-top: 0.35rem; color: #f59e0b; font-size: 0.85rem; font-weight: 600;">
+              📌 Câu này vẫn được giữ lại trong danh sách câu sai để bạn ôn tiếp.
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  /**
+   * Render explanation box HTML
+   */
+  static renderExplanationHtml({ question, feedbackHtml = '', isPractice = false, isInstantFeedback = false }) {
+    if (!question) return '';
+    const explanationTitle = isPractice
+      ? 'Đáp án chuẩn & Lời khuyên chi tiết'
+      : (isInstantFeedback ? 'Kết quả & Giải thích chi tiết' : 'Giải thích chi tiết & Đáp án đúng');
+
+    const defaultExpl = question.is_critical
+      ? 'Đây là câu hỏi mất an toàn giao thông nghiêm trọng (câu điểm liệt), người lái xe bắt buộc phải nắm rõ và chấp hành nghiêm túc.'
+      : 'Căn cứ theo Luật Trật tự, an toàn giao thông đường bộ và Quy chuẩn Báo hiệu đường bộ 2025.';
+
+    return `
+      <div class="explanation-box">
+        ${feedbackHtml}
+        <div class="explanation-title">
+          <span>💡 ${explanationTitle}</span>
+        </div>
+        <div class="explanation-content">
+          <div class="explanation-correct-answer">
+            <strong>Đáp án đúng: Ý số ${question.correct_option}.</strong>
+          </div>
+          <div class="explanation-text">${escapeHtml((question.explanation || defaultExpl).trim())}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  /**
+   * Perform in-place DOM update when an option is selected without causing any scroll jump.
+   * @param {HTMLElement} container
+   * @param {Object} params
+   * @param {Object} params.question
+   * @param {number} params.selectedOption
+   * @param {boolean} [params.isPractice=false]
+   * @param {boolean} [params.isInstantFeedback=false]
+   * @param {boolean} [params.isWrongRedo=false]
+   * @param {Function} [params.onResetAnswer]
+   */
+  static updateSelection(container, {
+    question,
+    selectedOption,
+    isPractice = false,
+    isInstantFeedback = false,
+    isWrongRedo = false,
+    onResetAnswer = null
+  }) {
+    if (!container || !question) return;
+
+    const optButtons = container.querySelectorAll('.option-item[data-option-num]');
+    const correctOpt = Number(question.correct_option);
+    const chosenOpt = Number(selectedOption);
+    const isRevealed = isPractice || isInstantFeedback;
+
+    optButtons.forEach(btn => {
+      const optNum = Number(btn.dataset.optionNum);
+
+      // Clean existing state icons
+      const existingIcon = btn.querySelector('.option-status-icon');
+      if (existingIcon) existingIcon.remove();
+
+      if (isRevealed) {
+        btn.classList.remove('selected');
+        if (optNum === correctOpt) {
+          btn.classList.add('correct');
+          btn.classList.remove('incorrect');
+          btn.insertAdjacentHTML('beforeend', '<span class="option-status-icon correct">✔️</span>');
+        } else if (optNum === chosenOpt) {
+          btn.classList.add('incorrect');
+          btn.classList.remove('correct');
+          btn.insertAdjacentHTML('beforeend', '<span class="option-status-icon incorrect">❌</span>');
+        } else {
+          btn.classList.remove('correct', 'incorrect');
+        }
+
+        if (isInstantFeedback) {
+          btn.classList.add('locked');
+          btn.setAttribute('aria-disabled', 'true');
+        }
+      } else {
+        // Standard exam mode: simple toggle selected
+        if (optNum === chosenOpt) {
+          btn.classList.add('selected');
+        } else {
+          btn.classList.remove('selected');
+        }
+      }
+    });
+
+    // If practice or instant feedback mode, show explanation box in-place
+    if (isRevealed) {
+      const feedbackHtml = QuestionCard.renderFeedbackHtml({
+        question,
+        userAnswer: chosenOpt,
+        isWrongRedo
+      });
+
+      const explanationBoxHtml = QuestionCard.renderExplanationHtml({
+        question,
+        feedbackHtml,
+        isPractice,
+        isInstantFeedback
+      });
+
+      const existingExplBox = container.querySelector('.explanation-box');
+      const placeholder = container.querySelector('.practice-hint-placeholder');
+
+      if (existingExplBox) {
+        existingExplBox.outerHTML = explanationBoxHtml;
+      } else if (placeholder) {
+        placeholder.outerHTML = explanationBoxHtml;
+      } else {
+        const controls = container.querySelector('.question-controls');
+        if (controls) {
+          controls.insertAdjacentHTML('beforebegin', explanationBoxHtml);
+        }
+      }
+
+      // In practice mode, ensure the reset button is shown
+      if (isPractice) {
+        const controlsCenter = container.querySelector('.question-controls-center');
+        if (controlsCenter && !container.querySelector('#btn-reset-practice')) {
+          const resetBtnHtml = `
+            <button class="btn-nav btn-sm" id="btn-reset-practice" title="Chọn lại đáp án cho câu này">
+              🔄 Chọn lại <span class="kbd">R</span>
+            </button>
+          `;
+          controlsCenter.insertAdjacentHTML('afterbegin', resetBtnHtml);
+          const newResetBtn = container.querySelector('#btn-reset-practice');
+          if (newResetBtn && typeof onResetAnswer === 'function') {
+            newResetBtn.addEventListener('click', onResetAnswer);
+          }
+        }
+      }
+
+      // In instant feedback mode, update keyboard hint
+      if (isInstantFeedback) {
+        const hintCenter = container.querySelector('.keyboard-hints.question-controls-center');
+        if (hintCenter) {
+          hintCenter.innerHTML = `
+            <span style="color: var(--success); font-weight: 600;">✓ Đã ghi nhận</span>
+            <span>|</span>
+            <span>Phím <span class="kbd">Enter ↵</span> / <span class="kbd">→</span>: Câu tiếp</span>
+          `;
+        }
+      }
+    }
+  }
+
+  /**
+   * Reset selection in-place for a question (e.g. in practice mode)
+   * @param {HTMLElement} container
+   * @param {Object} question
+   */
+  static resetSelection(container, question) {
+    if (!container || !question) return;
+
+    const optButtons = container.querySelectorAll('.option-item[data-option-num]');
+    optButtons.forEach(btn => {
+      btn.classList.remove('selected', 'correct', 'incorrect', 'locked');
+      btn.removeAttribute('aria-disabled');
+      const icon = btn.querySelector('.option-status-icon');
+      if (icon) icon.remove();
+    });
+
+    const explBox = container.querySelector('.explanation-box');
+    if (explBox) {
+      explBox.outerHTML = `
+        <div class="practice-hint-placeholder">
+          <span>👉 Bấm chọn một đáp án ở trên để kiểm tra kết quả ngay lập tức</span>
+        </div>
+      `;
+    }
+
+    const resetBtn = container.querySelector('#btn-reset-practice');
+    if (resetBtn) {
+      resetBtn.remove();
+    }
+  }
+
+  /**
+   * Update bookmark button in-place without re-rendering
+   * @param {HTMLElement} container
+   * @param {boolean} isBookmarked
+   */
+  static updateBookmark(container, isBookmarked) {
+    if (!container) return;
+    const btn = container.querySelector('#btn-toggle-bookmark');
+    if (btn) {
+      btn.classList.toggle('active', isBookmarked);
+      btn.innerHTML = `<span>${isBookmarked ? '★ Đã lưu' : '☆ Lưu câu này'}</span>`;
+    }
   }
 }
 

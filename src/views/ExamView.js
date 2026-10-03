@@ -456,9 +456,7 @@ export class ExamView extends BaseView {
 
     // Bind Palette events
     QuestionPalette.bindEvents(this.container, (idx) => {
-      store.setState({ currentExamIndex: idx });
-      this.render();
-      scrollToQuestion();
+      this.renderQuestionCard(idx);
     });
 
     // Submit button
@@ -473,6 +471,65 @@ export class ExamView extends BaseView {
 
     // Restore scroll position
     QuestionPalette.restoreScroll(savedScrollTop, '.exam-sidebar .palette-grid');
+  }
+
+  renderQuestionCard(newIndex, scroll = true) {
+    store.setState({ currentExamIndex: newIndex });
+    const state = store.getState();
+    const q = state.examQuestions[state.currentExamIndex];
+    if (!q) return;
+
+    const totalQuestions = state.examQuestions.length;
+    const isQuick = this.examType === 'quick';
+    const isWrongRedo = isQuick && this.quickSubMode === 'retry_wrong';
+    const isInstantFeedback = isQuick;
+    const userAnswer = state.userAnswers[q.id];
+
+    let examBadgeText = '';
+    let examBadgeStyle = '';
+
+    if (isWrongRedo) {
+      examBadgeText = `🔄 LÀM LẠI CÂU SAI (${totalQuestions} CÂU) - ĐÚNG SẼ XÓA KHỎI DANH SÁCH`;
+      examBadgeStyle = 'background: rgba(239, 68, 68, 0.2); color: #f87171; border-color: rgba(239, 68, 68, 0.4);';
+    } else if (isQuick) {
+      examBadgeText = '⚡ THI NHANH - KẾT QUẢ TRỰC TIẾP (20 CÂU)';
+      examBadgeStyle = 'background: rgba(245, 158, 11, 0.2); color: #f59e0b; border-color: rgba(245, 158, 11, 0.4);';
+    } else {
+      examBadgeText = '📝 THI THỬ CHUẨN (30 CÂU / 20 PHÚT)';
+      examBadgeStyle = 'background: rgba(99, 102, 241, 0.2); color: #818cf8; border-color: rgba(99, 102, 241, 0.4);';
+    }
+
+    const questionCardHtml = QuestionCard.render({
+      question: q,
+      currentIndex: state.currentExamIndex,
+      totalQuestions,
+      userAnswer,
+      isSubmitted: state.isExamSubmitted,
+      isReviewMode: state.isReviewMode,
+      isPractice: false,
+      isInstantFeedback,
+      isWrongRedo,
+      badgePrefix: examBadgeText,
+      badgeStyle: examBadgeStyle
+    });
+
+    const cardWrapper = $('#question-card-wrapper', this.container);
+    if (cardWrapper) {
+      cardWrapper.innerHTML = questionCardHtml;
+      QuestionCard.bindEvents(cardWrapper, {
+        onSelectOption: (optNum) => this.selectOption(optNum),
+        onPrev: () => this.prevQuestion(),
+        onNext: () => this.nextQuestion(),
+        onToggleBookmark: () => this.toggleBookmark(q.id),
+        image: q.image
+      });
+    }
+
+    QuestionPalette.updateCurrentIndex(this.container, newIndex);
+
+    if (scroll) {
+      scrollToQuestion();
+    }
   }
 
   selectOption(optionIndex) {
@@ -519,7 +576,56 @@ export class ExamView extends BaseView {
       return;
     }
 
-    this.render();
+    // In quick exam (instant feedback), update question card in-place without re-rendering
+    QuestionCard.updateSelection(this.container, {
+      question: currentQ,
+      selectedOption: optionIndex,
+      isPractice: false,
+      isInstantFeedback: true,
+      isWrongRedo
+    });
+
+    // Update palette button & stats in-place
+    QuestionPalette.updateButtonState(this.container, state.currentExamIndex, {
+      isAnswered: true,
+      isCorrect,
+      isCriticalFail: currentQ.is_critical
+    });
+
+    let correctCount = 0;
+    let wrongCount = 0;
+    state.examQuestions.forEach(q => {
+      const ans = newUserAnswers[q.id];
+      if (ans !== undefined && ans !== null) {
+        if (Number(ans) === Number(q.correct_option)) {
+          correctCount++;
+        } else {
+          wrongCount++;
+        }
+      }
+    });
+
+    QuestionPalette.updateStats(this.container, {
+      answeredCount: Object.keys(newUserAnswers).length,
+      total: state.examQuestions.length,
+      isInstantOrPractice: true,
+      correctCount,
+      wrongCount
+    });
+
+    if (isWrongRedo) {
+      const badge = $('.fixed-counter-badge', this.container);
+      if (badge) {
+        badge.innerHTML = `✨ Đã sửa đúng: <strong>${this.fixedWrongIds.size}</strong> / ${state.examQuestions.length} câu`;
+      }
+    }
+
+    const totalQuestions = state.examQuestions.length;
+    const isAllAnswered = Object.keys(newUserAnswers).length === totalQuestions;
+    const submitBtn = $('#btn-submit-test', this.container);
+    if (submitBtn) {
+      submitBtn.textContent = isAllAnswered ? '🏁 Hoàn Thành & Xem Điểm' : '🏁 Xem Tổng Kết Bài Thi';
+    }
   }
 
   updateSelectedOptionUI(optionIndex, newUserAnswers) {
@@ -559,9 +665,7 @@ export class ExamView extends BaseView {
   prevQuestion() {
     const state = store.getState();
     if (state.currentExamIndex > 0) {
-      store.setState({ currentExamIndex: state.currentExamIndex - 1 });
-      this.render();
-      scrollToQuestion();
+      this.renderQuestionCard(state.currentExamIndex - 1);
     }
   }
 
@@ -569,9 +673,7 @@ export class ExamView extends BaseView {
     const state = store.getState();
     const total = state.examQuestions.length;
     if (state.currentExamIndex < total - 1) {
-      store.setState({ currentExamIndex: state.currentExamIndex + 1 });
-      this.render();
-      scrollToQuestion();
+      this.renderQuestionCard(state.currentExamIndex + 1);
     } else {
       // In quick exam mode, if at last question and all answered, submit to show final summary
       if (this.examType === 'quick' && !state.isExamSubmitted) {
@@ -581,15 +683,15 @@ export class ExamView extends BaseView {
           return;
         }
       }
-      store.setState({ currentExamIndex: 0 });
-      this.render();
-      scrollToQuestion();
+      this.renderQuestionCard(0);
     }
   }
 
   toggleBookmark(questionId) {
-    StorageService.toggleBookmark(questionId);
-    this.render(true);
+    const isBm = StorageService.toggleBookmark(questionId);
+    QuestionCard.updateBookmark(this.container, isBm);
+    const state = store.getState();
+    QuestionPalette.updateButtonState(this.container, state.currentExamIndex, { isBookmarked: isBm });
   }
 
   submitExam() {

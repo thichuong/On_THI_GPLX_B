@@ -197,14 +197,96 @@ export class ChapterView extends BaseView {
 
     // Palette events
     QuestionPalette.bindEvents(this.container, (idx) => {
-      store.setState({ currentPracticeIndex: idx });
-      StorageService.saveChapterLastIndex(state.selectedChapter, idx);
-      this.render();
-      scrollToQuestion();
+      this.renderQuestionCard(idx);
     });
 
     // Restore scroll
     QuestionPalette.restoreScroll(savedScrollTop, '.exam-sidebar .palette-grid');
+  }
+
+  renderQuestionCard(newIndex, scroll = true) {
+    if (this.questions.length === 0) return;
+    const validIndex = Math.max(0, Math.min(newIndex, this.questions.length - 1));
+    const state = store.getState();
+
+    store.setState({ currentPracticeIndex: validIndex });
+    StorageService.saveChapterLastIndex(state.selectedChapter, validIndex);
+
+    const chapterInfo = questionService.getChapterInfo(state.selectedChapter);
+    const q = this.questions[validIndex];
+    if (!q) return;
+
+    const totalQuestions = this.questions.length;
+    const userAnswer = state.practiceAnswers[q.id];
+
+    const questionCardHtml = QuestionCard.render({
+      question: q,
+      currentIndex: validIndex,
+      totalQuestions,
+      userAnswer,
+      isPractice: true,
+      showInstantAnswer: state.showInstantAnswer,
+      badgePrefix: chapterInfo.shortName
+    });
+
+    const cardWrapper = $('#question-card-wrapper', this.container);
+    if (cardWrapper) {
+      cardWrapper.innerHTML = questionCardHtml;
+      QuestionCard.bindEvents(cardWrapper, {
+        onSelectOption: (optNum) => this.selectOption(optNum),
+        onPrev: () => this.prevQuestion(),
+        onNext: () => this.nextQuestion(),
+        onToggleBookmark: () => this.toggleBookmark(q.id),
+        onResetAnswer: () => this.resetAnswer(q.id),
+        onToggleInstantAnswer: (checked) => {
+          store.setState({ showInstantAnswer: checked });
+          this.renderQuestionCard(validIndex, false);
+        },
+        image: q.image
+      });
+    }
+
+    QuestionPalette.updateCurrentIndex(this.container, validIndex);
+
+    if (scroll) {
+      scrollToQuestion();
+    }
+  }
+
+  updateChapterStatsUI() {
+    const state = store.getState();
+    const totalQuestions = this.questions.length;
+    const stats = StorageService.getChapterStats(state.selectedChapter, this.questions);
+
+    const percentEl = $('.chapter-progress-percent', this.container);
+    if (percentEl) {
+      percentEl.textContent = `${stats.answered}/${totalQuestions} câu (${stats.percent}%)`;
+    }
+
+    const resetBtn = $('#btn-reset-chapter', this.container);
+    if (resetBtn) {
+      resetBtn.disabled = stats.answered === 0;
+    }
+
+    const correctTrack = $('.chapter-progress-fill.correct', this.container);
+    const wrongTrack = $('.chapter-progress-fill.wrong', this.container);
+    if (correctTrack) correctTrack.style.width = `${(stats.correct / totalQuestions) * 100}%`;
+    if (wrongTrack) wrongTrack.style.width = `${(stats.wrong / totalQuestions) * 100}%`;
+
+    const correctBadge = $('.chapter-stat-badge.correct', this.container);
+    const wrongBadge = $('.chapter-stat-badge.wrong', this.container);
+    const remBadge = $('.chapter-stat-badge.remaining', this.container);
+    if (correctBadge) correctBadge.textContent = `🟢 ${stats.correct} câu đúng`;
+    if (wrongBadge) wrongBadge.textContent = `🔴 ${stats.wrong} câu sai`;
+    if (remBadge) remBadge.textContent = `⚪ ${stats.remaining} câu chưa làm`;
+
+    QuestionPalette.updateStats(this.container, {
+      answeredCount: stats.answered,
+      total: totalQuestions,
+      isInstantOrPractice: true,
+      correctCount: stats.correct,
+      wrongCount: stats.wrong
+    });
   }
 
   selectOption(optNum) {
@@ -219,17 +301,39 @@ export class ChapterView extends BaseView {
     // Persist chapter answer and current question index
     StorageService.saveChapterAnswer(state.selectedChapter, q.id, optNum, curIndex);
 
-    if (optNum !== Number(q.correct_option)) {
+    const isCorrect = Number(optNum) === Number(q.correct_option);
+    if (!isCorrect) {
       StorageService.recordWrongQuestion(q.id);
     } else {
       StorageService.recordCorrectQuestion(q.id);
     }
 
-    this.render();
+    // In-place DOM update of question card
+    QuestionCard.updateSelection(this.container, {
+      question: q,
+      selectedOption: optNum,
+      isPractice: true,
+      isInstantFeedback: false,
+      onResetAnswer: () => this.resetAnswer(q.id)
+    });
+
+    // In-place update of palette button
+    QuestionPalette.updateButtonState(this.container, curIndex, {
+      isAnswered: true,
+      isCorrect,
+      isCriticalFail: q.is_critical
+    });
+
+    // In-place update of stats & progress bar
+    this.updateChapterStatsUI();
   }
 
   resetAnswer(questionId) {
     const state = store.getState();
+    const curIndex = Math.min(state.currentPracticeIndex, this.questions.length - 1);
+    const q = this.questions[curIndex];
+    if (!q) return;
+
     const newAnswers = { ...state.practiceAnswers };
     delete newAnswers[questionId];
 
@@ -238,7 +342,17 @@ export class ChapterView extends BaseView {
     // Remove from chapter storage
     StorageService.removeChapterAnswer(state.selectedChapter, questionId);
 
-    this.render();
+    // In-place reset card
+    QuestionCard.resetSelection(this.container, q);
+
+    // In-place update palette button
+    QuestionPalette.updateButtonState(this.container, curIndex, {
+      isAnswered: false,
+      isCorrect: undefined
+    });
+
+    // In-place update of stats
+    this.updateChapterStatsUI();
   }
 
   resetChapter(chapterId) {
@@ -254,28 +368,23 @@ export class ChapterView extends BaseView {
   prevQuestion() {
     const state = store.getState();
     if (state.currentPracticeIndex > 0) {
-      const newIndex = state.currentPracticeIndex - 1;
-      store.setState({ currentPracticeIndex: newIndex });
-      StorageService.saveChapterLastIndex(state.selectedChapter, newIndex);
-      this.render();
-      scrollToQuestion();
+      this.renderQuestionCard(state.currentPracticeIndex - 1);
     }
   }
 
   nextQuestion() {
     const state = store.getState();
     if (state.currentPracticeIndex < this.questions.length - 1) {
-      const newIndex = state.currentPracticeIndex + 1;
-      store.setState({ currentPracticeIndex: newIndex });
-      StorageService.saveChapterLastIndex(state.selectedChapter, newIndex);
-      this.render();
-      scrollToQuestion();
+      this.renderQuestionCard(state.currentPracticeIndex + 1);
     }
   }
 
   toggleBookmark(questionId) {
-    StorageService.toggleBookmark(questionId);
-    this.render();
+    const isBm = StorageService.toggleBookmark(questionId);
+    const state = store.getState();
+    const curIndex = Math.min(state.currentPracticeIndex, this.questions.length - 1);
+    QuestionCard.updateBookmark(this.container, isBm);
+    QuestionPalette.updateButtonState(this.container, curIndex, { isBookmarked: isBm });
   }
 
   onKeyboard(key, event) {

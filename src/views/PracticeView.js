@@ -225,12 +225,7 @@ export class PracticeView extends BaseView {
 
     // Palette events
     QuestionPalette.bindEvents(this.container, (idx) => {
-      store.setState({ currentPracticeIndex: idx });
-      if (this.mode === 'critical') {
-        StorageService.saveCriticalLastIndex(idx);
-      }
-      this.render();
-      scrollToQuestion();
+      this.renderQuestionCard(idx);
     });
 
     // Quick exam wrong questions button
@@ -242,6 +237,114 @@ export class PracticeView extends BaseView {
 
     // Restore scroll position
     QuestionPalette.restoreScroll(savedScrollTop, '.exam-sidebar .palette-grid');
+  }
+
+  renderQuestionCard(newIndex, scroll = true) {
+    if (this.questions.length === 0) return;
+    const validIndex = Math.max(0, Math.min(newIndex, this.questions.length - 1));
+    store.setState({ currentPracticeIndex: validIndex });
+
+    if (this.mode === 'critical') {
+      StorageService.saveCriticalLastIndex(validIndex);
+    }
+
+    const state = store.getState();
+    const q = this.questions[validIndex];
+    if (!q) return;
+
+    const totalQuestions = this.questions.length;
+    const userAnswer = state.practiceAnswers[q.id];
+
+    const questionCardHtml = QuestionCard.render({
+      question: q,
+      currentIndex: validIndex,
+      totalQuestions,
+      userAnswer,
+      isPractice: true,
+      showInstantAnswer: state.showInstantAnswer,
+      badgePrefix: this.title
+    });
+
+    const cardWrapper = $('#question-card-wrapper', this.container);
+    if (cardWrapper) {
+      cardWrapper.innerHTML = questionCardHtml;
+      QuestionCard.bindEvents(cardWrapper, {
+        onSelectOption: (optNum) => this.selectOption(optNum),
+        onPrev: () => this.prevQuestion(),
+        onNext: () => this.nextQuestion(),
+        onToggleBookmark: () => this.toggleBookmark(q.id),
+        onResetAnswer: () => this.resetAnswer(q.id),
+        onToggleInstantAnswer: (checked) => {
+          store.setState({ showInstantAnswer: checked });
+          this.renderQuestionCard(validIndex, false);
+        },
+        image: q.image
+      });
+    }
+
+    QuestionPalette.updateCurrentIndex(this.container, validIndex);
+
+    if (scroll) {
+      scrollToQuestion();
+    }
+  }
+
+  updateStatsUI() {
+    const state = store.getState();
+    const totalQuestions = this.questions.length;
+    let answeredCount = 0;
+    let correctCount = 0;
+    let wrongCount = 0;
+
+    this.questions.forEach(q => {
+      const ans = state.practiceAnswers[q.id];
+      if (ans !== undefined && ans !== null) {
+        answeredCount++;
+        if (Number(ans) === Number(q.correct_option)) {
+          correctCount++;
+        } else {
+          wrongCount++;
+        }
+      }
+    });
+
+    QuestionPalette.updateStats(this.container, {
+      answeredCount,
+      total: totalQuestions,
+      isInstantOrPractice: true,
+      correctCount,
+      wrongCount
+    });
+
+    if (this.mode === 'critical') {
+      const stats = StorageService.getCriticalStats(this.questions);
+      const percentEl = $('.chapter-progress-percent', this.container);
+      if (percentEl) {
+        percentEl.textContent = `${stats.answered}/${totalQuestions} câu (${stats.percent}%)`;
+        percentEl.style.color = stats.wrong > 0 ? '#ef4444' : 'var(--accent-primary)';
+      }
+
+      const resetBtn = $('#btn-reset-critical', this.container);
+      if (resetBtn) {
+        resetBtn.disabled = stats.answered === 0;
+      }
+
+      const correctTrack = $('.chapter-progress-fill.correct', this.container);
+      const wrongTrack = $('.chapter-progress-fill.wrong', this.container);
+      if (correctTrack) correctTrack.style.width = `${(stats.correct / totalQuestions) * 100}%`;
+      if (wrongTrack) wrongTrack.style.width = `${(stats.wrong / totalQuestions) * 100}%`;
+
+      const correctBadge = $('.chapter-stat-badge.correct', this.container);
+      const wrongBadge = $('.chapter-stat-badge.wrong', this.container);
+      const remBadge = $('.chapter-stat-badge.remaining', this.container);
+      if (correctBadge) correctBadge.textContent = `🟢 ${stats.correct} câu đúng`;
+      if (wrongBadge) {
+        wrongBadge.textContent = `🔴 ${stats.wrong} câu sai ${stats.wrong > 0 ? '(nguy cơ trượt)' : ''}`;
+        wrongBadge.style.color = stats.wrong > 0 ? '#ef4444' : '';
+        wrongBadge.style.fontWeight = stats.wrong > 0 ? '700' : '';
+      }
+      if (remBadge) remBadge.textContent = `⚪ ${stats.remaining} câu chưa làm`;
+    }
   }
 
   selectOption(optNum) {
@@ -257,17 +360,39 @@ export class PracticeView extends BaseView {
       StorageService.saveCriticalAnswer(q.id, optNum, curIndex);
     }
 
-    if (optNum !== Number(q.correct_option)) {
+    const isCorrect = Number(optNum) === Number(q.correct_option);
+    if (!isCorrect) {
       StorageService.recordWrongQuestion(q.id);
     } else {
       StorageService.recordCorrectQuestion(q.id);
     }
 
-    this.render();
+    // In-place DOM update of question card
+    QuestionCard.updateSelection(this.container, {
+      question: q,
+      selectedOption: optNum,
+      isPractice: true,
+      isInstantFeedback: false,
+      onResetAnswer: () => this.resetAnswer(q.id)
+    });
+
+    // In-place update of palette button
+    QuestionPalette.updateButtonState(this.container, curIndex, {
+      isAnswered: true,
+      isCorrect,
+      isCriticalFail: q.is_critical
+    });
+
+    // In-place update of stats & progress bar
+    this.updateStatsUI();
   }
 
   resetAnswer(questionId) {
     const state = store.getState();
+    const curIndex = Math.min(state.currentPracticeIndex, this.questions.length - 1);
+    const q = this.questions[curIndex];
+    if (!q) return;
+
     const newAnswers = { ...state.practiceAnswers };
     delete newAnswers[questionId];
 
@@ -277,7 +402,17 @@ export class PracticeView extends BaseView {
       StorageService.removeCriticalAnswer(questionId);
     }
 
-    this.render();
+    // In-place reset card
+    QuestionCard.resetSelection(this.container, q);
+
+    // In-place update palette button
+    QuestionPalette.updateButtonState(this.container, curIndex, {
+      isAnswered: false,
+      isCorrect: undefined
+    });
+
+    // In-place update of stats
+    this.updateStatsUI();
   }
 
   resetCritical() {
@@ -293,35 +428,28 @@ export class PracticeView extends BaseView {
   prevQuestion() {
     const state = store.getState();
     if (state.currentPracticeIndex > 0) {
-      const newIndex = state.currentPracticeIndex - 1;
-      store.setState({ currentPracticeIndex: newIndex });
-      if (this.mode === 'critical') {
-        StorageService.saveCriticalLastIndex(newIndex);
-      }
-      this.render();
-      scrollToQuestion();
+      this.renderQuestionCard(state.currentPracticeIndex - 1);
     }
   }
 
   nextQuestion() {
     const state = store.getState();
     if (state.currentPracticeIndex < this.questions.length - 1) {
-      const newIndex = state.currentPracticeIndex + 1;
-      store.setState({ currentPracticeIndex: newIndex });
-      if (this.mode === 'critical') {
-        StorageService.saveCriticalLastIndex(newIndex);
-      }
-      this.render();
-      scrollToQuestion();
+      this.renderQuestionCard(state.currentPracticeIndex + 1);
     }
   }
 
   toggleBookmark(questionId) {
-    StorageService.toggleBookmark(questionId);
+    const isBm = StorageService.toggleBookmark(questionId);
     if (this.mode === 'bookmarks') {
       this.loadQuestions();
+      this.render();
+      return;
     }
-    this.render();
+    const state = store.getState();
+    const curIndex = Math.min(state.currentPracticeIndex, this.questions.length - 1);
+    QuestionCard.updateBookmark(this.container, isBm);
+    QuestionPalette.updateButtonState(this.container, curIndex, { isBookmarked: isBm });
   }
 
   onKeyboard(key, event) {
