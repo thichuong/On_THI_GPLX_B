@@ -68,12 +68,6 @@
   color: var(--text-primary);
 }
 
-.palette-btn.current {
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 0 2px var(--accent-primary);
-  color: #ffffff;
-}
-
 .palette-btn.answered {
   background: rgba(99, 102, 241, 0.2);
   border-color: #818cf8;
@@ -118,6 +112,47 @@
   border-color: #f87171 !important;
   color: #ffffff !important;
   animation: pulse-border 1.5s infinite;
+}
+
+/* Current Active Question Highlight - Subtle & compact outline without background fill */
+.palette-btn.current {
+  position: relative;
+  z-index: 3 !important;
+  border-width: 2px !important;
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.35) !important;
+  font-weight: 800 !important;
+}
+
+/* Current & Unanswered: Keep natural background, just style text & border cleanly */
+.palette-btn.current:not(.answered):not(.correct-mark):not(.incorrect-mark) {
+  border-color: var(--accent-primary) !important;
+  color: var(--accent-primary) !important;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.35) !important;
+}
+
+/* Current & Answered in Standard Exam */
+.palette-btn.current.answered:not(.correct-mark):not(.incorrect-mark) {
+  border-color: #818cf8 !important;
+  box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.45) !important;
+}
+
+/* Current & Correct */
+.palette-btn.current.correct-mark {
+  border-color: var(--success) !important;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.5) !important;
+}
+
+/* Current & Incorrect */
+.palette-btn.current.incorrect-mark {
+  border-color: var(--danger) !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.5) !important;
+}
+
+/* Current & Critical Failed */
+.palette-btn.current.critical-failed-mark {
+  border-color: #f87171 !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.6) !important;
 }
 
 /* Palette Legend */

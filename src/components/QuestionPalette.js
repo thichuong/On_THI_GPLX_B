@@ -58,7 +58,7 @@ export class QuestionPalette {
         <div class="palette-grid ${isLargeGrid ? 'palette-grid-50' : ''}">
           ${questions.map((q, idx) => {
             const ans = answers[q.id];
-            const isCurrent = idx === currentIndex;
+            const isCurrent = Number(idx) === Number(currentIndex);
             const isAnswered = ans !== undefined && ans !== null;
             const isBm = StorageService.isBookmarked(q.id);
 
@@ -89,7 +89,7 @@ export class QuestionPalette {
             }
 
             return `
-              <button class="${cls}" data-palette-index="${idx}" aria-label="Câu ${idx + 1}">
+              <button class="${cls}" data-palette-index="${idx}" aria-label="Câu ${idx + 1}" ${isCurrent ? 'aria-current="true"' : ''}>
                 ${idx + 1}
               </button>
             `;
@@ -164,6 +164,7 @@ export class QuestionPalette {
    * @param {string} [currentBtnSelector='.palette-btn.current']
    */
   static restoreScroll(savedScrollTop, gridSelector = '.palette-grid', currentBtnSelector = '.palette-btn.current') {
+    if (typeof document === 'undefined') return;
     const grid = $(gridSelector);
     if (!grid) return;
 
@@ -181,6 +182,89 @@ export class QuestionPalette {
       } else if (btnRect.bottom > containerRect.bottom) {
         grid.scrollTop += (btnRect.bottom - containerRect.bottom + 8);
       }
+    }
+  }
+
+  /**
+   * Update current question indicator on palette in-place
+   * @param {HTMLElement} container
+   * @param {number} newIndex
+   */
+  static updateCurrentIndex(container, newIndex) {
+    if (!container) return;
+    const targetIdx = Number(newIndex);
+
+    // Remove current from ALL existing buttons in container
+    const oldCurrents = container.querySelectorAll('.palette-btn.current, .palette-btn[aria-current="true"]');
+    oldCurrents.forEach(btn => {
+      btn.classList.remove('current');
+      btn.removeAttribute('aria-current');
+    });
+
+    // Add current and aria-current to target button
+    const newCurrent = container.querySelector(`.palette-btn[data-palette-index="${targetIdx}"]`);
+    if (newCurrent) {
+      newCurrent.classList.add('current');
+      newCurrent.setAttribute('aria-current', 'true');
+      QuestionPalette.restoreScroll(null, '.palette-grid', `.palette-btn[data-palette-index="${targetIdx}"]`);
+    }
+  }
+
+  /**
+   * Update button answer / bookmark state in-place
+   * @param {HTMLElement} container
+   * @param {number} index
+   * @param {Object} state
+   */
+  static updateButtonState(container, index, {
+    isAnswered = undefined,
+    isCorrect = undefined,
+    isCriticalFail = undefined,
+    isBookmarked = undefined
+  } = {}) {
+    if (!container) return;
+    const targetIdx = Number(index);
+    const btn = container.querySelector(`.palette-btn[data-palette-index="${targetIdx}"]`);
+    if (!btn) return;
+
+    if (isAnswered !== undefined) {
+      btn.classList.toggle('answered', Boolean(isAnswered));
+    }
+    if (isBookmarked !== undefined) {
+      btn.classList.toggle('bookmarked', Boolean(isBookmarked));
+    }
+    if (isCorrect !== undefined) {
+      btn.classList.toggle('correct-mark', Boolean(isCorrect));
+      if (isCorrect) {
+        btn.classList.remove('incorrect-mark', 'critical-failed-mark');
+      }
+    }
+    if (isCorrect === false) {
+      if (isCriticalFail) {
+        btn.classList.add('critical-failed-mark');
+        btn.classList.remove('correct-mark', 'incorrect-mark');
+      } else {
+        btn.classList.add('incorrect-mark');
+        btn.classList.remove('correct-mark', 'critical-failed-mark');
+      }
+    } else if (isCorrect === undefined && isAnswered === false) {
+      btn.classList.remove('correct-mark', 'incorrect-mark', 'critical-failed-mark');
+    }
+  }
+
+  /**
+   * Update palette header stats in-place
+   * @param {HTMLElement} container
+   * @param {Object} options
+   */
+  static updateStats(container, { answeredCount, total, isInstantOrPractice = false, correctCount = 0, wrongCount = 0 }) {
+    if (!container) return;
+    const statsEl = container.querySelector('.palette-stats');
+    if (statsEl) {
+      statsEl.innerHTML = `
+        Đã làm: ${answeredCount}/${total}
+        ${isInstantOrPractice && answeredCount > 0 ? `<br><span style="color: var(--success); font-weight: 700;">${correctCount} Đúng</span> • <span style="color: var(--danger); font-weight: 700;">${wrongCount} Sai</span>` : ''}
+      `;
     }
   }
 }
