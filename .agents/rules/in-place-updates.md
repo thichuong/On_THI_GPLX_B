@@ -1,59 +1,52 @@
-# Quy tắc Cập nhật Giao diện: Sử dụng phương thức In-place thay vì Re-render toàn trang
+# Quy tắc Phản ứng Giao diện: Tận dụng Vue 3 Reactivity thay vì Re-mount toàn bộ View
 
 ## 1. Mục tiêu và Nguyên tắc cốt lõi
 - **Hướng dẫn kỹ thuật & Runbook chi tiết (Skill)**: [.agents/skills/in-place-updates/SKILL.md](file:///.agents/skills/in-place-updates/SKILL.md)
-- **Tuyệt đối tránh re-render toàn bộ trang hoặc toàn bộ view** (`this.render()`, `router.navigate()`, v.v.) khi chỉ có các thay đổi trạng thái cục bộ (local state mutations).
+- **Tuyệt đối tránh re-mount toàn bộ trang hoặc toàn bộ view** (`router.push()`, reset state root, hoặc lạm dụng dynamic `:key` trên container cha) khi chỉ có các thay đổi trạng thái cục bộ (local state mutations).
 - **Lý do**:
   - Tránh giật lag giao diện (screen flickering, layout shifts).
   - Không làm mất vị trí cuộn trang (scroll jump / reset scroll).
   - Bảo toàn trạng thái focus, con trỏ chuột, bàn phím và animation đang diễn ra.
-  - Tối ưu hiệu năng DOM và trải nghiệm người dùng trên cả desktop và mobile.
+  - Tối ưu hiệu năng DOM và Virtual DOM patching trên cả desktop và mobile.
 
 ---
 
-## 2. Quy định cụ thể khi xử lý tương tác UI
+## 2. Quy định cụ thể khi xử lý tương tác UI trong Vue 3
 
 ### 2.1. Khi người dùng chọn đáp án hoặc làm lại câu hỏi
-- **KHÔNG ĐƯỢC**: Gọi lại `render()` của view.
-- **BẮT BUỘC**: Sử dụng các hàm cập nhật in-place chuyên dụng:
-  - `QuestionCard.updateSelection(container, { question, selectedOption, isPractice, isInstantFeedback, isWrongRedo })`: Cập nhật trực tiếp class CSS của option, icon trạng thái, hiển thị box giải thích và nút làm lại mà không vẽ lại card.
-  - `QuestionCard.resetSelection(container, question)`: Xóa lựa chọn đã chọn, ẩn giải thích cục bộ khi người dùng muốn làm lại.
-  - Cập nhật palette đồng thời:
-    - `QuestionPalette.updateButtonState(container, index, { isAnswered, isCorrect, isCriticalFail })`
-    - `QuestionPalette.updateStats(container, { answeredCount, total, ... })`
+- **KHÔNG ĐƯỢC**: Thay đổi route hoặc re-mount view cha.
+- **BẮT BUỘC**:
+  - Cập nhật trực tiếp vào reactive state (ví dụ `userAnswers[currentQuestion.id] = optionIndex`).
+  - Vue Virtual DOM sẽ tự động patch các class CSS `:class="{ selected, correct, wrong }"` và hiển thị explanation box cục bộ.
+  - Palette tự động phản ứng dựa trên state của danh sách câu hỏi mà không làm mất trạng thái cuộn của palette.
 
 ### 2.2. Khi đánh dấu / bỏ đánh dấu câu hỏi (Bookmark)
-- **KHÔNG ĐƯỢC**: Re-render card hay palette.
+- **KHÔNG ĐƯỢC**: Re-mount card hay palette.
 - **BẮT BUỘC**:
-  - `QuestionCard.updateBookmark(container, isBookmarked)`
-  - `QuestionPalette.updateButtonState(container, index, { isBookmarked })`
+  - Thay đổi cờ trạng thái bookmark trong reactive store (`toggleBookmark(id)`).
+  - Tự động phản ứng icon ⭐ trên `QuestionCard` và badge đánh dấu trên `QuestionPalette`.
 
 ### 2.3. Khi chuyển đổi giữa các câu hỏi (Next / Previous / Chọn từ Palette)
-- **KHÔNG ĐƯỢC**: Re-render toàn bộ view (sidebar, header, danh sách câu, layout wrapper).
+- **KHÔNG ĐƯỢC**: Re-mount toàn bộ view (sidebar, header, danh sách câu, layout wrapper).
 - **BẮT BUỘC**:
-  - Chỉ re-render cục bộ component câu hỏi: gọi `this.renderQuestionCard()` để thay thế nội dung trong `#question-card-wrapper`.
-  - Cập nhật vị trí con trỏ trong bảng câu hỏi: `QuestionPalette.updateCurrentIndex(this.container, newIndex)`.
-  - Cuộn trang thông minh: Sử dụng `scrollToQuestion({ smooth: true })` (chỉ cuộn khi câu hỏi bị che khuất bởi header hoặc ngoài viewport).
+  - Chỉ thay đổi chỉ số câu hỏi hiện tại `currentIndex.value = newIndex`.
+  - Chỉ component `QuestionCard` phản ứng với câu hỏi mới (hoặc re-mount nhẹ nhàng qua `:key="currentQuestion.id"`).
+  - Cuộn thông minh: Sử dụng `scrollToQuestion({ smooth: true })` (chỉ cuộn khi câu hỏi mới bị che khuất bởi header hoặc ngoài viewport).
 
 ### 2.4. Khi cập nhật bộ đếm thời gian hoặc tiến trình
-- Cập nhật trực tiếp thuộc tính phần tử:
-  ```js
-  timerElem.textContent = formattedTime;
-  timerElem.className = `timer-display ${statusClass}`;
-  ```
-- Không đụng chạm đến các phần tử DOM khác ngoài bộ đếm.
+- Tách `ExamTimer.vue` thành component độc lập.
+- Timer tick mỗi giây CHỈ cập nhật nội dung bên trong `ExamTimer.vue`, không kích hoạt reactivity trên component câu hỏi hay bảng câu hỏi.
 
 ---
 
 ## 3. Quản lý vị trí cuộn (Scroll Preservation)
-- Khi bắt buộc phải can thiệp hoặc thay thế một phần tử con có nguy cơ gây nhảy cuộn:
-  - Sử dụng helper `preserveScroll(action, selector)` từ `src/utils/dom.js`.
-  - Đối với bảng câu hỏi dạng lưới cuộn: sử dụng `QuestionPalette.preserveScroll(selector)` và `QuestionPalette.restoreScroll(savedScrollTop)`.
-- Không tự ý cuộn lên đầu trang khi người dùng đang thao tác làm bài.
+- Tuyệt đối không tự ý cuộn lên đầu trang (`window.scrollTo(0, 0)`) khi người dùng đang bấm chọn đáp án, bấm bookmark hay tương tác trong bài.
+- Giữ nguyên vị trí cuộn của lưới câu hỏi trong `QuestionPalette` khi chọn đáp án.
 
 ---
 
 ## 4. Phát triển tính năng mới
-- Khi tạo mới hoặc tái cấu trúc component/view:
-  - Thiết kế API hỗ trợ cập nhật cục bộ (ví dụ: `update(...)`, `updateStatus(...)`, `patch(...)`).
-  - Tách biệt rõ ràng giữa **Full Initial Render** (chỉ chạy 1 lần khi khởi tạo/đổi view) và **Partial In-place Updates** (chạy khi có sự kiện/tương tác).
+- Sử dụng Vue 3 `<script setup>` (Composition API).
+- Giữ vững tính phân tách: Component cha nắm giữ luồng điều hướng, Component con thuần túy nhận Props và phát ra Events (`defineProps`, `defineEmits`).
+- Tách biệt logic nghiệp vụ phức tạp vào các Composables (`useExam`, `usePractice`, `useStorage`, `useTimer`).
+
