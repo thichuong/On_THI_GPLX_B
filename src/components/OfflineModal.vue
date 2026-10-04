@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, watch, onMounted, onUnmounted } from 'vue';
 import { offlineService } from '../services/offlineService.js';
 import { eventBus } from '../core/eventBus.js';
 
@@ -10,7 +10,7 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmits(['close']);
+const emit = defineEmits(['close', 'cache-cleared']);
 
 const status = ref({
   isOnline: navigator.onLine,
@@ -22,6 +22,7 @@ const status = ref({
 });
 
 const isDownloading = ref(false);
+const isClearing = ref(false);
 const progressPercent = ref(0);
 const progressDetails = ref('');
 
@@ -33,6 +34,12 @@ async function refreshStatus() {
     console.warn('[OfflineModal.vue] refreshStatus error:', err);
   }
 }
+
+watch(() => props.isOpen, (newVal) => {
+  if (newVal) {
+    refreshStatus();
+  }
+});
 
 async function handleStartDownload() {
   if (isDownloading.value) return;
@@ -56,9 +63,33 @@ async function handleStartDownload() {
 }
 
 async function handleClearCache() {
-  if (confirm('Bạn có chắc chắn muốn xóa bộ nhớ đệm hình ảnh offline không?')) {
+  if (!confirm('Bạn có chắc chắn muốn xóa bộ nhớ đệm hình ảnh offline không? Các hình ảnh sẽ cần được tải lại khi có mạng.')) {
+    return;
+  }
+  isClearing.value = true;
+  try {
     await offlineService.clearCache();
+    emit('cache-cleared');
+
+    // Optimistically update local status to immediately refresh UI
+    status.value = {
+      ...status.value,
+      cachedCount: 0,
+      percent: 0,
+      isComplete: false,
+      usageBytes: 0
+    };
+    progressPercent.value = 0;
+
     await refreshStatus();
+    eventBus.emit('toast:show', {
+      message: '🗑️ Đã xóa bộ nhớ đệm hình ảnh offline thành công!',
+      type: 'info'
+    });
+  } catch (err) {
+    console.error('[OfflineModal.vue] Lỗi khi xóa cache:', err);
+  } finally {
+    isClearing.value = false;
   }
 }
 
@@ -181,15 +212,15 @@ onUnmounted(() => {
         </button>
 
         <button
-          v-if="status.cachedCount > 0"
+          v-if="status.cachedCount > 0 || status.isComplete"
           type="button"
           class="btn-nav"
           id="btn-clear-cache"
-          :disabled="isDownloading"
+          :disabled="isDownloading || isClearing"
           style="color: var(--danger); border-color: rgba(239,68,68,0.4);"
           @click="handleClearCache"
         >
-          🗑️ Xóa Bộ Nhớ Đệm
+          {{ isClearing ? '⏳ Đang xóa...' : '🗑️ Xóa Bộ Nhớ Đệm' }}
         </button>
       </div>
     </div>

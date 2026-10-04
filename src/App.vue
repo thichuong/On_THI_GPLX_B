@@ -98,7 +98,17 @@ onMounted(() => {
   });
 
   eventBus.on('offline:download-complete', () => {
+    isOfflineReady.value = true;
     checkOfflineStatus();
+  });
+
+  eventBus.on('offline:cache-cleared', () => {
+    isOfflineReady.value = false;
+    checkOfflineStatus();
+  });
+
+  eventBus.on('toast:show', ({ message, type = 'info', duration = 4000 }) => {
+    showToast(message, type, duration);
   });
 
   eventBus.on('pwa:standalone-missing-cache', () => {
@@ -196,6 +206,7 @@ onUnmounted(() => {
     <OfflineModal
       :is-open="isOfflineModalOpen"
       @close="isOfflineModalOpen = false"
+      @cache-cleared="isOfflineReady = false; checkOfflineStatus()"
     />
 
     <LightboxModal />

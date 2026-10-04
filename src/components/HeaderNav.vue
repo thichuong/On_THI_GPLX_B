@@ -1,6 +1,7 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref, watch, onMounted } from 'vue';
 import { useTheme } from '../composables/useTheme.js';
+import { eventBus } from '../core/eventBus.js';
 
 const props = defineProps({
   currentMode: {
@@ -25,6 +26,21 @@ const emit = defineEmits([
 ]);
 
 const { theme, toggleTheme } = useTheme();
+
+const isReady = ref(props.offlineReady);
+
+watch(() => props.offlineReady, (val) => {
+  isReady.value = val;
+});
+
+onMounted(() => {
+  eventBus.on('offline:cache-cleared', () => {
+    isReady.value = false;
+  });
+  eventBus.on('offline:download-complete', () => {
+    isReady.value = true;
+  });
+});
 
 const modes = [
   { id: 'exam', icon: '📝', label: 'Thi Thử (30 Câu)' },
@@ -95,25 +111,29 @@ const currentModeInfo = computed(() => {
 
     <!-- Header Actions (Desktop & Mobile) -->
     <div class="header-actions">
-      <!-- Offline Status Pill -->
+      <!-- Offline Status Pill (Lưu local) -->
       <button
         type="button"
         id="offline-status-btn"
-        class="header-icon-btn offline-status-btn"
-        :class="{ offline: !isOnline, 'cache-ready': offlineReady }"
-        title="Quản lý dữ liệu Offline"
-        aria-label="Quản lý dữ liệu Offline"
+        class="header-icon-btn offline-status-btn offline-btn"
+        :class="{ 'cache-ready': isReady }"
+        :title="isReady ? 'Đã lưu trọn bộ dữ liệu offline' : 'Lưu dữ liệu Offline'"
+        :aria-label="isReady ? 'Đã lưu trọn bộ dữ liệu offline' : 'Lưu dữ liệu Offline'"
         @click="emit('open-offline-modal')"
       >
-        <span class="offline-icon">{{ isOnline ? (offlineReady ? '💾' : '🌐') : '📶' }}</span>
-        <span class="offline-badge-dot" :class="isOnline ? 'dot-online' : 'dot-offline'"></span>
+        <span class="offline-icon">💾</span>
+        <span v-if="isReady" class="offline-check-badge" aria-label="Đã lưu offline">
+          <svg viewBox="0 0 12 12" width="9" height="9" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="2.5 6.2 4.8 8.5 9.5 3.5"></polyline>
+          </svg>
+        </span>
       </button>
 
-      <!-- Theme Toggle -->
+      <!-- Theme Toggle (Sáng / Tối) -->
       <button
         type="button"
         id="theme-toggle-btn"
-        class="header-icon-btn"
+        class="header-icon-btn theme-toggle-btn"
         :title="theme === 'dark' ? 'Chuyển sang giao diện sáng' : 'Chuyển sang giao diện tối'"
         :aria-label="theme === 'dark' ? 'Chuyển sang giao diện sáng' : 'Chuyển sang giao diện tối'"
         @click="toggleTheme"
@@ -121,11 +141,11 @@ const currentModeInfo = computed(() => {
         <span class="theme-icon">{{ theme === 'dark' ? '☀️' : '🌙' }}</span>
       </button>
 
-      <!-- Settings Button -->
+      <!-- Settings Button (Cài đặt) -->
       <button
         type="button"
         id="settings-btn"
-        class="header-icon-btn"
+        class="header-icon-btn mobile-settings-btn settings-btn"
         title="Cài đặt & Trợ giúp"
         aria-label="Cài đặt & Trợ giúp"
         @click="emit('open-settings')"

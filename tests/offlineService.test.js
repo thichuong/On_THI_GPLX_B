@@ -57,3 +57,25 @@ test('DBService - getOfflineStatus and setOfflineStatus persist offline metadata
   }
 });
 
+test('OfflineService - clearCache resets offline metadata properly', async () => {
+  assert.strictEqual(typeof offlineService.clearCache, 'function', 'clearCache should be a function');
+  assert.strictEqual(typeof offlineService.clearImageCache, 'function', 'clearImageCache should be a function');
+
+  await dbService.setOfflineStatus({
+    cachedCount: 318,
+    totalImages: 318,
+    isComplete: true,
+    percent: 100
+  });
+
+  const res = await offlineService.clearCache();
+  assert.strictEqual(res, true, 'clearCache should return true');
+
+  const after = await dbService.getOfflineStatus();
+  if (after) {
+    assert.strictEqual(after.cachedCount, 0);
+    assert.strictEqual(after.isComplete, false);
+    assert.strictEqual(after.percent, 0);
+  }
+});
+

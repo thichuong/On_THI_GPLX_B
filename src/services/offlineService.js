@@ -93,13 +93,20 @@ class OfflineService {
       const isComplete = totalImages > 0 && cachedCount >= totalImages;
       const percent = totalImages > 0 ? Math.round((cachedCount / totalImages) * 100) : 0;
 
-      // Storage quota estimation
+      // Storage quota estimation with timeout safeguard to prevent hanging
       let usageBytes = 0;
       let quotaBytes = 0;
       if (navigator.storage && navigator.storage.estimate) {
-        const est = await navigator.storage.estimate();
-        usageBytes = est.usage || 0;
-        quotaBytes = est.quota || 0;
+        try {
+          const est = await Promise.race([
+            navigator.storage.estimate(),
+            new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 800))
+          ]);
+          usageBytes = est.usage || 0;
+          quotaBytes = est.quota || 0;
+        } catch {
+          // If storage estimate times out or errors, continue with 0
+        }
       }
 
       const status = {
@@ -260,18 +267,33 @@ class OfflineService {
   /**
    * Delete all cached images to reclaim storage space
    */
-  async clearImageCache() {
-    if (typeof window === 'undefined' || !window.caches) return false;
+  async clearCache() {
+    return this.clearImageCache();
+  }
 
+  /**
+   * Delete all cached images to reclaim storage space
+   */
+  async clearImageCache() {
     try {
-      await caches.delete(IMAGE_CACHE_NAME);
-      await dbService.setOfflineStatus({
-        cachedCount: 0,
-        totalImages: this.getImageUrls().length,
-        isComplete: false,
-        percent: 0,
-        updatedAt: new Date().toISOString()
-      });
+      if (typeof window !== 'undefined' && window.caches) {
+        await Promise.race([
+          window.caches.delete(IMAGE_CACHE_NAME),
+          new Promise(resolve => setTimeout(resolve, 2000))
+        ]);
+      }
+
+      await Promise.race([
+        dbService.setOfflineStatus({
+          cachedCount: 0,
+          totalImages: this.getImageUrls().length,
+          isComplete: false,
+          percent: 0,
+          updatedAt: new Date().toISOString()
+        }),
+        new Promise(resolve => setTimeout(resolve, 1000))
+      ]);
+
       eventBus.emit('offline:cache-cleared');
       return true;
     } catch (err) {

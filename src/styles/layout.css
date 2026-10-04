@@ -116,7 +116,9 @@
   gap: 0.5rem;
 }
 
-.theme-toggle-btn, .icon-btn {
+.header-icon-btn,
+.theme-toggle-btn,
+.icon-btn {
   width: 40px;
   height: 40px;
   border-radius: var(--radius-md);
@@ -128,12 +130,66 @@
   font-size: 1.15rem;
   color: var(--text-secondary);
   transition: all var(--transition-fast);
+  cursor: pointer;
+  position: relative;
 }
 
-.theme-toggle-btn:hover, .icon-btn:hover {
+.header-icon-btn:hover,
+.theme-toggle-btn:hover,
+.icon-btn:hover {
   color: var(--text-primary);
   background: var(--bg-card-hover);
   border-color: var(--border-focus);
+}
+
+.offline-status-btn {
+  position: relative;
+}
+
+.offline-check-badge {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 14px;
+  height: 14px;
+  background: var(--success, #10b981);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--bg-primary, #0b0f19);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  animation: badgePop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+[data-theme="light"] .offline-check-badge {
+  border-color: #ffffff;
+}
+
+@keyframes badgePop {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.offline-badge-dot {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--bg-card, #1e293b);
+  pointer-events: none;
+}
+
+.dot-online {
+  background-color: var(--success, #10b981);
+}
+
+.dot-offline {
+  background-color: var(--danger, #ef4444);
 }
 
 .install-pwa-btn {
@@ -158,8 +214,12 @@
   border-color: var(--accent-primary);
 }
 
-.mobile-settings-btn {
-  display: none;
+/* Hide settings button on desktop view (only show local storage & theme icons) */
+.mobile-settings-btn,
+#mobile-settings-btn,
+.settings-btn,
+#settings-btn {
+  display: none !important;
 }
 
 .offline-btn {
@@ -403,15 +463,21 @@
     flex-shrink: 0;
   }
 
-  /* Hide individual action buttons on mobile - unified into Settings button */
+  /* Hide individual action buttons on mobile (lưu local & sáng/tối) - unified into Settings button */
   .install-pwa-btn,
   .offline-btn,
-  .theme-toggle-btn {
+  .offline-status-btn,
+  #offline-status-btn,
+  .theme-toggle-btn,
+  #theme-toggle-btn {
     display: none !important;
   }
 
-  /* Show unified Settings button on mobile */
-  .mobile-settings-btn {
+  /* Show only unified Settings button on mobile */
+  .mobile-settings-btn,
+  #mobile-settings-btn,
+  .settings-btn,
+  #settings-btn {
     display: flex !important;
     width: 44px;
     height: 48px;
@@ -428,7 +494,13 @@
   }
 
   .mobile-settings-btn:hover,
-  .mobile-settings-btn:active {
+  .mobile-settings-btn:active,
+  #mobile-settings-btn:hover,
+  #mobile-settings-btn:active,
+  .settings-btn:hover,
+  .settings-btn:active,
+  #settings-btn:hover,
+  #settings-btn:active {
     background: var(--bg-card-hover);
     border-color: var(--border-focus);
     transform: scale(0.98);
