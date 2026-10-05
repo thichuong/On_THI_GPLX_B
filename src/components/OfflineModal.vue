@@ -79,15 +79,22 @@ async function handleClearCache() {
       cachedCount: 0,
       percent: 0,
       isComplete: false,
+      savedBytes: 0,
       usageBytes: 0
     };
     progressPercent.value = 0;
 
     await refreshStatus();
     eventBus.emit('toast:show', {
-      message: '🗑️ Đã xóa bộ nhớ đệm hình ảnh offline thành công!',
+      message: '🗑️ Đã xóa bộ nhớ đệm thành công! Đang tải lại trang...',
       type: 'info'
     });
+
+    if (typeof window !== 'undefined' && window.location && typeof window.location.reload === 'function') {
+      setTimeout(() => {
+        window.location.reload();
+      }, 700);
+    }
   } catch (err) {
     console.error('[OfflineModal.vue] Lỗi khi xóa cache:', err);
   } finally {

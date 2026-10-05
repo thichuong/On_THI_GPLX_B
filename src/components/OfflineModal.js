@@ -264,6 +264,15 @@ export class OfflineModal {
       if (ok) {
         await offlineService.clearImageCache();
         await this.refresh();
+        eventBus.emit('toast:show', {
+          message: '🗑️ Đã xóa bộ nhớ đệm thành công! Đang tải lại trang...',
+          type: 'info'
+        });
+        if (typeof window !== 'undefined' && window.location && typeof window.location.reload === 'function') {
+          setTimeout(() => {
+            window.location.reload();
+          }, 700);
+        }
       }
     });
   }
