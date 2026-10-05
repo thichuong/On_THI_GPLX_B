@@ -184,7 +184,7 @@ export class OfflineModal {
 
           <div class="status-row">
             <span class="status-lbl">Dung lượng bộ nhớ:</span>
-            <span class="status-val">${offlineService.formatBytes(usageBytes)}</span>
+            <span class="status-val">${offlineService.getStorageDisplay(this.status)}</span>
           </div>
 
           <div class="offline-readiness-banner ${isDownloading ? 'downloading' : (isComplete ? 'ready' : 'not-ready')}">
@@ -225,7 +225,7 @@ export class OfflineModal {
         <div class="offline-actions">
           ${!isComplete ? `
             <button id="btn-start-download" class="btn-primary btn-offline-action" ${(!isOnline || isDownloading) ? 'disabled' : ''}>
-              ${isDownloading ? '⏳ Đang tải dữ liệu...' : '📥 Tải Toàn Bộ Hình Ảnh (100% Offline)'}
+              ${isDownloading ? '⏳ Đang tải dữ liệu...' : '📥 Tải Toàn Bộ 318 Ảnh Offline (~17 MB)'}
             </button>
           ` : `
             <button id="btn-start-download" class="btn-nav btn-offline-action" ${(!isOnline || isDownloading) ? 'disabled' : ''}>

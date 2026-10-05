@@ -27,6 +27,12 @@ test('OfflineService - formatBytes formats byte sizes accurately', () => {
   assert.strictEqual(offlineService.formatBytes(1073741824), '1 GB');
 });
 
+test('OfflineService - getStorageDisplay displays full package size when empty, progress when partial, and completion', () => {
+  assert.strictEqual(offlineService.getStorageDisplay({ cachedCount: 0, totalImages: 318 }), '~17 MB');
+  assert.strictEqual(offlineService.getStorageDisplay({ cachedCount: 159, totalImages: 318 }), '8.5 MB / ~17 MB');
+  assert.strictEqual(offlineService.getStorageDisplay({ cachedCount: 318, totalImages: 318, isComplete: true }), '~17 MB (Đã lưu đủ)');
+});
+
 test('OfflineService - getStatus returns structured offline status object', async () => {
   const status = await offlineService.getStatus();
   assert.ok(status !== null && typeof status === 'object', 'status should be an object');

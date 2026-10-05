@@ -7,6 +7,7 @@ import { questionService } from './questionService.js';
 import { dbService } from './dbService.js';
 
 export const IMAGE_CACHE_NAME = 'gplx-images-v1';
+export const TOTAL_IMAGES_BYTES = 17734556; // 318 WebP images (~16.9 MB / ~17 MB)
 
 class OfflineService {
   constructor() {
@@ -65,6 +66,8 @@ class OfflineService {
     const allUrls = this.getImageUrls();
     const totalImages = allUrls.length;
 
+    const totalBytes = TOTAL_IMAGES_BYTES;
+
     if (typeof window === 'undefined' || !window.caches) {
       return {
         isOnline: this.isOnline,
@@ -73,6 +76,8 @@ class OfflineService {
         totalImages,
         percent: 0,
         isComplete: false,
+        savedBytes: 0,
+        totalBytes,
         usageBytes: 0,
         quotaBytes: 0
       };
@@ -92,6 +97,7 @@ class OfflineService {
 
       const isComplete = totalImages > 0 && cachedCount >= totalImages;
       const percent = totalImages > 0 ? Math.round((cachedCount / totalImages) * 100) : 0;
+      const savedBytes = totalImages > 0 ? Math.round((cachedCount / totalImages) * totalBytes) : 0;
 
       // Storage quota estimation with timeout safeguard to prevent hanging
       let usageBytes = 0;
@@ -116,6 +122,8 @@ class OfflineService {
         totalImages,
         percent,
         isComplete,
+        savedBytes,
+        totalBytes,
         usageBytes,
         quotaBytes
       };
@@ -139,10 +147,35 @@ class OfflineService {
         totalImages,
         percent: 0,
         isComplete: false,
+        savedBytes: 0,
+        totalBytes,
         usageBytes: 0,
         quotaBytes: 0
       };
     }
+  }
+
+  /**
+   * Format user-friendly storage capacity display for question images
+   * Displays full image package size (e.g. "~17 MB") when empty,
+   * progress (e.g. "8.5 MB / ~17 MB") during partial cache,
+   * or complete indication when 100% cached.
+   * @param {Object} status
+   * @returns {string} e.g. "~17 MB" or "8.5 MB / ~17 MB"
+   */
+  getStorageDisplay(status) {
+    const totalBytes = (status && status.totalBytes) || TOTAL_IMAGES_BYTES;
+    const totalMB = Math.round(totalBytes / (1024 * 1024));
+    const totalStr = `~${totalMB} MB`;
+    if (!status || !status.cachedCount || status.cachedCount === 0) {
+      return totalStr;
+    }
+    if (status.isComplete || status.cachedCount >= (status.totalImages || 318)) {
+      return `${totalStr} (Đã lưu đủ)`;
+    }
+    const savedBytes = status.savedBytes || Math.round((status.cachedCount / (status.totalImages || 318)) * totalBytes);
+    const savedStr = this.formatBytes(savedBytes);
+    return `${savedStr} / ${totalStr}`;
   }
 
   /**
@@ -184,17 +217,24 @@ class OfflineService {
         const toDownload = allUrls.filter(url => !cachedPathSet.has(url));
         completed = allUrls.length - toDownload.length;
 
+        const initialBytes = Math.round((completed / total) * TOTAL_IMAGES_BYTES);
         if (onProgress) {
           onProgress({
             current: completed,
+            completed,
             total,
+            bytes: initialBytes,
+            totalBytes: TOTAL_IMAGES_BYTES,
             percent: Math.round((completed / total) * 100),
             isDone: completed === total
           });
         }
         eventBus.emit('offline:download-progress', {
           current: completed,
+          completed,
           total,
+          bytes: initialBytes,
+          totalBytes: TOTAL_IMAGES_BYTES,
           percent: Math.round((completed / total) * 100)
         });
 
@@ -219,15 +259,26 @@ class OfflineService {
               } finally {
                 completed++;
                 const percent = Math.round((completed / total) * 100);
+                const bytes = Math.round((completed / total) * TOTAL_IMAGES_BYTES);
                 if (onProgress) {
                   onProgress({
                     current: completed,
+                    completed,
                     total,
+                    bytes,
+                    totalBytes: TOTAL_IMAGES_BYTES,
                     percent,
                     isDone: completed === total
                   });
                 }
-                eventBus.emit('offline:download-progress', { current: completed, total, percent });
+                eventBus.emit('offline:download-progress', {
+                  current: completed,
+                  completed,
+                  total,
+                  bytes,
+                  totalBytes: TOTAL_IMAGES_BYTES,
+                  percent
+                });
               }
             })
           );

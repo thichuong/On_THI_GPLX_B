@@ -18,6 +18,8 @@ const status = ref({
   totalImages: 318,
   percent: 0,
   isComplete: false,
+  savedBytes: 0,
+  totalBytes: 17734556,
   usageBytes: 0
 });
 
@@ -157,7 +159,7 @@ onUnmounted(() => {
         <div class="status-row" style="display: flex; justify-content: space-between; align-items: center;">
           <span class="status-lbl" style="font-size: 0.9rem; color: var(--text-secondary);">Dung lượng bộ nhớ:</span>
           <span class="status-val" style="font-weight: 700; color: var(--text-primary);">
-            {{ offlineService.formatBytes(status.usageBytes) }}
+            {{ offlineService.getStorageDisplay(status) }}
           </span>
         </div>
       </div>
@@ -208,7 +210,7 @@ onUnmounted(() => {
           :disabled="isDownloading"
           @click="handleStartDownload"
         >
-          {{ isDownloading ? '⏳ Đang tải...' : '📥 Tải Trọn Bộ 318 Ảnh Offline' }}
+          {{ isDownloading ? '⏳ Đang tải...' : '📥 Tải Trọn Bộ 318 Ảnh Offline (~17 MB)' }}
         </button>
 
         <button
