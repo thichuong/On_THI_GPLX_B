@@ -550,6 +550,64 @@
     color: var(--text-secondary);
   }
 
+  .mobile-setting-card-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .mobile-theme-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.35rem;
+    padding: 0.3rem;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+  }
+
+  [data-theme="light"] .mobile-theme-selector {
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .mobile-theme-chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.5rem 0.4rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-theme-chip:hover {
+    color: var(--text-primary);
+    background: var(--bg-card-hover);
+  }
+
+  .mobile-theme-chip.active {
+    background: var(--accent-primary);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
+  }
+
+  [data-theme="light"] .mobile-theme-chip.active {
+    background: var(--accent-primary);
+    color: #ffffff;
+  }
+
+  .theme-chip-icon {
+    font-size: 0.95rem;
+  }
+
   .app-container {
     padding: 1rem 0.75rem calc(5.25rem + env(safe-area-inset-bottom, 0px)) 0.75rem;
     gap: 1rem;

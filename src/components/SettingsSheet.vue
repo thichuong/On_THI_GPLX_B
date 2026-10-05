@@ -15,7 +15,7 @@ defineProps({
 
 const emit = defineEmits(['close', 'open-offline']);
 
-const { theme, toggleTheme } = useTheme();
+const { theme, themeIcon, themeLabel, themeDescription, applyTheme, toggleTheme } = useTheme();
 
 function handleInstallApp() {
   pwaService.promptInstall();
@@ -59,27 +59,67 @@ function handleOfflineClick() {
       </div>
       <div class="mobile-sheet-content">
         <div class="mobile-settings-list" role="list">
-          <!-- 1. Giao diện Sáng / Tối -->
-          <button
-            type="button"
-            id="mobile-sheet-theme-btn"
-            class="mobile-setting-card"
-            role="listitem"
-            @click="toggleTheme"
-          >
-            <div class="mode-card-icon" id="mobile-sheet-theme-icon">
-              {{ theme === 'dark' ? '☀️' : '🌙' }}
-            </div>
-            <div class="mode-card-info">
-              <div class="mode-card-name" id="mobile-sheet-theme-title">
-                Giao diện: {{ theme === 'dark' ? 'Tối' : 'Sáng' }}
+          <!-- 1. Giao diện (Hệ thống / Sáng / Tối) -->
+          <div class="mobile-setting-card-group" role="listitem">
+            <button
+              type="button"
+              id="mobile-sheet-theme-btn"
+              class="mobile-setting-card"
+              @click="toggleTheme"
+            >
+              <div class="mode-card-icon" id="mobile-sheet-theme-icon">
+                {{ themeIcon }}
               </div>
-              <div class="mode-card-desc">Chạm để chuyển đổi Sáng / Tối</div>
+              <div class="mode-card-info">
+                <div class="mode-card-name" id="mobile-sheet-theme-title">
+                  Giao diện: {{ themeLabel }}
+                </div>
+                <div class="mode-card-desc" id="mobile-sheet-theme-desc">
+                  {{ themeDescription }}
+                </div>
+              </div>
+              <div class="mobile-setting-action">
+                <span class="mobile-setting-pill" id="mobile-sheet-theme-pill">Đổi</span>
+              </div>
+            </button>
+
+            <!-- 3 Chế độ nhanh: Hệ thống, Sáng, Tối -->
+            <div class="mobile-theme-selector" role="radiogroup" aria-label="Tùy chọn giao diện">
+              <button
+                type="button"
+                class="mobile-theme-chip"
+                :class="{ active: theme === 'system' }"
+                role="radio"
+                :aria-checked="theme === 'system'"
+                @click="applyTheme('system')"
+              >
+                <span class="theme-chip-icon">💻</span>
+                <span>Hệ thống</span>
+              </button>
+              <button
+                type="button"
+                class="mobile-theme-chip"
+                :class="{ active: theme === 'light' }"
+                role="radio"
+                :aria-checked="theme === 'light'"
+                @click="applyTheme('light')"
+              >
+                <span class="theme-chip-icon">☀️</span>
+                <span>Sáng</span>
+              </button>
+              <button
+                type="button"
+                class="mobile-theme-chip"
+                :class="{ active: theme === 'dark' }"
+                role="radio"
+                :aria-checked="theme === 'dark'"
+                @click="applyTheme('dark')"
+              >
+                <span class="theme-chip-icon">🌙</span>
+                <span>Tối</span>
+              </button>
             </div>
-            <div class="mobile-setting-action">
-              <span class="mobile-setting-pill" id="mobile-sheet-theme-pill">Đổi</span>
-            </div>
-          </button>
+          </div>
 
           <!-- 2. Dữ liệu Offline -->
           <button

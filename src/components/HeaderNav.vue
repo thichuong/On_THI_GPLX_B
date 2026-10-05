@@ -25,7 +25,13 @@ const emit = defineEmits([
   'open-offline-modal'
 ]);
 
-const { theme, toggleTheme } = useTheme();
+const { theme, themeIcon, themeLabel, toggleTheme } = useTheme();
+
+const themeBtnTitle = computed(() => {
+  if (theme.value === 'system') return 'Giao diện: Hệ thống (tự động theo thiết bị). Bấm để chuyển sang Sáng';
+  if (theme.value === 'light') return 'Giao diện: Sáng. Bấm để chuyển sang Tối';
+  return 'Giao diện: Tối. Bấm để chuyển sang Hệ thống';
+});
 
 const isReady = ref(props.offlineReady);
 
@@ -129,16 +135,16 @@ const currentModeInfo = computed(() => {
         </span>
       </button>
 
-      <!-- Theme Toggle (Sáng / Tối) -->
+      <!-- Theme Toggle (Hệ thống / Sáng / Tối) -->
       <button
         type="button"
         id="theme-toggle-btn"
         class="header-icon-btn theme-toggle-btn"
-        :title="theme === 'dark' ? 'Chuyển sang giao diện sáng' : 'Chuyển sang giao diện tối'"
-        :aria-label="theme === 'dark' ? 'Chuyển sang giao diện sáng' : 'Chuyển sang giao diện tối'"
+        :title="themeBtnTitle"
+        :aria-label="themeBtnTitle"
         @click="toggleTheme"
       >
-        <span class="theme-icon">{{ theme === 'dark' ? '☀️' : '🌙' }}</span>
+        <span class="theme-icon">{{ themeIcon }}</span>
       </button>
 
       <!-- Settings Button (Cài đặt) -->

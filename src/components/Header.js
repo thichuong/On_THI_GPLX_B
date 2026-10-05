@@ -195,10 +195,22 @@ export class Header {
     }
   }
 
+  _resolveTheme(mode) {
+    if (mode === 'system') {
+      if (typeof window !== 'undefined' && typeof window.matchMedia === 'function' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      return 'dark';
+    }
+    return mode === 'light' ? 'light' : 'dark';
+  }
+
   _initTheme() {
     const savedTheme = StorageService.getTheme();
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    this.updateThemeIcon(savedTheme);
+    const resolvedTheme = this._resolveTheme(savedTheme);
+    document.documentElement.setAttribute('data-theme', resolvedTheme);
+    document.documentElement.setAttribute('data-theme-mode', savedTheme);
+    this.updateThemeIcon(savedTheme, resolvedTheme);
   }
 
   _bindEvents() {
@@ -359,26 +371,44 @@ export class Header {
   }
 
   toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
+    const currentTheme = StorageService.getTheme();
+    const cycleMap = {
+      system: 'light',
+      light: 'dark',
+      dark: 'system'
+    };
+    const newTheme = cycleMap[currentTheme] || 'light';
+    const resolvedTheme = this._resolveTheme(newTheme);
+    document.documentElement.setAttribute('data-theme', resolvedTheme);
+    document.documentElement.setAttribute('data-theme-mode', newTheme);
     StorageService.setTheme(newTheme);
-    this.updateThemeIcon(newTheme);
+    this.updateThemeIcon(newTheme, resolvedTheme);
   }
 
-  updateThemeIcon(theme) {
+  updateThemeIcon(theme, resolvedTheme = theme) {
+    const iconMap = {
+      system: '💻',
+      light: '☀️',
+      dark: '🌙'
+    };
+    const titleMap = {
+      system: 'Giao diện: Hệ thống',
+      light: 'Giao diện: Sáng',
+      dark: 'Giao diện: Tối'
+    };
+
     if (this.themeIcon) {
-      this.themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+      this.themeIcon.textContent = iconMap[theme] || '💻';
     }
 
     if (this.mobileSheetThemeIcon) {
-      this.mobileSheetThemeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+      this.mobileSheetThemeIcon.textContent = iconMap[theme] || '💻';
     }
     if (this.mobileSheetThemeTitle) {
-      this.mobileSheetThemeTitle.textContent = theme === 'dark' ? 'Giao diện: Tối' : 'Giao diện: Sáng';
+      this.mobileSheetThemeTitle.textContent = titleMap[theme] || 'Giao diện: Hệ thống';
     }
     if (this.mobileSheetThemePill) {
-      this.mobileSheetThemePill.textContent = theme === 'dark' ? 'Đổi Sáng ☀️' : 'Đổi Tối 🌙';
+      this.mobileSheetThemePill.textContent = 'Đổi';
     }
   }
 

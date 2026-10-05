@@ -1,8 +1,21 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="dark">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('theme') || localStorage.getItem('gplx_theme') || 'system';
+        var resolved = saved;
+        if (saved === 'system') {
+          resolved = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', resolved);
+        document.documentElement.setAttribute('data-theme-mode', saved);
+      } catch (e) {}
+    })();
+  </script>
   <title>Ôn Thi Sát Hạch GPLX 600 Câu (2025)</title>
   <meta name="description" content="Ứng dụng luyện thi lý thuyết sát hạch lái xe ô tô / mô tô 600 câu hỏi mới nhất năm 2025. Thi thử 30 câu (20 phút) chuẩn Cục CSGT, Thi nhanh 20 câu (10 phút) có câu điểm liệt, bấm giờ và chấm điểm tự động." />
   

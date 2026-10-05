@@ -85,11 +85,12 @@ class StorageServiceImpl {
   // --- Theme ---
 
   getTheme() {
-    return localStorage.getItem(STORAGE_KEYS.THEME) || 'dark';
+    return localStorage.getItem(STORAGE_KEYS.THEME) || localStorage.getItem('theme') || 'system';
   }
 
   setTheme(theme) {
     localStorage.setItem(STORAGE_KEYS.THEME, theme);
+    localStorage.setItem('theme', theme);
     dbService.setMeta('theme', theme).catch(() => {});
     eventBus.emit('theme:changed', theme);
   }
