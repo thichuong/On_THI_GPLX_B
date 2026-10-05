@@ -126,12 +126,19 @@ npm run preview
 
 Ứng dụng được thiết lập sẵn sàng để triển khai trực tiếp lên mạng lưới toàn cầu (Edge Network) của Cloudflare:
 
-#### Deploy lên Cloudflare Workers
+#### Cách 1: Deploy lên Cloudflare Pages (Khuyên dùng - CDN & Tải ảnh nhanh nhất)
 ```bash
 # Bước 1: Đăng nhập tài khoản Cloudflare (chỉ cần làm 1 lần trên máy)
 npx wrangler login
 
-# Bước 2: Build và đẩy lên Cloudflare Workers
+# Bước 2: Build và đẩy lên Cloudflare Pages
+npm run deploy:pages
+```
+*Sau khi hoàn tất, bạn sẽ nhận được đường dẫn truy cập trực tiếp (VD: `https://on-thi-gplx.pages.dev`).*
+
+#### Cách 2: Deploy lên Cloudflare Workers
+```bash
+# Build và đẩy lên Cloudflare Workers
 npm run deploy
 ```
 *Sau khi hoàn tất, bạn sẽ nhận được đường dẫn truy cập trực tiếp (VD: `https://on-thi-gplx-600.<subdomain>.workers.dev`).*
