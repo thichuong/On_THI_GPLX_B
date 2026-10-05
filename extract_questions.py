@@ -1,7 +1,10 @@
 import os
 import re
 import json
+import argparse
+import glob
 import pymupdf
+from PIL import Image
 
 # Standard 60 câu điểm liệt trong bộ 600 câu hỏi sát hạch
 CAU_LIET_SET = {
@@ -26,14 +29,28 @@ def get_chapter_info(q_id):
             return ch["id"], ch["name"]
     return 1, CHAPTERS[0]["name"]
 
+def parse_args():
+    parser = argparse.ArgumentParser(description="Extract questions and high-resolution images from 600 GPLX PDF")
+    parser.add_argument("--pdf", default="600-cau-hoi-sat-hach.pdf", help="Path to input PDF file")
+    parser.add_argument("--output-dir", default="public/images", help="Directory to save extracted images")
+    parser.add_argument("--questions-file", default="src/data/questions.json", help="Path to questions.json")
+    parser.add_argument("--dpi", type=int, default=300, help="Rendering DPI (default: 300 for crisp high-res)")
+    parser.add_argument("--format", choices=["webp", "png"], default="webp", help="Image format (default: webp)")
+    parser.add_argument("--quality", type=int, default=90, help="WebP quality (default: 90)")
+    parser.add_argument("--only-images", action="store_true", help="Only re-extract images and update image URLs in questions.json, preserving existing explanations and question details")
+    parser.add_argument("--clean-old", action="store_true", help="Remove old images of differing format in output directory")
+    return parser.parse_args()
+
 def main():
-    pdf_path = "600-cau-hoi-sat-hach.pdf"
-    output_dir = "public/images"
+    args = parse_args()
+    pdf_path = args.pdf
+    output_dir = args.output_dir
     os.makedirs(output_dir, exist_ok=True)
-    os.makedirs("src/data", exist_ok=True)
+    os.makedirs(os.path.dirname(args.questions_file), exist_ok=True)
     
+    print(f"Opening PDF: {pdf_path}")
     doc = pymupdf.open(pdf_path)
-    print(f"Opening PDF: {len(doc)} pages")
+    print(f"Opened PDF with {len(doc)} pages. Config: DPI={args.dpi}, Format={args.format.upper()}, Quality={args.quality}")
     
     # 1. Collect all lines with underlines and image infos per page
     raw_lines = []
@@ -116,7 +133,6 @@ def main():
                 # Approximate bounding box for this option segment on the line
                 seg_x0 = l_rect.x0 + (m.start() / len(t)) * l_rect.width
                 seg_x1 = l_rect.x0 + (end_char / len(t)) * l_rect.width
-                seg_rect = pymupdf.Rect(seg_x0, l_rect.y0, seg_x1, l_rect.y1)
                 
                 is_ul = any(abs(u.y0 - l_rect.y1) < 4.5 and not (u.x1 < seg_x0 or u.x0 > seg_x1) for u in u_rects)
                 
@@ -140,7 +156,9 @@ def main():
 
     # 3. Associate and export images for each question
     sorted_q_ids = sorted(questions.keys())
+    saved_images_count = 0
     
+    print("Extracting and compressing images...")
     for idx, qid in enumerate(sorted_q_ids):
         q = questions[qid]
         for pno in q['pages']:
@@ -172,13 +190,43 @@ def main():
                 for mr in matched_imgs[1:]:
                     combined_rect = combined_rect | mr
                 
-                pix = page.get_pixmap(clip=combined_rect, dpi=180)
-                img_filename = f"cau_{qid}.png"
+                # Add safe padding (2 pt) to prevent clipped borders
+                pad = 2.0
+                clip_rect = pymupdf.Rect(
+                    max(0, combined_rect.x0 - pad),
+                    max(0, combined_rect.y0 - pad),
+                    min(page.rect.x1, combined_rect.x1 + pad),
+                    min(page.rect.y1, combined_rect.y1 + pad),
+                )
+                
+                pix = page.get_pixmap(clip=clip_rect, dpi=args.dpi)
+                mode = "RGBA" if pix.alpha else "RGB"
+                img = Image.frombytes(mode, [pix.width, pix.height], pix.samples)
+                
+                ext = args.format.lower()
+                img_filename = f"cau_{qid}.{ext}"
                 img_filepath = os.path.join(output_dir, img_filename)
-                pix.save(img_filepath)
+                
+                if ext == "webp":
+                    img.save(img_filepath, format="WEBP", quality=args.quality, method=6)
+                elif ext == "png":
+                    img.save(img_filepath, format="PNG", optimize=True)
+                    
                 q['image_path'] = f"images/{img_filename}"
+                saved_images_count += 1
 
-    # Manual adjustments for edge cases
+    # Load existing questions to preserve explanations, answers and custom fields
+    existing_map = {}
+    if os.path.exists(args.questions_file):
+        try:
+            with open(args.questions_file, "r", encoding="utf-8") as f:
+                for item in json.load(f):
+                    existing_map[item["id"]] = item
+            print(f"Loaded {len(existing_map)} existing questions from {args.questions_file}")
+        except Exception as e:
+            print(f"Warning loading existing questions: {e}")
+
+    # Manual adjustments for edge cases (fallback if parsing raw)
     if 204 in questions and not questions[204]['correct_options']:
         questions[204]['correct_options'] = [1]
     if 301 in questions and not questions[301]['correct_options']:
@@ -188,41 +236,70 @@ def main():
     if 352 in questions and not questions[352]['correct_options']:
         questions[352]['correct_options'] = [1]
 
-    # 4. Format into final structured JSON
-    final_questions = []
-    for qid in sorted_q_ids:
-        q = questions[qid]
-        q_text = " ".join(q['question_parts']).strip()
-        
-        opts = []
-        for opt_idx in sorted(q['options'].keys()):
-            opts.append(" ".join(q['options'][opt_idx]).strip())
-        
-        correct_idx = q['correct_options'][0] if q['correct_options'] else 1
-        ch_id, ch_name = get_chapter_info(qid)
-        is_crit = qid in CAU_LIET_SET
-        
-        final_questions.append({
-            "id": qid,
-            "chapter": ch_id,
-            "chapter_name": ch_name,
-            "question": q_text,
-            "image": q['image_path'],
-            "options": opts,
-            "correct_option": correct_idx,
-            "is_critical": is_crit,
-            "explanation": "Câu hỏi điểm liệt bắt buộc phải trả lời đúng." if is_crit else ""
-        })
+    if args.only_images and existing_map:
+        # Only update image references in existing dataset
+        print("Mode: --only-images. Preserving all existing texts, answers, and explanations.")
+        for q_id, q_item in existing_map.items():
+            if q_id in questions and questions[q_id]['image_path']:
+                q_item['image'] = questions[q_id]['image_path']
+            elif q_id in questions and not questions[q_id]['image_path']:
+                q_item['image'] = None
+        final_questions = [existing_map[qid] for qid in sorted(existing_map.keys())]
+    else:
+        # 4. Format into final structured JSON while preserving explanations and validated fields
+        final_questions = []
+        for qid in sorted_q_ids:
+            q = questions[qid]
+            q_text = " ".join(q['question_parts']).strip()
+            
+            opts = []
+            for opt_idx in sorted(q['options'].keys()):
+                opts.append(" ".join(q['options'][opt_idx]).strip())
+            
+            existing_q = existing_map.get(qid, {})
+            correct_idx = existing_q.get('correct_option', q['correct_options'][0] if q['correct_options'] else 1)
+            ch_id, ch_name = get_chapter_info(qid)
+            is_crit = qid in CAU_LIET_SET
+            
+            # Preserve existing rich explanation if present
+            explanation = existing_q.get('explanation')
+            if not explanation:
+                explanation = "Câu hỏi điểm liệt bắt buộc phải trả lời đúng." if is_crit else ""
+            
+            final_questions.append({
+                "id": qid,
+                "chapter": ch_id,
+                "chapter_name": ch_name,
+                "question": q_text,
+                "image": q['image_path'],
+                "options": opts,
+                "correct_option": correct_idx,
+                "is_critical": is_crit,
+                "explanation": explanation
+            })
 
-    # Save to src/data/questions.json
-    os.makedirs("src/data", exist_ok=True)
-    with open("src/data/questions.json", "w", encoding="utf-8") as f:
+    # Save to questions.json
+    with open(args.questions_file, "w", encoding="utf-8") as f:
         json.dump(final_questions, f, ensure_ascii=False, indent=2)
 
+    # Clean old images if requested
+    if args.clean_old:
+        old_pattern = f"cau_*.png" if args.format == "webp" else f"cau_*.webp"
+        removed_count = 0
+        for old_file in glob.glob(os.path.join(output_dir, old_pattern)):
+            try:
+                os.remove(old_file)
+                removed_count += 1
+            except OSError:
+                pass
+        if removed_count > 0:
+            print(f"Cleaned up {removed_count} old images ({old_pattern})")
+
     print(f"Successfully processed {len(final_questions)} questions!")
+    print(f"Saved {saved_images_count} high-resolution images to {output_dir}")
     print(f"Questions with images: {sum(1 for q in final_questions if q['image'])}")
     print(f"Critical questions: {sum(1 for q in final_questions if q['is_critical'])}")
-    print("File saved to src/data/questions.json")
+    print(f"File updated at {args.questions_file}")
 
 if __name__ == "__main__":
     main()

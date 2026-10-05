@@ -526,7 +526,7 @@
     "chapter": 1,
     "chapter_name": "Quy định chung và quy tắc giao thông đường bộ",
     "question": "Khi gặp hiệu lệnh điều khiển của Cảnh sát giao thông như hình dưới đây thì người tham gia giao thông đường bộ phải đi như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_36.png",
+    "image": "images/cau_36.webp",
     "options": [
       "Người tham gia giao thông đường bộ ở các hướng phải dừng lại.",
       "Người tham gia giao thông đường bộ ở các hướng được đi theo chiều gậy chỉ của Cảnh sát giao thông.",
@@ -542,7 +542,7 @@
     "chapter": 1,
     "chapter_name": "Quy định chung và quy tắc giao thông đường bộ",
     "question": "Khi gặp hiệu lệnh điều khiển của Cảnh sát giao thông như hình dưới đây thì người tham gia giao thông đường bộ phải đi như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_37.png",
+    "image": "images/cau_37.webp",
     "options": [
       "Người tham gia giao thông đường bộ ở phía sau Cảnh sát giao thông được đi, các hướng khác phải dừng lại.",
       "Người tham gia giao thông đường bộ được rẽ phải theo chiều mũi tên màu xanh ở bục Cảnh sát giao thông.",
@@ -3414,7 +3414,7 @@
     "chapter": 3,
     "chapter_name": "Kỹ thuật lái xe",
     "question": "Khi động cơ xe ô tô đã khởi động, bảng đồng hồ xuất hiện ký hiệu như hình vẽ dưới đây là báo hiệu tình trạng gì của xe ô tô?",
-    "image": "images/cau_227.png",
+    "image": "images/cau_227.webp",
     "options": [
       "Đang sử dụng phanh đỗ.",
       "Nhiệt độ nước làm mát quá mức cho phép.",
@@ -3429,7 +3429,7 @@
     "chapter": 3,
     "chapter_name": "Kỹ thuật lái xe",
     "question": "Khi động cơ xe ô tô đã khởi động, bảng đồng hồ xuất hiện ký hiệu như hình vẽ dưới đây là báo hiệu tình trạng gì của xe ô tô?",
-    "image": "images/cau_228.png",
+    "image": "images/cau_228.webp",
     "options": [
       "Đang sử dụng phanh đỗ.",
       "Thiếu dầu phanh.",
@@ -3445,7 +3445,7 @@
     "chapter": 3,
     "chapter_name": "Kỹ thuật lái xe",
     "question": "Khi động cơ xe ô tô đã khởi động, bảng đồng hồ xuất hiện ký hiệu như hình vẽ dưới đây là báo hiệu tình trạng gì của xe ô tô?",
-    "image": "images/cau_229.png",
+    "image": "images/cau_229.webp",
     "options": [
       "Cửa xe đóng chưa chặt hoặc có cửa xe chưa đóng.",
       "Bộ nạp ắc quy gặp sự cố kỹ thuật.",
@@ -3461,7 +3461,7 @@
     "chapter": 3,
     "chapter_name": "Kỹ thuật lái xe",
     "question": "Khi động cơ xe ô tô đã khởi động, bảng đồng hồ xuất hiện ký hiệu như hình vẽ dưới đây là báo hiệu tình trạng gì của xe ô tô?",
-    "image": "images/cau_230.png",
+    "image": "images/cau_230.webp",
     "options": [
       "Thiếu dầu phanh, phanh tay đang hãm.",
       "Hệ thống túi khí an toàn gặp sự cố.",
@@ -3477,7 +3477,7 @@
     "chapter": 3,
     "chapter_name": "Kỹ thuật lái xe",
     "question": "Khi động cơ xe ô tô đã khởi động, bảng đồng hồ xuất hiện ký hiệu như hình vẽ dưới đây là báo hiệu tình trạng gì của xe ô tô?",
-    "image": "images/cau_231.png",
+    "image": "images/cau_231.webp",
     "options": [
       "Báo hiệu thiếu dầu phanh.",
       "Áp suất lốp không đủ.",
@@ -4307,7 +4307,7 @@
     "chapter": 4,
     "chapter_name": "Cấu tạo và sửa chữa",
     "question": "Khi động cơ ô tô đã khởi động, bảng đồng hồ xuất hiện ký hiệu như hình vẽ dưới đây, báo hiệu tình trạng như thế nào của xe ô tô?",
-    "image": "images/cau_286.png",
+    "image": "images/cau_286.webp",
     "options": [
       "Nhiệt độ nước làm mát động cơ quá ngưỡng cho phép.",
       "Áp suất lốp không đủ.",
@@ -4323,7 +4323,7 @@
     "chapter": 4,
     "chapter_name": "Cấu tạo và sửa chữa",
     "question": "Khi động cơ ô tô đã khởi động, bảng đồng hồ xuất hiện ký hiệu như hình vẽ dưới đây, báo hiệu tình trạng như thế nào của xe ô tô?",
-    "image": "images/cau_287.png",
+    "image": "images/cau_287.webp",
     "options": [
       "Báo hiệu hệ thống chống bó cứng khi phanh bị lỗi.",
       "Áp suất lốp không đủ.",
@@ -4339,7 +4339,7 @@
     "chapter": 4,
     "chapter_name": "Cấu tạo và sửa chữa",
     "question": "Khi động cơ ô tô đã khởi động, bảng đồng hồ xuất hiện ký hiệu như hình vẽ dưới đây, báo hiệu tình trạng như thế nào của xe ô tô?",
-    "image": "images/cau_288.png",
+    "image": "images/cau_288.webp",
     "options": [
       "Báo hiệu thiếu dầu phanh.",
       "Áp suất lốp không đủ.",
@@ -4355,7 +4355,7 @@
     "chapter": 4,
     "chapter_name": "Cấu tạo và sửa chữa",
     "question": "Khi động cơ ô tô đã khởi động, bảng đồng hồ xuất hiện ký hiệu như hình vẽ dưới đây, báo hiệu tình trạng như thế nào của xe ô tô?",
-    "image": "images/cau_289.png",
+    "image": "images/cau_289.webp",
     "options": [
       "Báo hiệu hệ thống chống bó cứng phanh bị lỗi.",
       "Áp suất lốp không đủ.",
@@ -4371,7 +4371,7 @@
     "chapter": 4,
     "chapter_name": "Cấu tạo và sửa chữa",
     "question": "Khi khởi động xe ô tô số tự động có trang bị chìa khóa thông minh có cần đạp hết hành trình bàn đạp chân phanh hay không?",
-    "image": "images/cau_290.png",
+    "image": "images/cau_290.webp",
     "options": [
       "Phải đạp hết hành trình bàn đạp chân phanh.",
       "Không cần đạp phanh.",
@@ -4448,7 +4448,7 @@
     "chapter": 4,
     "chapter_name": "Cấu tạo và sửa chữa",
     "question": "Khi động cơ ô tô đã khởi động, bảng đồng hồ xuất hiện ký hiệu như hình vẽ dưới đây không tắt trong thời gian dài, báo hiệu tình trạng như thế nào của xe ô tô?",
-    "image": "images/cau_295.png",
+    "image": "images/cau_295.webp",
     "options": [
       "Nhiệt độ nước làm mát động cơ quá ngưỡng cho phép.",
       "Áp suất lốp không đủ.",
@@ -4464,7 +4464,7 @@
     "chapter": 4,
     "chapter_name": "Cấu tạo và sửa chữa",
     "question": "Trên xe ô tô có trang bị thiết bị như hình vẽ dưới đây có tác dụng gì?",
-    "image": "images/cau_296.png",
+    "image": "images/cau_296.webp",
     "options": [
       "Dùng để kích (hay nâng) xe ô tô.",
       "Vặn ốc lắp bánh xe.",
@@ -4480,7 +4480,7 @@
     "chapter": 4,
     "chapter_name": "Cấu tạo và sửa chữa",
     "question": "Trên xe ô tô có trang bị thiết bị như hình vẽ dưới đây, dùng để làm gì?",
-    "image": "images/cau_297.png",
+    "image": "images/cau_297.webp",
     "options": [
       "Thay lốp xe.",
       "Chữa cháy.",
@@ -4496,7 +4496,7 @@
     "chapter": 4,
     "chapter_name": "Cấu tạo và sửa chữa",
     "question": "Trên xe ô tô có trang bị thiết bị như hình vẽ dưới đây, dùng để làm gì?",
-    "image": "images/cau_298.png",
+    "image": "images/cau_298.webp",
     "options": [
       "Thay lốp xe.",
       "Chữa cháy trong các trường hợp hỏa hoạn.",
@@ -4511,7 +4511,7 @@
     "chapter": 4,
     "chapter_name": "Cấu tạo và sửa chữa",
     "question": "Nút bấm biểu tượng như hình vẽ trên xe ô tô có ý nghĩa như thế nào?",
-    "image": "images/cau_299.png",
+    "image": "images/cau_299.webp",
     "options": [
       "Báo hiệu xin đường cho xe đi thẳng.",
       "Báo hiệu hệ thống phanh bị lỗi.",
@@ -4527,7 +4527,7 @@
     "chapter": 4,
     "chapter_name": "Cấu tạo và sửa chữa",
     "question": "Khi động cơ đã hoạt động, bảng đồng hồ xuất hiện biểu tượng hình vẽ dưới đây, báo hiệu tình trạng như thế nào của xe?",
-    "image": "images/cau_300.png",
+    "image": "images/cau_300.webp",
     "options": [
       "Báo hiệu hệ thống túi khí đã bật.",
       "Báo hiệu đèn chiếu sáng xa đã bật.",
@@ -4543,7 +4543,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cấm các loại xe cơ giới đi vào, trừ xe máy hai bánh, xe gắn máy và các loại xe ưu tiên theo quy định?",
-    "image": "images/cau_301.png",
+    "image": "images/cau_301.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4559,7 +4559,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cấm xe ô tô tải?",
-    "image": "images/cau_302.png",
+    "image": "images/cau_302.webp",
     "options": [
       "Cả ba biển.",
       "Biển 2 và biển 3.",
@@ -4575,7 +4575,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cấm máy kéo?",
-    "image": "images/cau_303.png",
+    "image": "images/cau_303.webp",
     "options": [
       "Biển 1.",
       "Biển 2 và biển 3.",
@@ -4591,7 +4591,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu cấm xe mô tô ba bánh chở hàng đi qua?",
-    "image": "images/cau_304.png",
+    "image": "images/cau_304.webp",
     "options": [
       "Biển 1 và biển 2.",
       "Biển 1 và biển 3.",
@@ -4606,7 +4606,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào dưới đây xe gắn máy được phép đi vào?",
-    "image": "images/cau_305.png",
+    "image": "images/cau_305.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4621,7 +4621,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu cấm xe mô tô hai bánh đi vào?",
-    "image": "images/cau_306.png",
+    "image": "images/cau_306.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4636,7 +4636,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Khi gặp biển nào thì xe mô tô hai bánh được đi vào?",
-    "image": "images/cau_307.png",
+    "image": "images/cau_307.webp",
     "options": [
       "Không biển nào.",
       "Biển 1 và biển 2.",
@@ -4652,7 +4652,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cho phép xe ô tô con được vượt?",
-    "image": "images/cau_308.png",
+    "image": "images/cau_308.webp",
     "options": [
       "Biển 1 và biển 2.",
       "Biển 2.",
@@ -4668,7 +4668,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào không cho phép xe ô tô con vượt?",
-    "image": "images/cau_309.png",
+    "image": "images/cau_309.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4683,7 +4683,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cấm xe ô tô tải vượt?",
-    "image": "images/cau_310.png",
+    "image": "images/cau_310.webp",
     "options": [
       "Biển 1.",
       "Biển 1 và biển 2.",
@@ -4699,7 +4699,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cấm xe tải vượt?",
-    "image": "images/cau_311.png",
+    "image": "images/cau_311.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4714,7 +4714,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào xe ô tô con được phép vượt?",
-    "image": "images/cau_312.png",
+    "image": "images/cau_312.webp",
     "options": [
       "Biển 1.",
       "Biển 2."
@@ -4728,7 +4728,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cấm quay đầu xe?",
-    "image": "images/cau_313.png",
+    "image": "images/cau_313.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4744,7 +4744,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cấm xe rẽ trái?",
-    "image": "images/cau_314.png",
+    "image": "images/cau_314.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4759,7 +4759,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Khi gặp biển nào xe được rẽ trái?",
-    "image": "images/cau_315.png",
+    "image": "images/cau_315.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4774,7 +4774,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cấm xe ô tô rẽ trái?",
-    "image": "images/cau_316.png",
+    "image": "images/cau_316.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4789,7 +4789,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cấm các phương tiện rẽ phải?",
-    "image": "images/cau_317.png",
+    "image": "images/cau_317.webp",
     "options": [
       "Biển 1 và biển 2.",
       "Biển 1 và biển 3.",
@@ -4805,7 +4805,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cấm các phương tiện rẽ trái?",
-    "image": "images/cau_318.png",
+    "image": "images/cau_318.webp",
     "options": [
       "Biển 1 và biển 2.",
       "Biển 1 và biển 3.",
@@ -4821,7 +4821,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào dưới đây chỉ cấm xe ô tô quay đầu?",
-    "image": "images/cau_319.png",
+    "image": "images/cau_319.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4837,7 +4837,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào dưới đây cấm xe ô tô rẽ trái và quay đầu?",
-    "image": "images/cau_320.png",
+    "image": "images/cau_320.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4853,7 +4853,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cấm xe taxi mà không cấm các phương tiện khác?",
-    "image": "images/cau_321.png",
+    "image": "images/cau_321.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4868,7 +4868,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào xe được phép rẽ trái?",
-    "image": "images/cau_322.png",
+    "image": "images/cau_322.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4883,7 +4883,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào xe quay đầu không bị cấm?",
-    "image": "images/cau_323.png",
+    "image": "images/cau_323.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4898,7 +4898,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào xe được phép quay đầu nhưng không được rẽ trái?",
-    "image": "images/cau_324.png",
+    "image": "images/cau_324.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4913,7 +4913,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào là biển \"Cấm đi ngược chiều\"?",
-    "image": "images/cau_325.png",
+    "image": "images/cau_325.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4928,7 +4928,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào dưới đây các phương tiện không được phép đi vào?",
-    "image": "images/cau_326.png",
+    "image": "images/cau_326.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4943,7 +4943,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Gặp biển nào người lái xe không được đỗ xe vào ngày chẵn?",
-    "image": "images/cau_327.png",
+    "image": "images/cau_327.webp",
     "options": [
       "Biển 1.",
       "Biển 1 và biển 3.",
@@ -4959,7 +4959,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Gặp biển nào người lái xe không được đỗ xe vào ngày lẻ?",
-    "image": "images/cau_328.png",
+    "image": "images/cau_328.webp",
     "options": [
       "Biển 1 và biển 2.",
       "Biển 2.",
@@ -4975,7 +4975,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Khi gặp biển nào xe ưu tiên theo luật định vẫn phải dừng lại?",
-    "image": "images/cau_329.png",
+    "image": "images/cau_329.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -4990,7 +4990,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cấm tất cả các loại xe cơ giới và thô sơ đi lại trên đường, trừ xe ưu tiên theo luật định (nếu đường vẫn cho xe chạy được)?",
-    "image": "images/cau_330.png",
+    "image": "images/cau_330.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5005,7 +5005,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào là biển \"Cấm xe chở hàng nguy hiểm\"?",
-    "image": "images/cau_331.png",
+    "image": "images/cau_331.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5020,7 +5020,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Gặp biển nào xe xích lô được phép đi vào?",
-    "image": "images/cau_332.png",
+    "image": "images/cau_332.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5036,7 +5036,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Gặp biển nào xe lam, xe xích lô máy được phép đi vào?",
-    "image": "images/cau_333.png",
+    "image": "images/cau_333.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5051,7 +5051,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển báo này có ý nghĩa như thế nào?",
-    "image": "images/cau_334.png",
+    "image": "images/cau_334.webp",
     "options": [
       "Đường cấm súc vật vận tải hàng hóa.",
       "Đường cấm súc vật vận tải hành khách.",
@@ -5066,7 +5066,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển báo này có ý nghĩa như thế nào?",
-    "image": "images/cau_335.png",
+    "image": "images/cau_335.webp",
     "options": [
       "Tốc độ tối đa cho phép về ban đêm cho các phương tiện là 70 km/h.",
       "Tốc độ tối thiểu cho phép về ban đêm cho các phương tiện là 70 km/h."
@@ -5080,7 +5080,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Khi gặp các biển này xe ưu tiên theo luật định (có tải trọng hay chiều cao toàn bộ vượt quá chỉ số ghi trên biển) có được phép đi qua hay không?",
-    "image": "images/cau_336.png",
+    "image": "images/cau_336.webp",
     "options": [
       "Được phép.",
       "Không được phép."
@@ -5094,7 +5094,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào hạn chế chiều cao của xe và hàng?",
-    "image": "images/cau_337.png",
+    "image": "images/cau_337.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5109,7 +5109,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển số 2 có ý nghĩa như thế nào?",
-    "image": "images/cau_338.png",
+    "image": "images/cau_338.webp",
     "options": [
       "Cho phép xe ô tô có tải trọng trục lớn hơn 7 tấn đi qua.",
       "Cho phép xe ô tô có tải trọng trên trục xe từ 7 tấn trở xuống đi qua."
@@ -5123,7 +5123,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển số 3 có ý nghĩa như thế nào?",
-    "image": "images/cau_339.png",
+    "image": "images/cau_339.webp",
     "options": [
       "Cấm các loại xe có tải trọng toàn bộ trên 10 tấn đi qua.",
       "Hạn chế khối lượng hàng hóa chở trên xe.",
@@ -5138,7 +5138,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cấm máy kéo kéo theo rơ moóc?",
-    "image": "images/cau_340.png",
+    "image": "images/cau_340.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5153,7 +5153,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Khi gặp biển số 1, xe ô tô tải có được đi vào không?",
-    "image": "images/cau_341.png",
+    "image": "images/cau_341.webp",
     "options": [
       "Được đi vào.",
       "Không được đi vào."
@@ -5167,7 +5167,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào không có hiệu lực đối với xe ô tô tải không kéo moóc?",
-    "image": "images/cau_342.png",
+    "image": "images/cau_342.webp",
     "options": [
       "Biển 1 và biển 2.",
       "Biển 2 và biển 3.",
@@ -5183,7 +5183,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cấm máy kéo?",
-    "image": "images/cau_343.png",
+    "image": "images/cau_343.webp",
     "options": [
       "Biển 1 và biển 2.",
       "Biển 1 và biển 3.",
@@ -5199,7 +5199,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Khi gặp biển này, xe mô tô ba bánh chở hàng có được phép rẽ trái hoặc rẽ phải hay không?",
-    "image": "images/cau_344.png",
+    "image": "images/cau_344.webp",
     "options": [
       "Được phép.",
       "Không được phép."
@@ -5213,7 +5213,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển này có hiệu lực đối với xe mô tô hai bánh, ba bánh chở hàng không?",
-    "image": "images/cau_345.png",
+    "image": "images/cau_345.webp",
     "options": [
       "Có.",
       "Không."
@@ -5227,7 +5227,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển này có ý nghĩa như thế nào?",
-    "image": "images/cau_346.png",
+    "image": "images/cau_346.webp",
     "options": [
       "Cấm xe cơ giới (trừ xe ưu tiên theo luật định) đi thẳng.",
       "Cấm các loại xe cơ giới và xe mô tô (trừ xe ưu tiên theo luật định) đi về bên trái và bên phải.",
@@ -5242,7 +5242,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển phụ đặt dưới biển cấm bóp còi có ý nghĩa như thế nào?",
-    "image": "images/cau_347.png",
+    "image": "images/cau_347.webp",
     "options": [
       "Báo khoảng cách đến nơi cấm bóp còi.",
       "Chiều dài đoạn đường cấm bóp còi từ nơi đặt biển.",
@@ -5257,7 +5257,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Chiều dài đoạn đường 500 m từ nơi đặt biển này, người lái xe có được phép bấm còi không?",
-    "image": "images/cau_348.png",
+    "image": "images/cau_348.webp",
     "options": [
       "Được phép.",
       "Không được phép."
@@ -5271,7 +5271,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào xe mô tô hai bánh được đi vào?",
-    "image": "images/cau_349.png",
+    "image": "images/cau_349.webp",
     "options": [
       "Biển 1 và biển 2.",
       "Biển 1 và biển 3.",
@@ -5286,7 +5286,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào xe mô tô hai bánh không được đi vào?",
-    "image": "images/cau_350.png",
+    "image": "images/cau_350.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5301,7 +5301,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Ba biển này có hiệu lực như thế nào?",
-    "image": "images/cau_351.png",
+    "image": "images/cau_351.webp",
     "options": [
       "Cấm các loại xe ở biển phụ đi vào.",
       "Cấm các loại xe cơ giới đi vào trừ loại xe ở biển phụ."
@@ -5315,7 +5315,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu chiều dài đoạn đường phải giữ cự ly tối thiểu giữa hai xe?",
-    "image": "images/cau_352.png",
+    "image": "images/cau_352.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5330,7 +5330,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu khoảng cách thực tế từ nơi đặt biển đến nơi cần cự ly tối thiểu giữa hai xe?",
-    "image": "images/cau_353.png",
+    "image": "images/cau_353.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5345,7 +5345,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển này có ý nghĩa như thế nào?",
-    "image": "images/cau_354.png",
+    "image": "images/cau_354.webp",
     "options": [
       "Cấm dừng xe về hướng bên trái.",
       "Cấm dừng và đỗ xe theo hướng bên phải.",
@@ -5360,7 +5360,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Theo hướng bên phải có được phép đỗ xe, dừng xe không?",
-    "image": "images/cau_355.png",
+    "image": "images/cau_355.webp",
     "options": [
       "Không được phép.",
       "Được phép."
@@ -5374,7 +5374,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Gặp biển này, xe ô tô sơ mi rơ moóc có chiều dài toàn bộ kể cả xe, moóc và hàng lớn hơn trị số ghi trên biển có được phép đi vào hay không?",
-    "image": "images/cau_356.png",
+    "image": "images/cau_356.webp",
     "options": [
       "Không được phép.",
       "Được phép."
@@ -5388,7 +5388,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Xe ô tô chở hàng vượt quá phía trước và sau thùng xe, mỗi phía quá 10% chiều dài toàn bộ thân xe, tổng chiều dài xe (cả hàng) từ trước đến sau nhỏ hơn trị số ghi trên biển thì có được phép đi vào không?",
-    "image": "images/cau_357.png",
+    "image": "images/cau_357.webp",
     "options": [
       "Không được phép.",
       "Được phép."
@@ -5402,7 +5402,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển này có ý nghĩa như thế nào?",
-    "image": "images/cau_358.png",
+    "image": "images/cau_358.webp",
     "options": [
       "Cấm ô tô buýt.",
       "Cấm xe ô tô khách.",
@@ -5417,7 +5417,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển này có ý nghĩa như thế nào?",
-    "image": "images/cau_359.png",
+    "image": "images/cau_359.webp",
     "options": [
       "Hạn chế chiều cao của xe và hàng.",
       "Hạn chế chiều ngang của xe và hàng.",
@@ -5432,7 +5432,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào là biển \"Tốc độ tối đa cho phép về ban đêm\"?",
-    "image": "images/cau_360.png",
+    "image": "images/cau_360.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5447,7 +5447,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển báo nào báo hiệu bắt đầu đoạn đường vào phạm vi khu dân cư, các phương tiện tham gia giao thông phải tuân theo các quy định đi đường được áp dụng ở khu đông dân cư?",
-    "image": "images/cau_361.png",
+    "image": "images/cau_361.webp",
     "options": [
       "Biển 1.",
       "Biển 2."
@@ -5461,7 +5461,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu hạn chế tốc độ của phương tiện không vượt quá trị số ghi trên biển? 1                         2",
-    "image": "images/cau_362.png",
+    "image": "images/cau_362.webp",
     "options": [
       "Biển 1.",
       "Biển 2."
@@ -5475,7 +5475,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Trong các biển báo dưới đây biển nào báo hiệu \"Kết thúc đường cao tốc\"?",
-    "image": "images/cau_363.png",
+    "image": "images/cau_363.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5490,7 +5490,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Số 50 ghi trên biển báo dưới đây có ý nghĩa như thế nào?",
-    "image": "images/cau_364.png",
+    "image": "images/cau_364.webp",
     "options": [
       "Tốc độ tối đa các xe cơ giới được phép chạy.",
       "Tốc độ tối thiểu các xe cơ giới được phép chạy."
@@ -5504,7 +5504,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào dưới đây chỉ dẫn bắt đầu đường cao tốc phân làn đường có tốc độ khác nhau?",
-    "image": "images/cau_365.png",
+    "image": "images/cau_365.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5519,7 +5519,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển báo dưới đây có ý nghĩa như thế nào?",
-    "image": "images/cau_366.png",
+    "image": "images/cau_366.webp",
     "options": [
       "Báo hiệu tốc độ tối đa cho phép các xe cơ giới chạy.",
       "Báo hiệu tốc độ tối thiểu cho phép các xe cơ giới chạy."
@@ -5533,7 +5533,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Gặp biển nào người lái xe phải nhường đường cho người đi bộ?",
-    "image": "images/cau_367.png",
+    "image": "images/cau_367.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5548,7 +5548,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào chỉ đường dành cho người đi bộ, các loại xe không được đi vào khi gặp biển này?",
-    "image": "images/cau_368.png",
+    "image": "images/cau_368.webp",
     "options": [
       "Biển 1.",
       "Biển 1 và biển 3.",
@@ -5564,7 +5564,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Đường dành cho xe thô sơ\"?",
-    "image": "images/cau_369.png",
+    "image": "images/cau_369.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5579,7 +5579,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu sắp đến chỗ giao nhau nguy hiểm?",
-    "image": "images/cau_370.png",
+    "image": "images/cau_370.webp",
     "options": [
       "Biển 1.",
       "Biển 1 và biển 2.",
@@ -5595,7 +5595,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Giao nhau với đường sắt có rào chắn\"?",
-    "image": "images/cau_371.png",
+    "image": "images/cau_371.webp",
     "options": [
       "Biển 1.",
       "Biển 2 và biển 3.",
@@ -5610,7 +5610,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Giao nhau có tín hiệu đèn\"?",
-    "image": "images/cau_372.png",
+    "image": "images/cau_372.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5626,7 +5626,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu nguy hiểm giao nhau với đường sắt?",
-    "image": "images/cau_373.png",
+    "image": "images/cau_373.webp",
     "options": [
       "Biển 1 và biển 2.",
       "Biển 1 và biển 3.",
@@ -5642,7 +5642,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu đường bộ giao nhau với đường sắt không có rào chắn?",
-    "image": "images/cau_374.png",
+    "image": "images/cau_374.webp",
     "options": [
       "Biển 1 và biển 2.",
       "Biển 1 và biển 3.",
@@ -5658,7 +5658,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu sắp đến chỗ giao nhau giữa đường bộ và đường sắt?",
-    "image": "images/cau_375.png",
+    "image": "images/cau_375.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5674,7 +5674,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Cửa chui\"?",
-    "image": "images/cau_376.png",
+    "image": "images/cau_376.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5689,7 +5689,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Hai biển này có ý nghĩa như thế nào?",
-    "image": "images/cau_377.png",
+    "image": "images/cau_377.webp",
     "options": [
       "Để chỉ nơi đường sắt giao vuông góc với đường bộ không có rào chắn.",
       "Để báo trước sắp đến vị trí giao cắt đường bộ với đường sắt cùng mức, không vuông góc và không có người gác, không có rào chắn.",
@@ -5704,7 +5704,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Nơi đường sắt giao vuông góc với đường bộ\"?",
-    "image": "images/cau_378.png",
+    "image": "images/cau_378.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5720,7 +5720,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Các biển này có ý nghĩa như thế nào?",
-    "image": "images/cau_379.png",
+    "image": "images/cau_379.webp",
     "options": [
       "Nơi đường sắt giao nhau với đường bộ.",
       "Nơi đường sắt giao vuông góc với đường bộ.",
@@ -5735,7 +5735,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Hết đoạn đường ưu tiên\"?",
-    "image": "images/cau_380.png",
+    "image": "images/cau_380.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5750,7 +5750,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu, chỉ dẫn xe đi trên đường này được quyền ưu tiên qua nơi giao nhau?",
-    "image": "images/cau_381.png",
+    "image": "images/cau_381.webp",
     "options": [
       "Biển 1 và biển 2.",
       "Biển 1 và biển 3.",
@@ -5766,7 +5766,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Giao nhau với đường không ưu tiên\"?",
-    "image": "images/cau_382.png",
+    "image": "images/cau_382.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5782,7 +5782,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Giao nhau với đường ưu tiên\"?",
-    "image": "images/cau_383.png",
+    "image": "images/cau_383.webp",
     "options": [
       "Biển 1 và biển 3.",
       "Biển 2.",
@@ -5797,7 +5797,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Đường bị thu hẹp\"?",
-    "image": "images/cau_384.png",
+    "image": "images/cau_384.webp",
     "options": [
       "Biển 1 và biển 2.",
       "Biển 1 và biển 3.",
@@ -5813,7 +5813,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Khi gặp biển nào, người lái xe phải giảm tốc độ, chú ý xe đi ngược chiều, xe đi ở phía đường bị hẹp phải nhường đường cho xe đi ngược chiều?",
-    "image": "images/cau_385.png",
+    "image": "images/cau_385.webp",
     "options": [
       "Biển 1.",
       "Biển 1 và biển 3.",
@@ -5829,7 +5829,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Giao nhau với đường ưu tiên\"?",
-    "image": "images/cau_386.png",
+    "image": "images/cau_386.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5845,7 +5845,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Đường giao nhau\" của các tuyến đường cùng cấp?",
-    "image": "images/cau_387.png",
+    "image": "images/cau_387.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5860,7 +5860,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Giao nhau với đường không ưu tiên\"?",
-    "image": "images/cau_388.png",
+    "image": "images/cau_388.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5875,7 +5875,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Đường hai chiều\"?",
-    "image": "images/cau_389.png",
+    "image": "images/cau_389.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5890,7 +5890,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu phải giảm tốc độ, nhường đường cho xe cơ giới đi ngược chiều qua đường hẹp?",
-    "image": "images/cau_390.png",
+    "image": "images/cau_390.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5905,7 +5905,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào chỉ dẫn \"Được ưu tiên qua đường hẹp\"?",
-    "image": "images/cau_391.png",
+    "image": "images/cau_391.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5921,7 +5921,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Đường đôi\"?",
-    "image": "images/cau_392.png",
+    "image": "images/cau_392.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5936,7 +5936,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Đường đôi\"?",
-    "image": "images/cau_393.png",
+    "image": "images/cau_393.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5951,7 +5951,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Kết thúc đường đôi\"?",
-    "image": "images/cau_394.png",
+    "image": "images/cau_394.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5966,7 +5966,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Giao nhau với đường hai chiều\"?",
-    "image": "images/cau_395.png",
+    "image": "images/cau_395.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5981,7 +5981,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Đường hai chiều\"?",
-    "image": "images/cau_396.png",
+    "image": "images/cau_396.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -5996,7 +5996,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Giao nhau với đường hai chiều\"?",
-    "image": "images/cau_397.png",
+    "image": "images/cau_397.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6011,7 +6011,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Chú ý chướng ngại vật\"?",
-    "image": "images/cau_398.png",
+    "image": "images/cau_398.webp",
     "options": [
       "Biển 1.",
       "Biển 2 và biển 3.",
@@ -6026,7 +6026,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào chỉ dẫn cho người tham gia giao thông biết vị trí và khoảng cách có làn đường cứu nạn hay làn thoát xe khẩn cấp?",
-    "image": "images/cau_399.png",
+    "image": "images/cau_399.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6041,7 +6041,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Đường hầm\"?",
-    "image": "images/cau_400.png",
+    "image": "images/cau_400.webp",
     "options": [
       "Cả ba biển.",
       "Biển 2.",
@@ -6056,7 +6056,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào dưới đây là biển \"Cầu hẹp\"?",
-    "image": "images/cau_401.png",
+    "image": "images/cau_401.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6071,7 +6071,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào dưới đây là biển \"Cầu quay - cầu cất\"?",
-    "image": "images/cau_402.png",
+    "image": "images/cau_402.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6086,7 +6086,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào dưới đây là biển \"Kè, vực sâu phía trước\"?",
-    "image": "images/cau_403.png",
+    "image": "images/cau_403.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6101,7 +6101,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào sau đây là biển \"Kè, vực sâu bên đường phía bên trái\"?",
-    "image": "images/cau_404.png",
+    "image": "images/cau_404.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6117,7 +6117,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào sau đây là biển \"Kè, vực sâu bên đường phía bên phải\"?",
-    "image": "images/cau_405.png",
+    "image": "images/cau_405.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6132,7 +6132,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào sau đây là biển \"Đường trơn\"?",
-    "image": "images/cau_406.png",
+    "image": "images/cau_406.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6147,7 +6147,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào sau đây là biển \"Lề đường nguy hiểm\"?",
-    "image": "images/cau_407.png",
+    "image": "images/cau_407.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6162,7 +6162,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào sau đây báo trước gần tới đoạn đường đang tiến hành thi công sửa chữa?",
-    "image": "images/cau_408.png",
+    "image": "images/cau_408.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6178,7 +6178,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào sau đây cảnh báo nguy hiểm đoạn đường thường xảy ra tai nạn?",
-    "image": "images/cau_409.png",
+    "image": "images/cau_409.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6193,7 +6193,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào dưới đây báo hiệu đoạn đường hay xảy ra ùn tắc giao thông?",
-    "image": "images/cau_410.png",
+    "image": "images/cau_410.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6209,7 +6209,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Gặp biển nào người tham gia giao thông phải đi chậm và thận trọng đề phòng khả năng xuất hiện và di chuyển bất ngờ của trẻ em trên mặt đường?",
-    "image": "images/cau_411.png",
+    "image": "images/cau_411.webp",
     "options": [
       "Biển 1.",
       "Biển 2."
@@ -6223,7 +6223,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào chỉ dẫn nơi bắt đầu đoạn đường dành cho người đi bộ?",
-    "image": "images/cau_412.png",
+    "image": "images/cau_412.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6238,7 +6238,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào dưới đây báo hiệu gần đến đoạn đường thường có trẻ em đi ngang qua?",
-    "image": "images/cau_413.png",
+    "image": "images/cau_413.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6254,7 +6254,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Gặp biển nào dưới đây người tham gia giao thông cần phải điều chỉnh tốc độ xe chạy cho thích hợp, đề phòng gió ngang thổi mạnh gây lật xe?",
-    "image": "images/cau_414.png",
+    "image": "images/cau_414.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6269,7 +6269,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào sau đây là biển \"Dốc xuống nguy hiểm\"?",
-    "image": "images/cau_415.png",
+    "image": "images/cau_415.webp",
     "options": [
       "Biển 1.",
       "Biển 2."
@@ -6283,7 +6283,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào sau đây là biển \"Dốc lên nguy hiểm\"?",
-    "image": "images/cau_416.png",
+    "image": "images/cau_416.webp",
     "options": [
       "Biển 1.",
       "Biển 2."
@@ -6297,7 +6297,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển báo này có ý nghĩa như thế nào?",
-    "image": "images/cau_417.png",
+    "image": "images/cau_417.webp",
     "options": [
       "Chỗ ngoặt nguy hiểm có nguy cơ lật xe bên phải khi đường cong vòng sang trái.",
       "Chỗ ngoặt nguy hiểm có nguy cơ lật xe bên trái khi đường cong vòng sang phải."
@@ -6311,7 +6311,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển báo này có ý nghĩa như thế nào?",
-    "image": "images/cau_418.png",
+    "image": "images/cau_418.webp",
     "options": [
       "Báo trước đoạn đường có gió ngang.",
       "Báo trước đoạn đường trơn trượt.",
@@ -6326,7 +6326,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển báo này có ý nghĩa như thế nào?",
-    "image": "images/cau_419.png",
+    "image": "images/cau_419.webp",
     "options": [
       "Báo hiệu đường có ổ gà, lồi lõm.",
       "Báo hiệu đường có gồ giảm tốc phía trước."
@@ -6340,7 +6340,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển báo này có ý nghĩa như thế nào?",
-    "image": "images/cau_420.png",
+    "image": "images/cau_420.webp",
     "options": [
       "Báo hiệu đường có ổ gà, lồi lõm.",
       "Báo hiệu đường có gồ giảm tốc phía trước."
@@ -6354,7 +6354,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển báo dưới đây có ý nghĩa như thế nào?",
-    "image": "images/cau_421.png",
+    "image": "images/cau_421.webp",
     "options": [
       "Để báo trước gần tới đoạn đường có hiện tượng đất đá từ trên ta luy dương sụt lở bất ngờ gây nguy hiểm cho xe cộ và người đi đường.",
       "Để báo trước nơi có kết cấu mặt đường rời rạc, khi phương tiện đi qua, làm cho các viên đá, sỏi văng lên gây nguy hiểm và mất an toàn cho người và phương tiện tham gia giao thông.",
@@ -6369,7 +6369,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Các biển báo này có ý nghĩa như thế nào?",
-    "image": "images/cau_422.png",
+    "image": "images/cau_422.webp",
     "options": [
       "Để báo trước gần tới đoạn đường có hiện tượng đất đá từ trên ta luy dương sụt lở bất ngờ gây nguy hiểm cho xe cộ và người đi đường.",
       "Để báo trước nơi có kết cấu mặt đường rời rạc, khi phương tiện đi qua, làm cho các viên đá, sỏi văng lên gây nguy hiểm và mất an toàn cho người và phương tiện tham gia giao thông.",
@@ -6384,7 +6384,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển báo này có ý nghĩa như thế nào?",
-    "image": "images/cau_423.png",
+    "image": "images/cau_423.webp",
     "options": [
       "Để báo trước gần tới đoạn đường có hiện tượng đất đá từ trên ta luy dương sụt lở bất ngờ gây nguy hiểm cho xe cộ và người đi đường.",
       "Để báo trước nơi có kết cấu mặt đường rời rạc, khi phương tiện đi qua, làm cho các viên đá, sỏi văng lên gây nguy hiểm và mất an toàn cho người và phương tiện tham gia giao thông.",
@@ -6399,7 +6399,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Gặp biển báo này người lái xe phải xử lý thế nào?",
-    "image": "images/cau_424.png",
+    "image": "images/cau_424.webp",
     "options": [
       "Đi chậm, quan sát và dừng lại nếu gặp gia súc trên đường.",
       "Bấm còi to để gia súc tránh đường và nhanh chóng di chuyển qua đoạn đường có gia súc."
@@ -6413,7 +6413,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển báo này có ý nghĩa như thế nào?",
-    "image": "images/cau_425.png",
+    "image": "images/cau_425.webp",
     "options": [
       "Báo hiệu khu vực nguy hiểm thường xuyên có sét đánh.",
       "Báo hiệu khu vực có đường dây điện cắt ngang phía trên tuyến đường."
@@ -6427,7 +6427,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu các phương tiện phải đi đúng làn đường quy định và tuân thủ tốc độ tối đa cho phép?",
-    "image": "images/cau_426.png",
+    "image": "images/cau_426.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6442,7 +6442,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu các phương tiện phải tuân thủ tốc độ tối đa cho phép trên từng làn đường?",
-    "image": "images/cau_427.png",
+    "image": "images/cau_427.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6457,7 +6457,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Đường dành cho xe ô tô\"?",
-    "image": "images/cau_428.png",
+    "image": "images/cau_428.webp",
     "options": [
       "Biển 1.",
       "Biển 2."
@@ -6471,7 +6471,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Hết đoạn đường dành cho xe ô tô\"?",
-    "image": "images/cau_429.png",
+    "image": "images/cau_429.webp",
     "options": [
       "Biển 1.",
       "Biển 2."
@@ -6485,7 +6485,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Khi gặp biển nào thì các phương tiện không được đi vào, trừ xe ô tô và xe mô tô?",
-    "image": "images/cau_430.png",
+    "image": "images/cau_430.webp",
     "options": [
       "Biển 1.",
       "Biển 2."
@@ -6499,7 +6499,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển này có ý nghĩa như thế nào?",
-    "image": "images/cau_431.png",
+    "image": "images/cau_431.webp",
     "options": [
       "Chỉ hướng đi phải theo.",
       "Biển báo hiệu cho người lái xe biết số lượng làn đường trên mặt đường và hướng đi trên mỗi làn đường phải theo.",
@@ -6514,7 +6514,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào (đặt trước ngã ba, ngã tư) cho phép xe được rẽ sang hướng khác?",
-    "image": "images/cau_432.png",
+    "image": "images/cau_432.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6529,7 +6529,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Hướng đi thẳng phải theo\"?",
-    "image": "images/cau_433.png",
+    "image": "images/cau_433.webp",
     "options": [
       "Biển 1.",
       "Biển 2."
@@ -6543,7 +6543,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Đường một chiều\"?",
-    "image": "images/cau_434.png",
+    "image": "images/cau_434.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6558,7 +6558,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Trong các biển dưới đây biển nào là biển \"Hết tốc độ tối đa cho phép\"?",
-    "image": "images/cau_435.png",
+    "image": "images/cau_435.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6574,7 +6574,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Hiệu lực của biển \"Tốc độ tối đa cho phép\" hết tác dụng khi gặp biển nào dưới đây?",
-    "image": "images/cau_436.png",
+    "image": "images/cau_436.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6590,7 +6590,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Trong các biển dưới đây biển nào là biển \"Hết tốc độ tối thiểu\"?",
-    "image": "images/cau_437.png",
+    "image": "images/cau_437.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6606,7 +6606,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào dưới đây báo hiệu hết cấm vượt?",
-    "image": "images/cau_438.png",
+    "image": "images/cau_438.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6622,7 +6622,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Trong các biển dưới đây biển nào là biển \"Hết mọi lệnh cấm\"?",
-    "image": "images/cau_439.png",
+    "image": "images/cau_439.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6638,7 +6638,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cho phép được quay đầu xe đi theo hướng ngược lại khi đặt biển trước ngã ba, ngã tư?",
-    "image": "images/cau_440.png",
+    "image": "images/cau_440.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6654,7 +6654,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào không cho phép rẽ phải?",
-    "image": "images/cau_441.png",
+    "image": "images/cau_441.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6670,7 +6670,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Khi đến chỗ giao nhau, gặp biển nào thì người lái xe không được cho xe đi thẳng, phải rẽ sang hướng khác?",
-    "image": "images/cau_442.png",
+    "image": "images/cau_442.webp",
     "options": [
       "Biển 1 và biển 2.",
       "Biển 1 và biển 3.",
@@ -6686,7 +6686,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào cho phép quay đầu xe?",
-    "image": "images/cau_443.png",
+    "image": "images/cau_443.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6701,7 +6701,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào chỉ dẫn tên đường trên các tuyến đường đối ngoại?",
-    "image": "images/cau_444.png",
+    "image": "images/cau_444.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6717,7 +6717,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển số 1 có ý nghĩa như thế nào?",
-    "image": "images/cau_445.png",
+    "image": "images/cau_445.webp",
     "options": [
       "Biển chỉ dẫn hết cấm đỗ xe theo giờ trong khu vực.",
       "Biển chỉ dẫn hết hiệu lực khu vực đỗ xe trên các tuyến đường đối ngoại.",
@@ -6732,7 +6732,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển số 3 có ý nghĩa như thế nào?",
-    "image": "images/cau_446.png",
+    "image": "images/cau_446.webp",
     "options": [
       "Biển chỉ dẫn khu vực cấm đỗ xe trên các tuyến đường đối ngoại.",
       "Biển chỉ dẫn khu vực đỗ xe trên các tuyến đường đối ngoại.",
@@ -6748,7 +6748,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Đường phía trước có làn đường dành cho ô tô khách\"?",
-    "image": "images/cau_447.png",
+    "image": "images/cau_447.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6763,7 +6763,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Rẽ ra đường có làn đường dành cho ô tô khách\"?",
-    "image": "images/cau_448.png",
+    "image": "images/cau_448.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6778,7 +6778,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào đặt trên đường chính trước khi đến nơi đường giao nhau để rẽ vào đường cụt?",
-    "image": "images/cau_449.png",
+    "image": "images/cau_449.webp",
     "options": [
       "Biển 1 và 2.",
       "Cả ba biển.",
@@ -6793,7 +6793,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào chỉ dẫn cho người đi bộ sử dụng cầu vượt qua đường?",
-    "image": "images/cau_450.png",
+    "image": "images/cau_450.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6809,7 +6809,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào chỉ dẫn cho người đi bộ sử dụng hầm chui qua đường?",
-    "image": "images/cau_451.png",
+    "image": "images/cau_451.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6825,7 +6825,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Nơi đỗ xe dành cho người khuyết tật\"?",
-    "image": "images/cau_452.png",
+    "image": "images/cau_452.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6840,7 +6840,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Gặp biển báo này, người lái xe phải đỗ xe như thế nào?",
-    "image": "images/cau_453.png",
+    "image": "images/cau_453.webp",
     "options": [
       "Đỗ xe hoàn toàn trên hè phố.",
       "Đỗ xe hoàn toàn dưới lòng đường.",
@@ -6855,7 +6855,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Gặp biển báo này, người tham gia giao thông phải xử lý như thế nào?",
-    "image": "images/cau_454.png",
+    "image": "images/cau_454.webp",
     "options": [
       "Dừng xe tại khu vực có trạm Cảnh sát giao thông.",
       "Tiếp tục lưu thông với tốc độ bình thường.",
@@ -6870,7 +6870,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Gặp biển báo dưới đây, người lái xe có bắt buộc phải chạy vòng theo đảo an toàn theo hướng mũi tên khi muốn chuyển hướng hay không?",
-    "image": "images/cau_455.png",
+    "image": "images/cau_455.webp",
     "options": [
       "Bắt buộc.",
       "Không bắt buộc."
@@ -6884,7 +6884,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào dưới đây chỉ dẫn địa giới hành chính giữa các thành phố, tỉnh, huyện?",
-    "image": "images/cau_456.png",
+    "image": "images/cau_456.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -6899,7 +6899,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Cầu vượt liên thông\"?",
-    "image": "images/cau_457.png",
+    "image": "images/cau_457.webp",
     "options": [
       "Biển 2 và biển 3.",
       "Biển 1 và biển 2.",
@@ -6915,7 +6915,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển số 1 có ý nghĩa như thế nào?",
-    "image": "images/cau_458.png",
+    "image": "images/cau_458.webp",
     "options": [
       "Đi thẳng hoặc rẽ trái trên cầu vượt.",
       "Đi thẳng hoặc rẽ phải trên cầu vượt.",
@@ -6930,7 +6930,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu \"Tuyến đường cầu vượt cắt qua\"?",
-    "image": "images/cau_459.png",
+    "image": "images/cau_459.webp",
     "options": [
       "Biển 1 và biển 2.",
       "Biển 1 và biển 3.",
@@ -6945,7 +6945,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển báo dưới đây có ý nghĩa như thế nào?",
-    "image": "images/cau_460.png",
+    "image": "images/cau_460.webp",
     "options": [
       "Chỉ dẫn khoảng cách đến làn đường cứu nạn (làn thoát xe khẩn cấp).",
       "Báo hiệu đường cụt phía trước.",
@@ -6961,7 +6961,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Tại đoạn đường có biển \"Làn đường dành riêng cho từng loại xe\" dưới đây, các phương tiện có được phép chuyển sang làn khác để đi theo hành trình mong muốn khi đến gần nơi đường bộ giao nhau hay không?",
-    "image": "images/cau_461.png",
+    "image": "images/cau_461.webp",
     "options": [
       "Được phép chuyển sang làn khác.",
       "Không được phép chuyển sang làn khác, chỉ được đi trong làn quy định theo biển."
@@ -6975,7 +6975,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Tại đoạn đường có cắm biển dưới đây, xe tải và xe khách có được phép đi vào không?",
-    "image": "images/cau_462.png",
+    "image": "images/cau_462.webp",
     "options": [
       "Có.",
       "Không."
@@ -6989,7 +6989,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Tại đoạn đường có cắm biển dưới đây, xe tải và xe khách có được phép đi vào không?",
-    "image": "images/cau_463.png",
+    "image": "images/cau_463.webp",
     "options": [
       "Có.",
       "Không."
@@ -7003,7 +7003,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào báo hiệu kết thúc đường cao tốc?",
-    "image": "images/cau_464.png",
+    "image": "images/cau_464.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -7018,7 +7018,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển này có ý nghĩa như thế nào?",
-    "image": "images/cau_465.png",
+    "image": "images/cau_465.webp",
     "options": [
       "Chỉ dẫn sắp đến vị trí nhập làn xe.",
       "Chỉ dẫn vị trí nhập làn xe cách 250 m.",
@@ -7033,7 +7033,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào chỉ dẫn nhập làn xe?",
-    "image": "images/cau_466.png",
+    "image": "images/cau_466.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -7048,7 +7048,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển này có ý nghĩa như thế nào?",
-    "image": "images/cau_467.png",
+    "image": "images/cau_467.webp",
     "options": [
       "Bắt đầu đường cao tốc.",
       "Chỉ dẫn địa giới đường cao tốc, chiều dài đường cao tốc.",
@@ -7064,7 +7064,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Ý nghĩa các biểu tượng ghi trên biển chỉ dẫn là như thế nào?",
-    "image": "images/cau_468.png",
+    "image": "images/cau_468.webp",
     "options": [
       "Xăng dầu, ăn uống, thông tin, sửa chữa xe.",
       "Xăng dầu, ăn uống, nhà nghỉ, sửa chữa xe.",
@@ -7079,7 +7079,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển này có ý nghĩa như thế nào?",
-    "image": "images/cau_469.png",
+    "image": "images/cau_469.webp",
     "options": [
       "Chỉ dẫn đến trạm kiểm tra tải trọng xe.",
       "Chỉ dẫn hướng rẽ vào nơi đặt trạm kiểm tra tải trọng xe.",
@@ -7094,7 +7094,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Trên đường cao tốc, gặp biển nào thì người lái xe đi theo hướng bên trái để tránh chướng ngại vật?",
-    "image": "images/cau_470.png",
+    "image": "images/cau_470.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -7109,7 +7109,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Trên đường cao tốc, gặp biển nào thì người lái xe đi theo hướng bên phải để tránh chướng ngại vật?",
-    "image": "images/cau_471.png",
+    "image": "images/cau_471.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -7124,7 +7124,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Trên đường cao tốc, gặp biển nào thì người lái xe đi được cả hai hướng (bên trái hoặc bên phải) để tránh chướng ngại vật?",
-    "image": "images/cau_472.png",
+    "image": "images/cau_472.webp",
     "options": [
       "Biển 1.",
       "Biển 2.",
@@ -7139,7 +7139,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Trên đường cao tốc, gặp biển nào người lái xe phải chú ý đổi hướng đi khi sắp vào đường cong nguy hiểm?",
-    "image": "images/cau_473.png",
+    "image": "images/cau_473.webp",
     "options": [
       "Biển 1 và biển 2.",
       "Biển 1 và biển 3.",
@@ -7155,7 +7155,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển nào chỉ dẫn người lái xe đi được cả hai hướng?",
-    "image": "images/cau_474.png",
+    "image": "images/cau_474.webp",
     "options": [
       "Biển 1.",
       "Biển 2."
@@ -7169,7 +7169,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Biển này có ý nghĩa như thế nào?",
-    "image": "images/cau_475.png",
+    "image": "images/cau_475.webp",
     "options": [
       "Chỉ dẫn chướng ngại vật phía trước để cảnh báo phía trước có sự cản trở lưu thông bình thường (nằm bên trong phần xe chạy hay ngay sát phần đường xe chạy) và chỉ dẫn hướng đi qua đó cần đặt biển.",
       "Chỉ dẫn hướng rẽ để nhắc người điều khiển phương tiện chuẩn bị đổi hướng đi khi sắp vào đường cong nguy hiểm, có bán kính cong nhỏ."
@@ -7183,7 +7183,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Vạch mũi tên chỉ hướng trên mặt đường nào dưới đây cho phép xe chỉ được đi thẳng và rẽ phải?",
-    "image": "images/cau_476.png",
+    "image": "images/cau_476.webp",
     "options": [
       "Vạch 1.",
       "Vạch 2 và vạch 3.",
@@ -7199,7 +7199,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Vạch kẻ đường nào dưới đây là vạch phân chia các làn xe cùng chiều?",
-    "image": "images/cau_477.png",
+    "image": "images/cau_477.webp",
     "options": [
       "Vạch 1.",
       "Vạch 2.",
@@ -7215,7 +7215,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Vạch kẻ đường nào dưới đây là vạch phân chia hai chiều xe chạy (vạch tim đường), xe không được lấn làn, không được đè lên vạch?",
-    "image": "images/cau_478.png",
+    "image": "images/cau_478.webp",
     "options": [
       "Vạch 1.",
       "Vạch 2.",
@@ -7231,7 +7231,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Vạch kẻ đường nào dưới đây là vạch phân chia hai chiều xe chạy (vạch tim đường)?",
-    "image": "images/cau_479.png",
+    "image": "images/cau_479.webp",
     "options": [
       "Vạch 1.",
       "Vạch 2.",
@@ -7247,7 +7247,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Các vạch dưới đây có tác dụng như thế nào?",
-    "image": "images/cau_480.png",
+    "image": "images/cau_480.webp",
     "options": [
       "Phân chia hai chiều xe chạy ngược chiều nhau.",
       "Phân chia các làn xe chạy cùng chiều nhau."
@@ -7261,7 +7261,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Các vạch dưới đây có tác dụng như thế nào?",
-    "image": "images/cau_481.png",
+    "image": "images/cau_481.webp",
     "options": [
       "Phân chia hai chiều xe chạy ngược chiều nhau.",
       "Phân chia các làn xe chạy cùng chiều nhau."
@@ -7275,7 +7275,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Khi gặp vạch kẻ đường nào các xe được phép đè vạch?",
-    "image": "images/cau_482.png",
+    "image": "images/cau_482.webp",
     "options": [
       "Vạch 1.",
       "Vạch 2.",
@@ -7291,7 +7291,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Vạch dưới đây có tác dụng như thế nào?",
-    "image": "images/cau_483.png",
+    "image": "images/cau_483.webp",
     "options": [
       "Để xác định làn đường.",
       "Báo hiệu người lái xe chỉ được phép đi thẳng.",
@@ -7306,7 +7306,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Vạch dưới đây có ý nghĩa như thế nào?",
-    "image": "images/cau_484.png",
+    "image": "images/cau_484.webp",
     "options": [
       "Báo cho người điều khiển không được dừng phương tiện trong phạm vi phần mặt đường có bố trí vạch để tránh ùn tắc giao thông.",
       "Báo hiệu sắp đến chỗ có bố trí vạch đi bộ qua đường.",
@@ -7321,7 +7321,7 @@
     "chapter": 5,
     "chapter_name": "Báo hiệu đường bộ",
     "question": "Vạch dưới đây có ý nghĩa như thế nào?",
-    "image": "images/cau_485.png",
+    "image": "images/cau_485.webp",
     "options": [
       "Vị trí dừng xe của các phương tiện vận tải hành khách công cộng.",
       "Báo cho người điều khiển được dừng phương tiện trong phạm vi phần mặt đường có bố trí vạch để tránh ùn tắc giao thông.",
@@ -7336,7 +7336,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, xe nào chấp hành đúng quy tắc giao thông?",
-    "image": "images/cau_486.png",
+    "image": "images/cau_486.webp",
     "options": [
       "Xe khách, xe tải, xe mô tô.",
       "Xe tải, xe mô tô.",
@@ -7351,7 +7351,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_487.png",
+    "image": "images/cau_487.webp",
     "options": [
       "Xe tải, xe khách, xe con, xe mô tô.",
       "Xe tải, xe mô tô, xe khách, xe con.",
@@ -7367,7 +7367,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_488.png",
+    "image": "images/cau_488.webp",
     "options": [
       "Xe công an đi làm nhiệm vụ khẩn cấp, xe con, xe tải, xe khách.",
       "Xe công an đi làm nhiệm vụ khẩn cấp, xe khách, xe con, xe tải.",
@@ -7383,7 +7383,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_489.png",
+    "image": "images/cau_489.webp",
     "options": [
       "Xe tải, xe công an đi làm nhiệm vụ khẩn cấp, xe khách, xe con.",
       "Xe công an đi làm nhiệm vụ khẩn cấp, xe khách, xe con, xe tải.",
@@ -7399,7 +7399,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_490.png",
+    "image": "images/cau_490.webp",
     "options": [
       "Xe tải, xe con, xe mô tô.",
       "Xe con, xe tải, xe mô tô.",
@@ -7415,7 +7415,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào phải nhường đường trong trường hợp này?",
-    "image": "images/cau_491.png",
+    "image": "images/cau_491.webp",
     "options": [
       "Xe con.",
       "Xe tải."
@@ -7429,7 +7429,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Trường hợp này xe nào được quyền đi trước?",
-    "image": "images/cau_492.png",
+    "image": "images/cau_492.webp",
     "options": [
       "Xe mô tô.",
       "Xe con."
@@ -7443,7 +7443,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_493.png",
+    "image": "images/cau_493.webp",
     "options": [
       "Xe con (A), xe cứu thương đi làm nhiệm vụ cấp cứu, xe con (B).",
       "Xe cứu thương đi làm nhiệm vụ cấp cứu, xe con (B), xe con (A).",
@@ -7458,7 +7458,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_494.png",
+    "image": "images/cau_494.webp",
     "options": [
       "Xe cứu thương đi làm nhiệm vụ cấp cứu, xe chữa cháy đi làm nhiệm vụ chữa cháy, xe con.",
       "Xe chữa cháy đi làm nhiệm vụ chữa cháy, xe cứu thương đi làm nhiệm vụ cấp cứu, xe con.",
@@ -7473,7 +7473,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào được quyền đi trước trong trường hợp này?",
-    "image": "images/cau_495.png",
+    "image": "images/cau_495.webp",
     "options": [
       "Xe mô tô.",
       "Xe cứu thương đi làm nhiệm vụ cấp cứu."
@@ -7487,7 +7487,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, xe nào phải nhường đường đi cuối cùng qua nơi giao nhau này?",
-    "image": "images/cau_496.png",
+    "image": "images/cau_496.webp",
     "options": [
       "Xe khách.",
       "Xe tải.",
@@ -7502,7 +7502,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, xe nào phải nhường đường là đúng quy tắc giao thông?",
-    "image": "images/cau_497.png",
+    "image": "images/cau_497.webp",
     "options": [
       "Xe con.",
       "Xe tải."
@@ -7516,7 +7516,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào được quyền đi trước trong trường hợp này?",
-    "image": "images/cau_498.png",
+    "image": "images/cau_498.webp",
     "options": [
       "Xe công an đi làm nhiệm vụ khẩn cấp.",
       "Xe chữa cháy đi làm nhiệm vụ chữa cháy."
@@ -7530,7 +7530,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo tín hiệu đèn, xe nào được phép đi?",
-    "image": "images/cau_499.png",
+    "image": "images/cau_499.webp",
     "options": [
       "Xe con và xe khách.",
       "Xe mô tô."
@@ -7544,7 +7544,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo tín hiệu đèn, xe nào đi là đúng quy tắc giao thông?",
-    "image": "images/cau_500.png",
+    "image": "images/cau_500.webp",
     "options": [
       "Xe khách, xe mô tô.",
       "Xe con, xe tải.",
@@ -7559,7 +7559,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Trong trường hợp này xe nào được quyền đi trước?",
-    "image": "images/cau_501.png",
+    "image": "images/cau_501.webp",
     "options": [
       "Xe công an đi làm nhiệm vụ khẩn cấp.",
       "Xe quân sự đi làm nhiệm vụ khẩn cấp."
@@ -7573,7 +7573,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo tín hiệu đèn, xe tải đi theo hướng nào là đúng quy tắc giao thông?",
-    "image": "images/cau_502.png",
+    "image": "images/cau_502.webp",
     "options": [
       "Hướng 2, 3, 4.",
       "Chỉ hướng 1.",
@@ -7589,7 +7589,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Các xe đi theo hướng mũi tên, những xe nào vi phạm quy tắc giao thông?",
-    "image": "images/cau_503.png",
+    "image": "images/cau_503.webp",
     "options": [
       "Xe khách, xe tải, xe mô tô.",
       "Xe tải, xe con, xe mô tô.",
@@ -7604,7 +7604,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_504.png",
+    "image": "images/cau_504.webp",
     "options": [
       "Xe khách, xe tải, xe mô tô, xe con.",
       "Xe con, xe khách, xe tải, xe mô tô.",
@@ -7620,7 +7620,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Trong trường hợp này xe nào đỗ vi phạm quy tắc giao thông?",
-    "image": "images/cau_505.png",
+    "image": "images/cau_505.webp",
     "options": [
       "Xe tải.",
       "Xe con và mô tô.",
@@ -7636,7 +7636,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, xe nào được quyền đi trước?",
-    "image": "images/cau_506.png",
+    "image": "images/cau_506.webp",
     "options": [
       "Xe tải.",
       "Xe con (B).",
@@ -7651,7 +7651,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, những hướng nào xe gắn máy được phép đi?",
-    "image": "images/cau_507.png",
+    "image": "images/cau_507.webp",
     "options": [
       "Cả ba hướng.",
       "Chỉ hướng 1 và 3.",
@@ -7666,7 +7666,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào đỗ vi phạm quy tắc giao thông?",
-    "image": "images/cau_508.png",
+    "image": "images/cau_508.webp",
     "options": [
       "Cả hai xe.",
       "Không xe nào vi phạm.",
@@ -7682,7 +7682,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào đỗ vi phạm quy tắc giao thông?",
-    "image": "images/cau_509.png",
+    "image": "images/cau_509.webp",
     "options": [
       "Chỉ xe mô tô.",
       "Chỉ xe tải.",
@@ -7698,7 +7698,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe tải kéo xe mô tô ba bánh như hình này có đúng quy tắc giao thông không?",
-    "image": "images/cau_510.png",
+    "image": "images/cau_510.webp",
     "options": [
       "Đúng.",
       "Không đúng."
@@ -7712,7 +7712,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, hướng nào xe không được phép đi?",
-    "image": "images/cau_511.png",
+    "image": "images/cau_511.webp",
     "options": [
       "Hướng 2 và 5.",
       "Chỉ hướng 1."
@@ -7726,7 +7726,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, những hướng nào xe ô tô không được phép đi?",
-    "image": "images/cau_512.png",
+    "image": "images/cau_512.webp",
     "options": [
       "Hướng 1 và 2.",
       "Hướng 3.",
@@ -7742,7 +7742,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào vượt đúng quy tắc giao thông?",
-    "image": "images/cau_513.png",
+    "image": "images/cau_513.webp",
     "options": [
       "Cả hai xe đều đúng.",
       "Xe con.",
@@ -7757,7 +7757,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, gặp biển hướng đi phải theo đặt trước ngã tư, những hướng nào xe được phép đi?",
-    "image": "images/cau_514.png",
+    "image": "images/cau_514.webp",
     "options": [
       "Hướng 2 và 3.",
       "Hướng 1, 2 và 3.",
@@ -7772,7 +7772,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe kéo nhau như hình này có vi phạm quy tắc giao thông không?",
-    "image": "images/cau_515.png",
+    "image": "images/cau_515.webp",
     "options": [
       "Không.",
       "Vi phạm."
@@ -7786,7 +7786,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào phải nhường đường trong trường hợp này?",
-    "image": "images/cau_516.png",
+    "image": "images/cau_516.webp",
     "options": [
       "Xe khách.",
       "Xe tải."
@@ -7800,7 +7800,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào được quyền đi trước trong trường hợp này?",
-    "image": "images/cau_517.png",
+    "image": "images/cau_517.webp",
     "options": [
       "Xe con.",
       "Xe mô tô."
@@ -7814,7 +7814,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe kéo nhau trong trường hợp này đúng quy định không?",
-    "image": "images/cau_518.png",
+    "image": "images/cau_518.webp",
     "options": [
       "Không đúng.",
       "Đúng."
@@ -7828,7 +7828,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, những hướng nào xe ô tô con được phép đi?",
-    "image": "images/cau_519.png",
+    "image": "images/cau_519.webp",
     "options": [
       "Hướng 1.",
       "Hướng 1, 3 và 4.",
@@ -7844,7 +7844,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_520.png",
+    "image": "images/cau_520.webp",
     "options": [
       "Xe con (A), xe mô tô, xe con (B), xe đạp.",
       "Xe con (B), xe đạp, xe mô tô, xe con (A).",
@@ -7860,7 +7860,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, những hướng nào xe tải được phép đi?",
-    "image": "images/cau_521.png",
+    "image": "images/cau_521.webp",
     "options": [
       "Chỉ hướng 1.",
       "Hướng 1, 3 và 4.",
@@ -7876,7 +7876,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Những hướng nào xe tải được phép đi?",
-    "image": "images/cau_522.png",
+    "image": "images/cau_522.webp",
     "options": [
       "Cả ba hướng.",
       "Hướng 2 và 3."
@@ -7890,7 +7890,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Những hướng nào xe ô tô tải được phép đi?",
-    "image": "images/cau_523.png",
+    "image": "images/cau_523.webp",
     "options": [
       "Chỉ hướng 1.",
       "Hướng 1 và 4.",
@@ -7906,7 +7906,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Những hướng nào xe ô tô tải được phép đi?",
-    "image": "images/cau_524.png",
+    "image": "images/cau_524.webp",
     "options": [
       "Cả bốn hướng.",
       "Trừ hướng 2.",
@@ -7922,7 +7922,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào được quyền đi trước trong trường hợp này?",
-    "image": "images/cau_525.png",
+    "image": "images/cau_525.webp",
     "options": [
       "Xe mô tô.",
       "Xe con."
@@ -7936,7 +7936,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe ô tô con đi theo chiều mũi tên có vi phạm quy tắc giao thông không?",
-    "image": "images/cau_526.png",
+    "image": "images/cau_526.webp",
     "options": [
       "Không vi phạm.",
       "Vi phạm."
@@ -7950,7 +7950,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào vi phạm quy tắc giao thông?",
-    "image": "images/cau_527.png",
+    "image": "images/cau_527.webp",
     "options": [
       "Xe khách.",
       "Xe mô tô.",
@@ -7966,7 +7966,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Các xe đi như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_528.png",
+    "image": "images/cau_528.webp",
     "options": [
       "Các xe ở phía tay phải và tay trái của người điều khiển được phép đi thẳng.",
       "Cho phép các xe ở mọi hướng được phép rẽ phải.",
@@ -7981,7 +7981,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, xe nào được phép đi?",
-    "image": "images/cau_529.png",
+    "image": "images/cau_529.webp",
     "options": [
       "Xe mô tô, xe con.",
       "Xe con, xe tải.",
@@ -7997,7 +7997,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe con vượt xe tải như trường hợp này có đúng không?",
-    "image": "images/cau_530.png",
+    "image": "images/cau_530.webp",
     "options": [
       "Đúng.",
       "Không đúng."
@@ -8011,7 +8011,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào vượt đúng quy tắc giao thông?",
-    "image": "images/cau_531.png",
+    "image": "images/cau_531.webp",
     "options": [
       "Xe tải.",
       "Cả hai xe.",
@@ -8026,7 +8026,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Đi theo hướng mũi tên, xe nào vi phạm quy tắc giao thông?",
-    "image": "images/cau_532.png",
+    "image": "images/cau_532.webp",
     "options": [
       "Xe chữa cháy đi làm nhiệm vụ chữa cháy.",
       "Xe tải.",
@@ -8041,7 +8041,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_533.png",
+    "image": "images/cau_533.webp",
     "options": [
       "Xe khách, xe tải, xe con.",
       "Xe con, xe tải, xe khách.",
@@ -8056,7 +8056,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_534.png",
+    "image": "images/cau_534.webp",
     "options": [
       "Xe khách và xe tải, xe con.",
       "Xe tải, xe khách, xe con.",
@@ -8071,7 +8071,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Những hướng nào xe ô tô tải được phép đi?",
-    "image": "images/cau_535.png",
+    "image": "images/cau_535.webp",
     "options": [
       "Cả bốn hướng.",
       "Chỉ hướng 1 và 2.",
@@ -8086,7 +8086,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, thứ tự các xe đi như thế nào là đúng?",
-    "image": "images/cau_536.png",
+    "image": "images/cau_536.webp",
     "options": [
       "Xe công an đi làm nhiệm vụ khẩn cấp, xe con, xe tải, xe khách.",
       "Xe con, xe khách và xe công an đi làm nhiệm vụ khẩn cấp, xe tải.",
@@ -8102,7 +8102,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Những hướng nào ô tô tải được phép đi?",
-    "image": "images/cau_537.png",
+    "image": "images/cau_537.webp",
     "options": [
       "Cả bốn hướng.",
       "Hướng 1, 2 và 3.",
@@ -8118,7 +8118,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Trong hình dưới đây, xe nào chấp hành đúng quy tắc giao thông?",
-    "image": "images/cau_538.png",
+    "image": "images/cau_538.webp",
     "options": [
       "Chỉ xe khách, xe mô tô.",
       "Tất cả các loại xe trên.",
@@ -8133,7 +8133,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo hướng mũi tên, những hướng nào xe mô tô được phép đi?",
-    "image": "images/cau_539.png",
+    "image": "images/cau_539.webp",
     "options": [
       "Cả ba hướng.",
       "Hướng 1 và 2.",
@@ -8149,7 +8149,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Trong trường hợp này, thứ tự xe đi như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_540.png",
+    "image": "images/cau_540.webp",
     "options": [
       "Xe công an đi làm nhiệm vụ khẩn cấp, xe quân sự đi làm nhiệm vụ khẩn cấp, xe con + xe mô tô.",
       "Xe quân sự đi làm nhiệm vụ khẩn cấp, xe công an đi làm nhiệm vụ khẩn cấp, xe con + xe mô tô.",
@@ -8164,7 +8164,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào phải nhường đường là đúng quy tắc giao thông?",
-    "image": "images/cau_541.png",
+    "image": "images/cau_541.webp",
     "options": [
       "Xe A.",
       "Xe B."
@@ -8178,7 +8178,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe con quay đầu đi ngược lại như hình vẽ dưới có vi phạm quy tắc giao thông không?",
-    "image": "images/cau_542.png",
+    "image": "images/cau_542.webp",
     "options": [
       "Không vi phạm.",
       "Vi phạm."
@@ -8192,7 +8192,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Trong hình dưới, những xe nào vi phạm quy tắc giao thông?",
-    "image": "images/cau_543.png",
+    "image": "images/cau_543.webp",
     "options": [
       "Xe con (E), xe mô tô (C).",
       "Xe tải (B), xe mô tô (D).",
@@ -8208,7 +8208,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Để điều khiển cho xe đi thẳng, người lái xe phải làm gì là đúng quy tắc giao thông?",
-    "image": "images/cau_544.png",
+    "image": "images/cau_544.webp",
     "options": [
       "Nhường xe con rẽ trái trước.",
       "Đi thẳng không nhường."
@@ -8222,7 +8222,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Người lái xe điều khiển xe đi theo hướng nào là đúng quy tắc giao thông?",
-    "image": "images/cau_545.png",
+    "image": "images/cau_545.webp",
     "options": [
       "Chỉ hướng 2.",
       "Hướng 1 và 2.",
@@ -8238,7 +8238,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào phải nhường đường là đúng quy tắc giao thông?",
-    "image": "images/cau_546.png",
+    "image": "images/cau_546.webp",
     "options": [
       "Xe con (A).",
       "Xe con (B)."
@@ -8252,7 +8252,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Người lái xe điều khiển xe rẽ trái như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_547.png",
+    "image": "images/cau_547.webp",
     "options": [
       "Rẽ trái ngay trước xe buýt.",
       "Rẽ trái trước xe tải.",
@@ -8267,7 +8267,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Trong hình dưới, những xe nào vi phạm quy tắc giao thông?",
-    "image": "images/cau_548.png",
+    "image": "images/cau_548.webp",
     "options": [
       "Xe con (B), xe mô tô (C).",
       "Xe con (A), xe mô tô (C).",
@@ -8283,7 +8283,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào đi trước là đúng quy tắc giao thông?",
-    "image": "images/cau_549.png",
+    "image": "images/cau_549.webp",
     "options": [
       "Xe của bạn.",
       "Xe tải."
@@ -8297,7 +8297,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Người lái xe có thể quay đầu xe như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_550.png",
+    "image": "images/cau_550.webp",
     "options": [
       "Quay đầu theo hướng A.",
       "Quay đầu theo hướng B.",
@@ -8312,7 +8312,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_551.png",
+    "image": "images/cau_551.webp",
     "options": [
       "Xe con và xe tải, xe của bạn.",
       "Xe của bạn, xe tải, xe con.",
@@ -8328,7 +8328,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Khi muốn vượt xe tải, người lái xe phải làm gì là đúng quy tắc giao thông?",
-    "image": "images/cau_552.png",
+    "image": "images/cau_552.webp",
     "options": [
       "Tăng tốc cho xe chạy vượt qua.",
       "Bật tín hiệu báo hiệu bằng đèn hoặc còi, khi đủ điều kiện an toàn, tăng tốc cho xe chạy vượt qua.",
@@ -8343,7 +8343,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo tín hiệu đèn, xe nào phải dừng lại là đúng quy tắc giao thông?",
-    "image": "images/cau_553.png",
+    "image": "images/cau_553.webp",
     "options": [
       "Xe khách, xe mô tô.",
       "Xe tải, xe mô tô.",
@@ -8358,7 +8358,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Trong hình dưới, những xe nào chấp hành quy tắc giao thông?",
-    "image": "images/cau_554.png",
+    "image": "images/cau_554.webp",
     "options": [
       "Xe tải ( D), xe con (B).",
       "Xe con (A), xe con (C), xe con (E), xe buýt (G).",
@@ -8373,7 +8373,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Người lái xe có được phép vượt xe tải để đi thẳng trong trường hợp này không?",
-    "image": "images/cau_555.png",
+    "image": "images/cau_555.webp",
     "options": [
       "Được vượt.",
       "Cấm vượt."
@@ -8387,7 +8387,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Bạn có được phép vượt xe mô tô phía trước không?",
-    "image": "images/cau_556.png",
+    "image": "images/cau_556.webp",
     "options": [
       "Cho phép.",
       "Không được vượt."
@@ -8401,7 +8401,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Người lái xe dừng tại vị trí nào là đúng quy tắc giao thông?",
-    "image": "images/cau_557.png",
+    "image": "images/cau_557.webp",
     "options": [
       "Vị trí A và B.",
       "Vị trí A và C.",
@@ -8417,7 +8417,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Bạn được dừng xe ở vị trí nào trong tình huống này?",
-    "image": "images/cau_558.png",
+    "image": "images/cau_558.webp",
     "options": [
       "Được phép dừng ở vị trí A.",
       "Được phép dừng ở vị trí B.",
@@ -8433,7 +8433,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Theo tín hiệu đèn của xe cơ giới, xe nào vi phạm quy tắc giao thông?",
-    "image": "images/cau_559.png",
+    "image": "images/cau_559.webp",
     "options": [
       "Xe mô tô.",
       "Xe ô tô con.",
@@ -8449,7 +8449,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Các xe đi theo hướng mũi tên, xe nào vi phạm quy tắc giao thông?",
-    "image": "images/cau_560.png",
+    "image": "images/cau_560.webp",
     "options": [
       "Xe con.",
       "Xe tải.",
@@ -8464,7 +8464,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Các xe đi theo hướng mũi tên, những xe nào vi phạm quy tắc giao thông?",
-    "image": "images/cau_561.png",
+    "image": "images/cau_561.webp",
     "options": [
       "Xe tải, xe con.",
       "Xe khách, xe con.",
@@ -8479,7 +8479,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Các xe đi theo hướng mũi tên, xe nào vi phạm quy tắc giao thông?",
-    "image": "images/cau_562.png",
+    "image": "images/cau_562.webp",
     "options": [
       "Xe con, xe tải, xe khách.",
       "Xe tải, xe khách, xe mô tô.",
@@ -8495,7 +8495,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Các xe đi theo hướng mũi tên, xe nào vi phạm quy tắc giao thông?",
-    "image": "images/cau_563.png",
+    "image": "images/cau_563.webp",
     "options": [
       "Xe khách, xe tải.",
       "Xe khách, xe con.",
@@ -8511,7 +8511,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Trong tình huống dưới đây, để tránh xe phía trước bị hỏng đột xuất trên đường, người lái xe phải làm gì?",
-    "image": "images/cau_564.png",
+    "image": "images/cau_564.webp",
     "options": [
       "Đánh lái sang trái cho xe vượt qua.",
       "Quan sát phía trước, phía sau, khi đủ điều kiện an toàn, bật tín hiệu bằng đèn hoặc còi rồi cho xe chạy vượt qua.",
@@ -8526,7 +8526,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Các xe đi theo hướng mũi tên, xe nào chấp hành đúng quy tắc giao thông?",
-    "image": "images/cau_565.png",
+    "image": "images/cau_565.webp",
     "options": [
       "Xe tải, xe mô tô.",
       "Xe khách, xe mô tô.",
@@ -8542,7 +8542,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Trong hình dưới, những xe nào vi phạm quy tắc giao thông?",
-    "image": "images/cau_566.png",
+    "image": "images/cau_566.webp",
     "options": [
       "Xe con (A), xe con (B), xe tải (D).",
       "Xe tải (D), xe con (E), xe buýt (G).",
@@ -8558,7 +8558,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ?",
-    "image": "images/cau_567.png",
+    "image": "images/cau_567.webp",
     "options": [
       "Xe của bạn, xe mô tô, xe con.",
       "Xe con, xe của bạn, xe mô tô.",
@@ -8573,7 +8573,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ?",
-    "image": "images/cau_568.png",
+    "image": "images/cau_568.webp",
     "options": [
       "Xe của bạn, xe mô tô, xe con.",
       "Xe con, xe của bạn, xe mô tô.",
@@ -8588,7 +8588,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào phải dừng lại trong trường hợp này?",
-    "image": "images/cau_569.png",
+    "image": "images/cau_569.webp",
     "options": [
       "Xe con.",
       "Xe của bạn.",
@@ -8603,7 +8603,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe của bạn được đi theo hướng nào trong trường hợp này?",
-    "image": "images/cau_570.png",
+    "image": "images/cau_570.webp",
     "options": [
       "Đi thẳng, rẽ trái.",
       "Đi thẳng, rẽ phải.",
@@ -8619,7 +8619,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe của bạn được đi theo hướng nào trong trường hợp này?",
-    "image": "images/cau_571.png",
+    "image": "images/cau_571.webp",
     "options": [
       "Chuyển sang làn đường bên phải và rẽ phải.",
       "Dừng lại trước vạch dừng và rẽ phải khi đèn xanh.",
@@ -8634,7 +8634,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Bạn xử lý như thế nào trong trường hợp này?",
-    "image": "images/cau_572.png",
+    "image": "images/cau_572.webp",
     "options": [
       "Tăng tốc độ, rẽ phải trước xe tải và xe đạp.",
       "Giảm tốc độ, rẽ phải sau xe tải và xe đạp.",
@@ -8649,7 +8649,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Bạn xử lý như thế nào trong trường hợp này?",
-    "image": "images/cau_573.png",
+    "image": "images/cau_573.webp",
     "options": [
       "Tăng tốc độ, rẽ phải trước xe con màu xanh phía trước và người đi bộ.",
       "Giảm tốc độ, để người đi bộ qua đường và rẽ phải trước xe con màu xanh.",
@@ -8664,7 +8664,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Bạn xử lý như thế nào trong trường hợp này?",
-    "image": "images/cau_574.png",
+    "image": "images/cau_574.webp",
     "options": [
       "Nhường đường cho xe khách và đi trước xe đạp.",
       "Nhường đường cho xe đạp và đi trước xe khách.",
@@ -8679,7 +8679,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào phải nhường đường trong trường hợp này?",
-    "image": "images/cau_575.png",
+    "image": "images/cau_575.webp",
     "options": [
       "Xe con.",
       "Xe tải.",
@@ -8694,7 +8694,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào phải nhường đường trong trường hợp này?",
-    "image": "images/cau_576.png",
+    "image": "images/cau_576.webp",
     "options": [
       "Xe đi ngược chiều.",
       "Xe của bạn."
@@ -8708,7 +8708,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Bạn xử lý như thế nào khi lái xe ô tô vượt qua đoàn người đi xe đạp có tổ chức?",
-    "image": "images/cau_577.png",
+    "image": "images/cau_577.webp",
     "options": [
       "Tăng tốc độ, chuyển sang làn đường bên trái để vượt.",
       "Không được vượt những người đi xe đạp."
@@ -8722,7 +8722,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Phía trước có một xe đang lùi vào nơi đỗ, xe con phía trước đang chuyển sang làn đường bên trái, bạn xử lý như thế nào trong trường hợp này?",
-    "image": "images/cau_578.png",
+    "image": "images/cau_578.webp",
     "options": [
       "Nếu phía sau không có xe xin vượt, chuyển sang làn đường bên trái.",
       "Nếu phía sau có xe xin vượt, thì giảm tốc độ, ở lại làn đường, dừng lại khi cần thiết.",
@@ -8738,7 +8738,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Bạn xử lý như thế nào khi xe phía trước đang lùi ra khỏi nơi đỗ?",
-    "image": "images/cau_579.png",
+    "image": "images/cau_579.webp",
     "options": [
       "Chuyển sang nửa đường bên trái để đi tiếp.",
       "Bấm còi, nháy đèn báo hiệu và đi tiếp.",
@@ -8753,7 +8753,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Phía trước có một xe màu xanh đang vượt xe màu vàng trên làn đường của bạn, bạn xử lý như thế nào trong trường hợp này?",
-    "image": "images/cau_580.png",
+    "image": "images/cau_580.webp",
     "options": [
       "Phanh xe giảm tốc độ và đi sát lề đường bên phải.",
       "Bấm còi, nháy đèn báo hiệu, giữ nguyên tốc độ và đi tiếp.",
@@ -8768,7 +8768,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe tải phía trước có tín hiệu xin chuyển làn đường, bạn xử lý như thế nào trong trường hợp này?",
-    "image": "images/cau_581.png",
+    "image": "images/cau_581.webp",
     "options": [
       "Bật tín hiệu xin chuyển làn đường sang trái để vượt xe tải.",
       "Phanh xe giảm tốc độ chờ xe tải phía trước chuyển làn đường.",
@@ -8783,7 +8783,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Bạn xử lý như thế nào trong trường hợp này?",
-    "image": "images/cau_582.png",
+    "image": "images/cau_582.webp",
     "options": [
       "Tăng tốc độ và đi thẳng qua ngã tư.",
       "Dừng xe trước vạch dừng.",
@@ -8798,7 +8798,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ?",
-    "image": "images/cau_583.png",
+    "image": "images/cau_583.webp",
     "options": [
       "Xe của bạn, xe mô tô, xe đạp.",
       "Xe mô tô, xe đạp, xe của bạn.",
@@ -8813,7 +8813,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ?",
-    "image": "images/cau_584.png",
+    "image": "images/cau_584.webp",
     "options": [
       "Xe của bạn, xe tải, xe con.",
       "Xe con, xe tải, xe của bạn.",
@@ -8829,7 +8829,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào phải nhường đường trong trường hợp này?",
-    "image": "images/cau_585.png",
+    "image": "images/cau_585.webp",
     "options": [
       "Xe của bạn.",
       "Xe con."
@@ -8843,7 +8843,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào phải nhường đường trong trường hợp này?",
-    "image": "images/cau_586.png",
+    "image": "images/cau_586.webp",
     "options": [
       "Xe con.",
       "Xe của bạn."
@@ -8857,7 +8857,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Bạn xử lý như thế nào trong trường hợp này?",
-    "image": "images/cau_587.png",
+    "image": "images/cau_587.webp",
     "options": [
       "Tăng tốc độ, đi qua vạch người đi bộ sang đường, để người đi bộ sang đường sau.",
       "Giảm tốc độ, đi qua vạch người đi bộ sang đường, để người đi bộ sang đường sau.",
@@ -8872,7 +8872,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào được đi trước trong trường hợp này?",
-    "image": "images/cau_588.png",
+    "image": "images/cau_588.webp",
     "options": [
       "Xe con.",
       "Xe của bạn."
@@ -8886,7 +8886,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ?",
-    "image": "images/cau_589.png",
+    "image": "images/cau_589.webp",
     "options": [
       "Xe con, xe tải, xe của bạn.",
       "Xe tải, xe con, xe của bạn.",
@@ -8901,7 +8901,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Bạn xử lý như thế nào trong trường hợp này?",
-    "image": "images/cau_590.png",
+    "image": "images/cau_590.webp",
     "options": [
       "Tăng tốc độ cho xe lấn sang phần đường bên trái.",
       "Giảm tốc độ cho xe lấn sang phần đường bên trái.",
@@ -8916,7 +8916,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào được đi trước trong trường hợp này?",
-    "image": "images/cau_591.png",
+    "image": "images/cau_591.webp",
     "options": [
       "Xe tải.",
       "Xe của bạn."
@@ -8930,7 +8930,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe nào dừng đúng theo quy tắc giao thông?",
-    "image": "images/cau_592.png",
+    "image": "images/cau_592.webp",
     "options": [
       "Xe con.",
       "Xe mô tô.",
@@ -8945,7 +8945,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ?",
-    "image": "images/cau_593.png",
+    "image": "images/cau_593.webp",
     "options": [
       "Xe tải, xe đạp, xe của bạn.",
       "Xe của bạn, xe đạp, xe tải.",
@@ -8960,7 +8960,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Để điều khiển xe rẽ trái, bạn chọn hướng đi nào dưới đây?",
-    "image": "images/cau_594.png",
+    "image": "images/cau_594.webp",
     "options": [
       "Hướng 1.",
       "Hướng 2.",
@@ -8975,7 +8975,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Khi gặp xe ngược chiều bật đèn pha trong tình huống dưới dây, bạn xử lý như thế nào?",
-    "image": "images/cau_595.png",
+    "image": "images/cau_595.webp",
     "options": [
       "Bật đèn chiếu xa, tăng tốc độ vượt xe cùng chiều.",
       "Giữ nguyên đèn chiếu gần, giảm tốc độ, đi sau xe phía trước.",
@@ -8990,7 +8990,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Xe của bạn đang di chuyển gần đến khu vực giao cắt với đường sắt, khi rào chắn đang dịch chuyển, bạn điều khiển xe như thế nào là đúng quy tắc giao thông?",
-    "image": "images/cau_596.png",
+    "image": "images/cau_596.webp",
     "options": [
       "Quan sát nếu thấy không có tàu thì tăng tốc cho xe vượt qua đường sắt.",
       "Dừng lại trước rào chắn một khoảng cách an toàn.",
@@ -9005,7 +9005,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Trong tình huống dưới đây, xe con màu đỏ nhập làn đường cao tốc theo hướng mũi tên là đúng hay sai?",
-    "image": "images/cau_597.png",
+    "image": "images/cau_597.webp",
     "options": [
       "Đúng.",
       "Sai."
@@ -9019,7 +9019,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Trong tình huống dưới đây, xe con màu đỏ có được phép vượt khi xe con màu xanh đang vượt xe tải hay không?",
-    "image": "images/cau_598.png",
+    "image": "images/cau_598.webp",
     "options": [
       "Được vượt.",
       "Không được vượt."
@@ -9033,7 +9033,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Trong tình huống dưới đây, xe con màu vàng vượt xe con màu đỏ là đúng quy tắc giao thông hay không?",
-    "image": "images/cau_599.png",
+    "image": "images/cau_599.webp",
     "options": [
       "Đúng.",
       "Không đúng."
@@ -9047,7 +9047,7 @@
     "chapter": 6,
     "chapter_name": "Giải thế sa hình và kỹ năng xử lý tình huống",
     "question": "Trong tình huống dưới đây, xe đầu kéo kéo rơ moóc (xe container) đang rẽ phải, xe con màu xanh và xe máy phía sau xe container đi như thế nào để bảo đảm an toàn?",
-    "image": "images/cau_600.png",
+    "image": "images/cau_600.webp",
     "options": [
       "Vượt về phía bên phải để đi tiếp.",
       "Giảm tốc độ chờ xe container rẽ xong rồi tiếp tục đi.",

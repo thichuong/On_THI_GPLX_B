@@ -11,7 +11,7 @@ test('OfflineService - getImageUrls returns all 318 normalized question image UR
   // Verify all URLs start with /images/
   for (const url of urls) {
     assert.strictEqual(url.startsWith('/images/'), true, `URL ${url} should start with /images/`);
-    assert.strictEqual(url.endsWith('.png'), true, `URL ${url} should end with .png`);
+    assert.ok(url.endsWith('.webp') || url.endsWith('.png'), `URL ${url} should end with .webp or .png`);
   }
 
   // Verify distinctness
