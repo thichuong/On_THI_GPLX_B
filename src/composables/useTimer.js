@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue';
+import { ref, computed, onScopeDispose, getCurrentScope } from 'vue';
 import { TimerService } from '../services/timerService.js';
 
 export function useTimer() {
@@ -15,10 +15,25 @@ export function useTimer() {
     return TimerService.formatTime(totalDuration.value);
   });
 
+  const remainingSeconds = computed(() => {
+    return Math.max(0, totalDuration.value - elapsedSeconds.value);
+  });
+
+  const status = computed(() => {
+    if (totalDuration.value <= 0) return 'normal';
+    const remaining = remainingSeconds.value;
+    if (totalDuration.value <= 300) {
+      if (remaining <= 30) return 'danger';
+      if (remaining <= 60) return 'warning';
+      return 'normal';
+    }
+    if (remaining <= 120) return 'danger';
+    if (remaining <= 300) return 'warning';
+    return 'normal';
+  });
+
   const isUrgent = computed(() => {
-    if (totalDuration.value <= 0) return false;
-    const remaining = totalDuration.value - elapsedSeconds.value;
-    return remaining > 0 && remaining <= 60;
+    return status.value === 'danger';
   });
 
   const isExpired = computed(() => {
@@ -27,24 +42,23 @@ export function useTimer() {
 
   function start(durationSeconds, onExpire) {
     stop();
-    totalDuration.value = durationSeconds;
+    totalDuration.value = Math.max(0, Math.round(durationSeconds));
     elapsedSeconds.value = 0;
     isRunning.value = true;
 
     timerServiceInstance = new TimerService();
-    timerServiceInstance.start(
-      durationSeconds,
-      (elapsed, total) => {
-        elapsedSeconds.value = elapsed;
-        totalDuration.value = total;
+    timerServiceInstance.start(totalDuration.value, {
+      onTick: (data) => {
+        elapsedSeconds.value = data.elapsedSeconds;
+        totalDuration.value = data.totalSeconds;
       },
-      () => {
+      onTimeout: () => {
         isRunning.value = false;
         if (typeof onExpire === 'function') {
           onExpire();
         }
       }
-    );
+    });
   }
 
   function stop() {
@@ -61,10 +75,18 @@ export function useTimer() {
     totalDuration.value = 0;
   }
 
+  if (getCurrentScope()) {
+    onScopeDispose(() => {
+      stop();
+    });
+  }
+
   return {
     elapsedSeconds,
     totalDuration,
+    remainingSeconds,
     isRunning,
+    status,
     formattedTime,
     formattedTotal,
     isUrgent,

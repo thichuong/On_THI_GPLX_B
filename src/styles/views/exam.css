@@ -287,7 +287,8 @@
   color: var(--warning);
 }
 
-.timer-display.danger {
+.timer-display.danger,
+.timer-display.urgent {
   color: var(--danger);
   animation: pulse-timer 1s infinite alternate;
 }

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, nextTick } from 'vue';
+import { ref, computed, watch, nextTick, onUnmounted } from 'vue';
 import { questionService } from '../services/questionService.js';
 import { ExamEngine, EXAM_PRESETS } from '../services/examEngine.js';
 import { StorageService } from '../services/storageService.js';
@@ -279,6 +279,10 @@ useKeyboardShortcuts({
 watch(() => props.examType, () => {
   resetExamState();
 });
+
+onUnmounted(() => {
+  timer.stop();
+});
 </script>
 
 <template>
@@ -459,6 +463,7 @@ watch(() => props.examType, () => {
               :formatted-time="timer.formattedTime.value"
               :formatted-total="timer.formattedTotal.value"
               :is-urgent="timer.isUrgent.value"
+              :status="timer.status.value"
             />
           </div>
 

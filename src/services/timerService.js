@@ -15,19 +15,29 @@ export class TimerService {
   /**
    * Start a new count-up exam timer with a maximum duration
    * @param {number} seconds - Total exam duration in seconds
-   * @param {Object} [options]
-   * @param {Function} [options.onTick]
-   * @param {Function} [options.onTimeout]
+   * @param {Object|Function} [optionsOrOnTick] - Options object { onTick, onTimeout } or onTick callback
+   * @param {Function} [optionsOrOnTick.onTick]
+   * @param {Function} [optionsOrOnTick.onTimeout]
+   * @param {Function} [maybeOnTimeout] - onTimeout callback when using positional arguments
    */
-  start(seconds, { onTick = null, onTimeout = null } = {}) {
+  start(seconds, optionsOrOnTick = null, maybeOnTimeout = null) {
     this.stop();
 
     this.totalSeconds = Math.max(0, Math.round(seconds));
     this.remainingSeconds = this.totalSeconds;
     this.startTime = Date.now();
     this.isRunning = true;
-    this.onTickCallback = onTick;
-    this.onTimeoutCallback = onTimeout;
+
+    if (typeof optionsOrOnTick === 'function') {
+      this.onTickCallback = optionsOrOnTick;
+      this.onTimeoutCallback = typeof maybeOnTimeout === 'function' ? maybeOnTimeout : null;
+    } else if (optionsOrOnTick && typeof optionsOrOnTick === 'object') {
+      this.onTickCallback = optionsOrOnTick.onTick || null;
+      this.onTimeoutCallback = optionsOrOnTick.onTimeout || null;
+    } else {
+      this.onTickCallback = null;
+      this.onTimeoutCallback = null;
+    }
 
     // Trigger initial tick (00:00 / total)
     this._handleTick();
@@ -64,7 +74,11 @@ export class TimerService {
     };
 
     if (typeof this.onTickCallback === 'function') {
-      this.onTickCallback(data);
+      if (this.onTickCallback.length > 1) {
+        this.onTickCallback(elapsedSeconds, this.totalSeconds, data);
+      } else {
+        this.onTickCallback(data);
+      }
     }
     eventBus.emit('timer:tick', data);
   }
